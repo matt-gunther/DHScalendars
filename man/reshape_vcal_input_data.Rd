@@ -6,14 +6,13 @@
 \usage{
 reshape_vcal_input_data(dat, sample_tracking, ...)
 }
-\description{
-reshape_vcal_input_data
-}
-\note{
+\arguments{
+\item{dat}{description}
 
+\item{sample_tracking}{description}
 }
-\examples{
-\dontrun{}
+\description{
+description
 }
 \author{
 Matt Gunther

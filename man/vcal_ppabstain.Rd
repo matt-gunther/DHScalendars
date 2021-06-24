@@ -6,14 +6,11 @@
 \usage{
 vcal_ppabstain(dat)
 }
+\arguments{
+\item{dat}{description}
+}
 \description{
-vcal_ppabstain
-}
-\note{
-
-}
-\examples{
-\dontrun{}
+description
 }
 \author{
 Matt Gunther

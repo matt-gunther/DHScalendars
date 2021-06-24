@@ -6,14 +6,11 @@
 \usage{
 get_vcal_input_data(ddi, ...)
 }
+\arguments{
+\item{ddi}{description}
+}
 \description{
-get_vcal_input_data
-}
-\note{
-
-}
-\examples{
-\dontrun{}
+description
 }
 \author{
 Matt Gunther

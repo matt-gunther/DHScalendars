@@ -1,11 +1,7 @@
 #' @title vcal_ppa
 #' @author Matt Gunther
-#' @description
-#' @details
-#' @note
-#' @param dat
-#' @examples
-#' \dontrun{}
+#' @description description
+#' @param dat description
 #' @export vcal_ppa
 vcal_ppa <- function(dat){
   dat %>%

@@ -6,14 +6,11 @@
 \usage{
 vcal_mig(dat)
 }
+\arguments{
+\item{dat}{description}
+}
 \description{
-vcal_mig
-}
-\note{
-
-}
-\examples{
-\dontrun{}
+description
 }
 \author{
 Matt Gunther

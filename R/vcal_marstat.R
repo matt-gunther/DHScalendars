@@ -1,11 +1,7 @@
 #' @title vcal_marstat
 #' @author Matt Gunther
-#' @description
-#' @details
-#' @note
-#' @param dat
-#' @examples
-#' \dontrun{}
+#' @description description
+#' @param dat description
 #' @export vcal_marstat
 vcal_marstat <- function(dat){
   dat %>%

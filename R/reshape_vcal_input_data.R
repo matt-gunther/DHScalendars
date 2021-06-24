@@ -1,12 +1,8 @@
 #' @title reshape_vcal_input_data
 #' @author Matt Gunther
-#' @description
-#' @details
-#' @note
-#' @param dat
-#' @param sample_tracking
-#' @examples
-#' \dontrun{}
+#' @description description
+#' @param dat description
+#' @param sample_tracking description
 #' @export reshape_vcal_input_data
 reshape_vcal_input_data <- function(dat, sample_tracking, ...){
   # Create any vcal numbered 0-9 if it does not exist, then fill with NA

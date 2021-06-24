@@ -1,11 +1,7 @@
 #' @title get_vcal_input_data
 #' @author Matt Gunther
-#' @description
-#' @details
-#' @note
-#' @param ddi
-#' @examples
-#' \dontrun{}
+#' @description description
+#' @param ddi description
 #' @export get_vcal_input_data
 get_vcal_input_data <- function(ddi, ...){
 

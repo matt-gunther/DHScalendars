@@ -6,14 +6,11 @@
 \usage{
 read_dhs_dict_as_ddi(sample, ...)
 }
+\arguments{
+\item{sample}{description}
+}
 \description{
-read_dhs_dict_as_ddi
-}
-\note{
-
-}
-\examples{
-\dontrun{}
+description
 }
 \author{
 Matt Gunther

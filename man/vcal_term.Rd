@@ -6,14 +6,11 @@
 \usage{
 vcal_term(dat)
 }
+\arguments{
+\item{dat}{description}
+}
 \description{
-vcal_term
-}
-\note{
-
-}
-\examples{
-\dontrun{}
+description
 }
 \author{
 Matt Gunther

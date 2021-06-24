@@ -1,11 +1,7 @@
 #' @title vcal_ultra
 #' @author Matt Gunther
-#' @description
-#' @details
-#' @note
-#' @param dat
-#' @examples
-#' \dontrun{}
+#' @description description
+#' @param dat description
 #' @export vcal_ultra
 vcal_ultra <- function(dat){
   dat %>%

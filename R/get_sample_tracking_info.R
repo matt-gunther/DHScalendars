@@ -1,10 +1,6 @@
 #' @title get_sample_tracking_info
 #' @author Matt Gunther
-#' @description
-#' @details
-#' @note
-#' @examples
-#' \dontrun{}
+#' @description description
 #' @export get_sample_tracking_info
 
 # determine vcals_to_do from Google Sheet

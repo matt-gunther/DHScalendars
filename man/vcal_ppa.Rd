@@ -6,14 +6,11 @@
 \usage{
 vcal_ppa(dat)
 }
+\arguments{
+\item{dat}{description}
+}
 \description{
-vcal_ppa
-}
-\note{
-
-}
-\examples{
-\dontrun{}
+description
 }
 \author{
 Matt Gunther

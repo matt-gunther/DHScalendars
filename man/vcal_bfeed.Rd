@@ -6,14 +6,11 @@
 \usage{
 vcal_bfeed(dat)
 }
+\arguments{
+\item{dat}{description}
+}
 \description{
-vcal_bfeed
-}
-\note{
-
-}
-\examples{
-\dontrun{}
+description
 }
 \author{
 Matt Gunther

@@ -7,13 +7,7 @@
 get_sample_tracking_info()
 }
 \description{
-get_sample_tracking_info
-}
-\note{
-
-}
-\examples{
-\dontrun{}
+description
 }
 \author{
 Matt Gunther

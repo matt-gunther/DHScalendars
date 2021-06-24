@@ -6,14 +6,11 @@
 \usage{
 vcal_reprod(dat)
 }
+\arguments{
+\item{dat}{description}
+}
 \description{
-vcal_reprod
-}
-\note{
-
-}
-\examples{
-\dontrun{}
+description
 }
 \author{
 Matt Gunther

@@ -1,11 +1,7 @@
 #' @title vcal_discont
 #' @author Matt Gunther
-#' @description
-#' @details
-#' @note
-#' @param dat
-#' @examples
-#' \dontrun{}
+#' @description description
+#' @param dat description
 #' @export vcal_discont
 vcal_discont <- function(dat){
   dat <- dat %>%

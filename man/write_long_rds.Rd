@@ -6,14 +6,11 @@
 \usage{
 write_long_rds(dat)
 }
+\arguments{
+\item{dat}{description}
+}
 \description{
-write_long_rds
-}
-\note{
-
-}
-\examples{
-\dontrun{}
+description
 }
 \author{
 Matt Gunther

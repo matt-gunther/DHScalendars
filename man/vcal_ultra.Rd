@@ -6,14 +6,11 @@
 \usage{
 vcal_ultra(dat)
 }
+\arguments{
+\item{dat}{description}
+}
 \description{
-vcal_ultra
-}
-\note{
-
-}
-\examples{
-\dontrun{}
+description
 }
 \author{
 Matt Gunther

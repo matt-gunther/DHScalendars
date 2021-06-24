@@ -1,11 +1,7 @@
 #' @title vcal_mig
 #' @author Matt Gunther
-#' @description
-#' @details
-#' @note
-#' @param dat
-#' @examples
-#' \dontrun{}
+#' @description description
+#' @param dat description
 #' @export vcal_mig
 vcal_mig <- function(dat){
   dat %>%

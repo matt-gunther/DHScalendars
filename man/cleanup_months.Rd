@@ -6,15 +6,9 @@
 \usage{
 cleanup_months(dat)
 }
+\arguments{
+\item{dat}{dat}
+}
 \description{
-cleanup_months
-}
-\note{
-
-}
-\examples{
-\dontrun{}
-}
-\author{
-Matt Gunther
+description
 }

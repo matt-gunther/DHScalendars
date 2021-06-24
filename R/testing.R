@@ -1,11 +1,7 @@
 #' @title testing
 #' @author Matt Gunther
-#' @description
-#' @details
-#' @note
-#' @param samp
-#' @examples
-#' \dontrun{}
+#' @description description
+#' @param samp description
 #' @export testing
 testing <- function(samp){
 

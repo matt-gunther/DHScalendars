@@ -6,14 +6,11 @@
 \usage{
 vcal_discont(dat)
 }
+\arguments{
+\item{dat}{description}
+}
 \description{
-vcal_discont
-}
-\note{
-
-}
-\examples{
-\dontrun{}
+description
 }
 \author{
 Matt Gunther

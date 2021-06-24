@@ -1,11 +1,7 @@
 #' @title master
 #' @author Matt Gunther
-#' @description
-#' @details
-#' @note
-#' @param samp
-#' @examples
-#' \dontrun{}
+#' @description description
+#' @param samp description
 #' @export master
 master <- function(samp){
   # Load packages

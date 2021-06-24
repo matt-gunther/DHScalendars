@@ -6,14 +6,11 @@
 \usage{
 vcal_marstat(dat)
 }
+\arguments{
+\item{dat}{description}
+}
 \description{
-vcal_marstat
-}
-\note{
-
-}
-\examples{
-\dontrun{}
+description
 }
 \author{
 Matt Gunther

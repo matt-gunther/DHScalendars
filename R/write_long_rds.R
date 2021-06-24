@@ -1,11 +1,7 @@
 #' @title write_long_rds
 #' @author Matt Gunther
-#' @description
-#' @details
-#' @note
-#' @param dat
-#' @examples
-#' \dontrun{}
+#' @description description
+#' @param dat description
 #' @export write_long_rds
 write_long_rds <- function(dat){
   dat %>%

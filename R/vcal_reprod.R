@@ -1,11 +1,7 @@
 #' @title vcal_reprod
 #' @author Matt Gunther
-#' @description
-#' @details
-#' @note
-#' @param dat
-#' @examples
-#' \dontrun{}
+#' @description description
+#' @param dat description
 #' @export vcal_reprod
 vcal_reprod <- function(dat){
 

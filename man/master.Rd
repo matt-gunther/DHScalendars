@@ -6,14 +6,11 @@
 \usage{
 master(samp)
 }
+\arguments{
+\item{samp}{description}
+}
 \description{
-master
-}
-\note{
-
-}
-\examples{
-\dontrun{}
+description
 }
 \author{
 Matt Gunther

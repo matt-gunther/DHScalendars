@@ -6,14 +6,11 @@
 \usage{
 testing(samp)
 }
+\arguments{
+\item{samp}{description}
+}
 \description{
-testing
-}
-\note{
-
-}
-\examples{
-\dontrun{}
+description
 }
 \author{
 Matt Gunther

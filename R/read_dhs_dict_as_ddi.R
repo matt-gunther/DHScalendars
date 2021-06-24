@@ -1,11 +1,7 @@
 #' @title read_dhs_dict_as_ddi
 #' @author Matt Gunther
-#' @description
-#' @details
-#' @note
-#' @param sample
-#' @examples
-#' \dontrun{}
+#' @description description
+#' @param sample description
 #' @export read_dhs_dict_as_ddi
 read_dhs_dict_as_ddi <- function(sample, ...){
   # Matt inserts some variables to select, sets other arguments

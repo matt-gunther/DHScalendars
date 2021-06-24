@@ -1,11 +1,7 @@
 #' @title vcal_term
 #' @author Matt Gunther
-#' @description
-#' @details
-#' @note
-#' @param dat
-#' @examples
-#' \dontrun{}
+#' @description description
+#' @param dat description
 #' @export vcal_term
 vcal_term <- function(dat){
   is_avail <- !all(is.na(dat$vcal_term))

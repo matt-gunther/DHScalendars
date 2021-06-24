@@ -1,11 +1,7 @@
 #' @title vcal_ppabstain
 #' @author Matt Gunther
-#' @description
-#' @details
-#' @note
-#' @param dat
-#' @examples
-#' \dontrun{}
+#' @description description
+#' @param dat description
 #' @export vcal_ppabstain
 vcal_ppabstain <- function(dat){
   dat %>%
