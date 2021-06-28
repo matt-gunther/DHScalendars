@@ -52,7 +52,7 @@ vcal_term <- function(dat){
   # make new variable(s)
   is_avail <- !all(is.na(dat$vcal_term))
 
-  dat %>%
+  dat <- dat %>%
     mutate(
       abort = case_when(
         vcal_term == "A" ~ T,

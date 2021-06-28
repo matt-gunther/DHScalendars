@@ -24,7 +24,7 @@ vcal_work <- function(dat){
   samp <- attr(dat, "sample")
 
   # make new variable(s)
-  dat %>% mutate(empl = as.numeric(vcal_work))
+  dat <- dat %>% mutate(empl = as.numeric(vcal_work))
 
   # Re-attach attributes
   attr(dat, "dhs_path") <- dhs_path

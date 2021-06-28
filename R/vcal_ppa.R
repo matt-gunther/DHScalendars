@@ -24,7 +24,7 @@ vcal_ppa <- function(dat){
   samp <- attr(dat, "sample")
 
   # make new variable(s)
-  dat %>%
+  dat <- dat %>%
     mutate(ppam = case_when(
       grepl("x", vcal_ppa, ign = T) ~ T,
       vcal_ppa == "0" ~ F

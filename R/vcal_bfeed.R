@@ -28,7 +28,7 @@ vcal_bfeed <- function(dat){
   samp <- attr(dat, "sample")
 
   # make new variable(s)
-  dat %>%
+  dat <- dat %>%
     mutate(breastf = case_when(
       grepl("x", vcal_bfeed, ign = T) ~ 1,
       grepl("N", vcal_bfeed, ign = T) ~ 2,

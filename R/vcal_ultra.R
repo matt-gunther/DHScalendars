@@ -23,7 +23,7 @@ vcal_ultra <- function(dat){
   samp <- attr(dat, "sample")
 
   # make new variable(s)
-  dat %>%
+  dat <- dat %>%
     mutate(
       ultrasound = case_when(
         vcal_ultra == "Y" ~ T,

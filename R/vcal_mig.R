@@ -29,7 +29,7 @@ vcal_mig <- function(dat){
   samp <- attr(dat, "sample")
 
   # make new variable(s)
-  dat %>%
+  dat <- dat %>%
     mutate(
       move = case_when(
         grepl("x", vcal_mig, ign = T) ~ T,

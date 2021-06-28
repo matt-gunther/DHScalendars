@@ -24,7 +24,7 @@ vcal_marstat <- function(dat){
   samp <- attr(dat, "sample")
 
   # make new variable(s)
-  dat %>%
+  dat <- dat %>%
     mutate(married = case_when(
       grepl("x", vcal_marstat, ign = T) ~ T,
       vcal_marstat == 0 ~ F
