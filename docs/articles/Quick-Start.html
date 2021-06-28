@@ -91,7 +91,7 @@
 <li>Identify the available calendars and mark them in “resources/vcal_availability.csv”</li>
 <li>Identify any sample-specific codes for the <strong>Reproductive Events</strong> calendar, which we’ll call <code>vcal_reprod</code> (this is usually stored in <code>vcal_1</code> in the IR file). Enter sample-specific recoding in “resources/vcal_repord_recodes.csv”.</li>
 <li>Identify any sample-specific codes for the <strong>Discontinuation</strong> calendar, which we’ll call <code>vcal_discont</code> (if available, this is usually stored in <code>vcal_2</code> in the IR file). Enter sample-specific recoding in “resources/vcal_discont_recodes.csv”.</li>
-<li>Use the function <code>make_lr()</code> to process your sample.</li>
+<li>Use the function <code><a href="../reference/make_lr.html">make_lr()</a></code> to process your sample.</li>
 </ol>
 <p>All <code>lr</code> files made this way will have the same number of calendar variables (all values will be <code>NA</code> if a particular source calendar was not available). They will contain one row per woman per month in the calendar recall timeline.</p>
 <div id="vcal_availability-csv" class="section level1">
@@ -5129,10 +5129,10 @@ H
 <div id="make_lr" class="section level1">
 <h1 class="hasAnchor">
 <a href="#make_lr" class="anchor"></a>make_lr()</h1>
-<p>If you have installed this package and completed the three pre-processing tasks above, you should be able to use <code>make_lr()</code> with your sample like this:</p>
+<p>If you have installed this package and completed the three pre-processing tasks above, you should be able to use <code><a href="../reference/make_lr.html">make_lr()</a></code> with your sample like this:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">make_lr</span><span class="op">(</span><span class="st">"af2015ir"</span><span class="op">)</span></code></pre></div>
-<p>Or, if you have a bunch of samples, you can pass them to <code>make_lr()</code> in a loop like this:</p>
+<code class="sourceCode R"><span class="fu"><a href="../reference/make_lr.html">make_lr</a></span><span class="op">(</span><span class="st">"af2015ir"</span><span class="op">)</span></code></pre></div>
+<p>Or, if you have a bunch of samples, you can pass them to <code><a href="../reference/make_lr.html">make_lr()</a></code> in a loop like this:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># here is my to-do list:</span>
 <span class="va">samples</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"af2015ir"</span>, <span class="st">"ao2015ir"</span><span class="op">)</span>
@@ -5140,7 +5140,7 @@ H
 <span class="co"># here is my loop:</span>
 <span class="kw">for</span><span class="op">(</span><span class="va">s</span> <span class="kw">in</span> <span class="va">samples</span><span class="op">)</span><span class="op">{</span>
   <span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span> <span class="co"># optional: prints a message each time a sample is finished</span>
-  <span class="fu">make_lr</span><span class="op">(</span><span class="va">s</span><span class="op">)</span>
+  <span class="fu"><a href="../reference/make_lr.html">make_lr</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 <p>If you’re crafty, you can even read a vector of samples from a CSV file. Here’s how you might process all of the samples in <code>vcal_availability.csv</code> (this would probably take around 2 hours on the RStudio server):</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -5151,7 +5151,7 @@ H
 <span class="co"># This loop processes ALL samples:</span>
 <span class="kw">for</span><span class="op">(</span><span class="va">s</span> <span class="kw">in</span> <span class="va">samples</span><span class="op">)</span><span class="op">{</span>
   <span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span> <span class="co"># optional: prints a message each time a sample is finished</span>
-  <span class="fu">make_lr</span><span class="op">(</span><span class="va">s</span><span class="op">)</span>
+  <span class="fu"><a href="../reference/make_lr.html">make_lr</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 <p>{when finished, insert details about the output destination and format here}</p>
 </div>

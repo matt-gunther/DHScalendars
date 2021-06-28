@@ -2,15 +2,64 @@
 % Please edit documentation in R/vcal_discont.R
 \name{vcal_discont}
 \alias{vcal_discont}
-\title{vcal_discont}
+\title{Reasons for Discontinuation of Contraceptive Use}
 \usage{
-vcal_discont(dat)
+vcal_discont(dat, vcal_discont_recodes = NULL)
 }
 \arguments{
-\item{dat}{description}
+\item{dat}{A data file created by \code{vcal_reprod()}}
+
+\item{vcal_discont_recodes}{Optional Character: the full path to a file
+called vcal_discont_recodes.csv (contains all common and sample-specific
+recodes for the Discontinuation calendar).}
 }
 \description{
-description
+Create all variables related to the Discontinuation
+calendar (see details). If this calendar was not included in the sample (or
+if some of the required information is not available), all
+variables will \emph{still be created}, but all values will be NA.
+}
+\details{
+The following variables will be created using case logic provided
+to the function \code{dplyr::case_when()}. Please note that
+\code{case_when()} returns NA through implicit logic: \emph{if a "case"
+exists and is not explicitly handled here, the value NA will be returned!}
+\itemize{
+  \item{
+    \strong{reason} Numeric: a recoded version of
+    \code{vcal_discont} (usually \code{vcal_2} in the IR file).
+    All values are a number, and
+    sample-specific codes are harmonized using vcal_discont_recodes.csv
+  }
+  \item{
+    \strong{disc_event} Logical: TRUE if either of these conditions
+    are met:
+      \itemize{
+        \item{
+          \code{vcal_reprod} is recoded 1:90 \emph{and} the next future
+          month's value for \code{vcal_reprod} is any other non-missing
+          value (i.e. the method used in the current month was not used
+          in the next future month). Not available if \code{vcal_reprod}
+          is not available for either month (e.g. excludes the month of
+          the interview).
+        }
+        \item{
+          \code{vcal_disccont} is any non-missing value (i.e. a reason
+          was given for discontinuation). Not available if \code{
+          vcal_discont} is not available.
+        }
+      }
+    \code{disc_event} is only not available (NA) if both criteria are
+    not available. In the rare case that the criteria lead to opposite
+    conclusions, the first criterion takes precedent.
+  }
+  \item{
+    \strong{disc_total} Integer: total number of months per person where
+    \code{disc_event} is TRUE (NA if \code{disc_event} is not available).
+    All months for the person reflect the same total (this is not a
+    cumulative sum).
+  }
+}
 }
 \author{
 Matt Gunther

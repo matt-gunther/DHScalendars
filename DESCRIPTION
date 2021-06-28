@@ -11,12 +11,11 @@ LazyData: true
 Depends:
     ipumsr,
     mpctools,
-    googlesheets4,
-    tidyverse
+    tidyverse,
+    R (>= 2.10)
 Imports:
     ipumsr,
     mpctools,
-    googlesheets4,
     tidyverse
 VignetteBuilder: knitr
 RoxygenNote: 7.1.1

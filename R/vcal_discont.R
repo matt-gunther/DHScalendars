@@ -1,9 +1,81 @@
-#' @title vcal_discont
+#' @title Reasons for Discontinuation of Contraceptive Use
 #' @author Matt Gunther
-#' @description description
-#' @param dat description
+#' @description  Create all variables related to the Discontinuation
+#' calendar (see details). If this calendar was not included in the sample (or
+#' if some of the required information is not available), all
+#' variables will \emph{still be created}, but all values will be NA.
+#' @details The following variables will be created using case logic provided
+#' to the function \code{dplyr::case_when()}. Please note that
+#' \code{case_when()} returns NA through implicit logic: \emph{if a "case"
+#' exists and is not explicitly handled here, the value NA will be returned!}
+#' \itemize{
+#'   \item{
+#'     \strong{reason} Numeric: a recoded version of
+#'     \code{vcal_discont} (usually \code{vcal_2} in the IR file).
+#'     All values are a number, and
+#'     sample-specific codes are harmonized using vcal_discont_recodes.csv
+#'   }
+#'   \item{
+#'     \strong{disc_event} Logical: TRUE if either of these conditions
+#'     are met:
+#'       \itemize{
+#'         \item{
+#'           \code{vcal_reprod} is recoded 1:90 \emph{and} the next future
+#'           month's value for \code{vcal_reprod} is any other non-missing
+#'           value (i.e. the method used in the current month was not used
+#'           in the next future month). Not available if \code{vcal_reprod}
+#'           is not available for either month (e.g. excludes the month of
+#'           the interview).
+#'         }
+#'         \item{
+#'           \code{vcal_disccont} is any non-missing value (i.e. a reason
+#'           was given for discontinuation). Not available if \code{
+#'           vcal_discont} is not available.
+#'         }
+#'       }
+#'     \code{disc_event} is only not available (NA) if both criteria are
+#'     not available. In the rare case that the criteria lead to opposite
+#'     conclusions, the first criterion takes precedent.
+#'   }
+#'   \item{
+#'     \strong{disc_total} Integer: total number of months per person where
+#'     \code{disc_event} is TRUE (NA if \code{disc_event} is not available).
+#'     All months for the person reflect the same total (this is not a
+#'     cumulative sum).
+#'   }
+#' }
+#' @param dat A data file created by \code{vcal_reprod()}
+#' @param vcal_discont_recodes Optional Character: the full path to a file
+#' called vcal_discont_recodes.csv (contains all common and sample-specific
+#' recodes for the Discontinuation calendar).
 #' @export vcal_discont
-vcal_discont <- function(dat){
+vcal_discont <- function(
+  dat,
+  vcal_discont_recodes = NULL
+){
+
+  # preserve attributes
+  dhs_path <- attr(dat, "dhs_path")
+  samp <- attr(dat, "sample")
+
+  # get vcal_discont_recodes.csv
+  if(is.null(vcal_discont_recodes)){
+    vcal_discont_recodes <- attr(dat, "dhs_path") %>%
+      file.path("general/calendar/sample_tracking/vcal_discont_recodes.csv")
+  }
+  if(!file.exists(vcal_discont_recodes)){
+    stop(
+      "I could not find the vcal_discont_recodes file at \n",
+      vcal_discont_recodes,
+      "\n\n",
+      "Please make sure that it has not moved from that location."
+    )
+  }  else {
+    vcal_discont_recodes <- suppressMessages(read_csv(vcal_discont_recodes))
+  }
+
+  # Update disc_event with information from this calendar
+  # disc_total shows the total number of disc_event per person, if available
   dat <- dat %>%
     mutate(disc_event = case_when(
       !all(is.na(vcal_discont)) & is.na(disc_event) ~ vcal_discont != " ",
@@ -15,7 +87,9 @@ vcal_discont <- function(dat){
     )) %>%
     ungroup
 
-  dat <- suppressMessages(read_csv("resources/vcal_discont_recodes.csv")) %>%
+  # recode vcal_discont using the recode CSV file
+  # rename vcal_discont as `reason`
+  dat <- vcal_discont_recodes %>%
     filter(
       sample %in% c("all", dat$sample),
       year == "all" | year %in% dat$v007
@@ -33,6 +107,10 @@ vcal_discont <- function(dat){
     relocate(vcal_discont, .after = vcal_reprod) %>%
     arrange(id, desc(cmc_month)) %>%
     rename(reason = vcal_discont)
+
+  # Re-attach attributes
+  attr(dat, "dhs_path") <- dhs_path
+  attr(dat, "sample") <- samp
 
   return(dat)
 }

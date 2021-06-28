@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>reshape_vcal_input_data — reshape_vcal_input_data • DHScalendars</title>
+<title>Reshape calendar data: one row per woman-month — reshape_vcal_input_data • DHScalendars</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,16 @@
 
 
 
-<meta property="og:title" content="reshape_vcal_input_data — reshape_vcal_input_data" />
-<meta property="og:description" content="description" />
+<meta property="og:title" content="Reshape calendar data: one row per woman-month — reshape_vcal_input_data" />
+<meta property="og:description" content="Returns a data frame where the calendar strings have been
+parsed into single characters, then pivoted &quot;from wide to long&quot; so that
+each character gets stored in a separate row (the number of rows in the
+data frame usually grows by a factor of 80). Several different tests are
+conducted to ensure that all available calendars are identified and
+reshaped correctly. If the user is aware that one or more calendar columns
+contains the wrong number of months (e.g. 79, while all others have 80),
+the user may pad the offending calendar with spaces via the 
+pad_months argument." />
 
 
 
@@ -118,30 +126,84 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>reshape_vcal_input_data</h1>
+    <h1>Reshape calendar data: one row per woman-month</h1>
     
     <div class="hidden name"><code>reshape_vcal_input_data.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>description</p>
+    <p>Returns a data frame where the calendar strings have been
+parsed into single characters, then pivoted "from wide to long" so that
+each character gets stored in a separate row (the number of rows in the
+data frame usually grows by a factor of 80). Several different tests are
+conducted to ensure that all available calendars are identified and
+reshaped correctly. If the user is aware that one or more calendar columns
+contains the wrong number of months (e.g. 79, while all others have 80),
+the user may pad the offending calendar with spaces via the <code>
+pad_months</code> argument.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>reshape_vcal_input_data</span><span class='op'>(</span><span class='va'>dat</span>, <span class='va'>sample_tracking</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>reshape_vcal_input_data</span><span class='op'>(</span><span class='va'>dat</span>, pad_months <span class='op'>=</span> <span class='cn'>NULL</span>, vcal_availability <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>dat</th>
-      <td><p>description</p></td>
+      <td><p>An IR data file created by <code><a href='get_vcal_input_data.html'>get_vcal_input_data()</a></code></p></td>
     </tr>
     <tr>
-      <th>sample_tracking</th>
-      <td><p>description</p></td>
+      <th>pad_months</th>
+      <td><p>Optional Named List: if necessary, the user can specify a
+list of calendar variables in the IR file that need to be padded with left
+or right spaces to reach a desired length (usually 80). Note that this
+function will generate an error if all calendars are <em>not</em> the same
+length (this will help you determine whether use of pad_months is needed).
+For example: <code>
+reshape_vcal_input_data(dat, list(vcal_1 = c(80, 'right')))</code></p></td>
+    </tr>
+    <tr>
+      <th>vcal_availability</th>
+      <td><p>Optional Character: the full path to a file called
+vcal_availability.csv (this can usually be found automatically)</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This function will stop and issue a specific error message (with
+instructions for next steps) if any of the following issues are found:</p>
+<ul>
+<li><p>The file vcal_availability.csv cannot be found</p></li>
+<li><p>The file vcal_availability.csv does not contain the sample</p></li>
+<li><p>The file vcal_availability.csv does not include all of the
+  available calendars found in the data dictionary for the sample</p></li>
+<li><p>The 'CMC start of calendar' variable (v017) contains multiple values
+  (a non-fatal warning is issued, and the function will align the
+  calendars - results should be manually verified)</p></li>
+<li><p>Individual persons have different calendar lengths (usually 80).
+  This would indicate a problem with DHS processing.</p></li>
+<li><p>One or more of the calendars in a sample have different lengths
+  (usually 80). Note: this may be resolved with the pad_months argument.</p></li>
+<li><p>The user has requested padding for a calendar named in pad_months,
+  but the name of the requested calendar does not exist</p></li>
+<li><p>The user has requested padding for a calendar named in pad_months,
+  but did not specify the desired length of the string for the requested
+  calendar</p></li>
+<li><p>The user has requested padding for a calendar named in pad_months,
+  but did not specify whether to pad the calendar with spaces on the left
+  or right side of the existing string</p></li>
+</ul>
+
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>As an intermediate processing step, all existing calendar names
+(e.g. vcal_1, vcal_2, ... vcal_9) will be replaced with human-readable
+names (e.g. vcal_reprod, vcal_discont, ... vcal_ultra) based on the
+availability of calendars shown in vcal_availability.csv. Any calendars
+that are <em>not</em> available for the sample will be attached as
+placeholders, where all values are NA. All calendar variables will be
+removed from the data in a later function.</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Matt Gunther</p>

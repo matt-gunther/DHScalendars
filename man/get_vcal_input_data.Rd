@@ -2,15 +2,43 @@
 % Please edit documentation in R/get_vcal_input_data.R
 \name{get_vcal_input_data}
 \alias{get_vcal_input_data}
-\title{get_vcal_input_data}
+\title{Get calendar data from an IR file}
 \usage{
-get_vcal_input_data(ddi, ...)
+get_vcal_input_data(sample, dhs_path = NULL)
 }
 \arguments{
-\item{ddi}{description}
+\item{sample}{Character: An IR sample that you want to process
+(e.g. "af2015ir")}
+
+\item{dhs_path}{Optional Character: If you're working in a local
+version of RStudio, this function may have trouble finding the data
+dictionary on its own. If so, you can just tell it where to look: specify
+the file path here.
+(e.g. "Z://dhs//country/afghanistan/2015/data/data_dict_af2015ir.xlsx")}
 }
 \description{
-description
+Returns a modified version of the IR file for a sample,
+including \emph{only the handful of variables that are relevant for calendar
+processing}. As a helpful side-effect, the path to the IPUMS DHS folder on
+the user's system will be attached as an attribute of the returned data
+frame.
+}
+\details{
+This function is basically a combination of
+mpctools:::read_data_dict_as_ddi (modified to select a specific list of
+variables and assume a few DHS data features, greatly improving speed) and
+ipumsr::read_ipums_micro (modified to avoid trimming whitespace for each
+of the calendar string variables).
+}
+\note{
+All of the variables needed for calendar processing are stored as a
+quosure list in the first line of this function. In the future, if a sample
+includes a weird name for its calendar data, you may need to add variables
+to this list (this happened with eg1995ir, where the termination
+calendar was stored in a variable called "scal" for some reason). If a
+sample does not include one or more of the variables listed, those variables
+will be silently skipped: the resulting data frame will contain all of the
+variables that were available for your sample.
 }
 \author{
 Matt Gunther

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>get_vcal_input_data — get_vcal_input_data • DHScalendars</title>
+<title>Get calendar data from an IR file — get_vcal_input_data • DHScalendars</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,12 @@
 
 
 
-<meta property="og:title" content="get_vcal_input_data — get_vcal_input_data" />
-<meta property="og:description" content="description" />
+<meta property="og:title" content="Get calendar data from an IR file — get_vcal_input_data" />
+<meta property="og:description" content="Returns a modified version of the IR file for a sample,
+including only the handful of variables that are relevant for calendar
+processing. As a helpful side-effect, the path to the IPUMS DHS folder on
+the user's system will be attached as an attribute of the returned data
+frame." />
 
 
 
@@ -118,26 +122,56 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>get_vcal_input_data</h1>
+    <h1>Get calendar data from an IR file</h1>
     
     <div class="hidden name"><code>get_vcal_input_data.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>description</p>
+    <p>Returns a modified version of the IR file for a sample,
+including <em>only the handful of variables that are relevant for calendar
+processing</em>. As a helpful side-effect, the path to the IPUMS DHS folder on
+the user's system will be attached as an attribute of the returned data
+frame.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_vcal_input_data</span><span class='op'>(</span><span class='va'>ddi</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>get_vcal_input_data</span><span class='op'>(</span><span class='va'>sample</span>, dhs_path <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>ddi</th>
-      <td><p>description</p></td>
+      <th>sample</th>
+      <td><p>Character: An IR sample that you want to process
+(e.g. "af2015ir")</p></td>
+    </tr>
+    <tr>
+      <th>dhs_path</th>
+      <td><p>Optional Character: If you're working in a local
+version of RStudio, this function may have trouble finding the data
+dictionary on its own. If so, you can just tell it where to look: specify
+the file path here.
+(e.g. "Z://dhs//country/afghanistan/2015/data/data_dict_af2015ir.xlsx")</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This function is basically a combination of
+mpctools:::read_data_dict_as_ddi (modified to select a specific list of
+variables and assume a few DHS data features, greatly improving speed) and
+ipumsr::read_ipums_micro (modified to avoid trimming whitespace for each
+of the calendar string variables).</p>
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>All of the variables needed for calendar processing are stored as a
+quosure list in the first line of this function. In the future, if a sample
+includes a weird name for its calendar data, you may need to add variables
+to this list (this happened with eg1995ir, where the termination
+calendar was stored in a variable called "scal" for some reason). If a
+sample does not include one or more of the variables listed, those variables
+will be silently skipped: the resulting data frame will contain all of the
+variables that were available for your sample.</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Matt Gunther</p>

@@ -131,8 +131,8 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
+          <h2 id="section-probably-the-only-function-you-ll-ever-need" class="hasAnchor"><a href="#section-probably-the-only-function-you-ll-ever-need" class="anchor"></a>Probably the only function you'll ever need</h2>
+          <p class="section-desc"><p>Runs all of the other functions in the correct order to produce a compressed CSV file at “general/calendar/unlinked_lr_data folder” in the IPUMS DHS folder.</p></p>
         </th>
       </tr>
       
@@ -143,111 +143,126 @@
       <tr>
         
         <td>
-          <p><code><a href="cleanup_months.html">cleanup_months()</a></code> </p>
+          <p><code><a href="make_lr.html">make_lr()</a></code> </p>
         </td>
-        <td><p>cleanup_months</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_sample_tracking_info.html">get_sample_tracking_info()</a></code> </p>
-        </td>
-        <td><p>get_sample_tracking_info</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_vcal_input_data.html">get_vcal_input_data()</a></code> </p>
-        </td>
-        <td><p>get_vcal_input_data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="master.html">master()</a></code> </p>
-        </td>
-        <td><p>master</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="read_dhs_dict_as_ddi.html">read_dhs_dict_as_ddi()</a></code> </p>
-        </td>
-        <td><p>read_dhs_dict_as_ddi</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="reshape_vcal_input_data.html">reshape_vcal_input_data()</a></code> </p>
-        </td>
-        <td><p>reshape_vcal_input_data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="testing.html">testing()</a></code> </p>
-        </td>
-        <td><p>testing</p></td>
-      </tr><tr>
+        <td><p>Make a long (LR) file</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-functions-that-derive-variables-from-calendar-strings" class="hasAnchor"><a href="#section-functions-that-derive-variables-from-calendar-strings" class="anchor"></a>Functions that derive variables from calendar strings</h2>
+          <p class="section-desc"><p>Each of these functions checks to see if a given calendar is available for your sample and, if so, calculates all of derived variables associated with that calendar. If a calendar is not available for your sample, placeholder variables will be created (all values will be coded NA). As a result, all samples will have the same number of columns. Click a function to learn more about how variables are derived.</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
         
         <td>
           <p><code><a href="vcal_bfeed.html">vcal_bfeed()</a></code> </p>
         </td>
-        <td><p>vcal_bfeed</p></td>
+        <td><p>Breastfeeding Calendar</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="vcal_discont.html">vcal_discont()</a></code> </p>
         </td>
-        <td><p>vcal_discont</p></td>
+        <td><p>Reasons for Discontinuation of Contraceptive Use</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="vcal_marstat.html">vcal_marstat()</a></code> </p>
         </td>
-        <td><p>vcal_marstat</p></td>
+        <td><p>Marital Status Calendar</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="vcal_mig.html">vcal_mig()</a></code> </p>
         </td>
-        <td><p>vcal_mig</p></td>
+        <td><p>Place of Residence</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="vcal_ppa.html">vcal_ppa()</a></code> </p>
         </td>
-        <td><p>vcal_ppa</p></td>
+        <td><p>Post-partum Amenorrhea Calendar</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="vcal_ppabstain.html">vcal_ppabstain()</a></code> </p>
         </td>
-        <td><p>vcal_ppabstain</p></td>
+        <td><p>Post-partum Abstinence Calendar</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="vcal_reprod.html">vcal_reprod()</a></code> </p>
         </td>
-        <td><p>vcal_reprod</p></td>
+        <td><p>Reproductive Events Calendar</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="vcal_term.html">vcal_term()</a></code> </p>
         </td>
-        <td><p>vcal_term</p></td>
+        <td><p>Pregnancy Termination Calendar</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="vcal_ultra.html">vcal_ultra()</a></code> </p>
         </td>
-        <td><p>vcal_ultra</p></td>
+        <td><p>Ultrasound Calendar</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="vcal_work.html">vcal_work()</a></code> </p>
         </td>
-        <td><p>vcal_work</p></td>
+        <td><p>Employment Calendar</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-read-and-reshape-an-ir-file" class="hasAnchor"><a href="#section-read-and-reshape-an-ir-file" class="anchor"></a>Read and Reshape an IR file</h2>
+          <p class="section-desc"><p>Because white-space characters can be meaningful in DHS calendar strings, we use a modified version of \code{ipumsr::read_ipums_micro} to hold it in place. We also only import variables that are necessary for working with calendar data (improving the speed of import). We then check each calendar string from anomolous formatting and generate specific errors with instructions for next-steps. Finally, we parse each string and pivot the single-character codes into independent rows, resulting in a data frame that is (usually) 80 times longer than the original IR file. Click a function to learn more about error messages and options for locating important files.</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="get_vcal_input_data.html">get_vcal_input_data()</a></code> </p>
+        </td>
+        <td><p>Get calendar data from an IR file</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="write_long_rds.html">write_long_rds()</a></code> </p>
+          <p><code><a href="reshape_vcal_input_data.html">reshape_vcal_input_data()</a></code> </p>
         </td>
-        <td><p>write_long_rds</p></td>
+        <td><p>Reshape calendar data: one row per woman-month</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-clean-up-and-write-an-lr-file" class="hasAnchor"><a href="#section-clean-up-and-write-an-lr-file" class="anchor"></a>Clean-up and Write an LR file</h2>
+          <p class="section-desc"><p>Remove any extraneous information and finish processing the derived calendar data as a compressed CSV file. Click a function to learn more about warning messages and options for writing to a custom location.</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="finalize_cal.html">finalize_cal()</a></code> </p>
+        </td>
+        <td><p>Finish: Final Processing Steps for Calendar Data</p></td>
       </tr>
     </tbody>
     </table>

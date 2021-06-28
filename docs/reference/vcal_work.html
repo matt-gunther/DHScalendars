@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>vcal_work — vcal_work • DHScalendars</title>
+<title>Employment Calendar — vcal_work • DHScalendars</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,11 @@
 
 
 
-<meta property="og:title" content="vcal_work — vcal_work" />
-<meta property="og:description" content="description" />
+<meta property="og:title" content="Employment Calendar — vcal_work" />
+<meta property="og:description" content="Create all variables related to the Employment calendar
+(see details). If this calendar was not included in the sample (or if some
+of the required information is not available), all variables will still be
+ created, but all values will be NA." />
 
 
 
@@ -118,13 +121,16 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>vcal_work</h1>
+    <h1>Employment Calendar</h1>
     
     <div class="hidden name"><code>vcal_work.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>description</p>
+    <p>Create all variables related to the Employment calendar
+(see details). If this calendar was not included in the sample (or if some
+of the required information is not available), all variables will still be
+ created, but all values will be NA.</p>
     </div>
 
     <pre class="usage"><span class='fu'>vcal_work</span><span class='op'>(</span><span class='va'>dat</span><span class='op'>)</span></pre>
@@ -134,9 +140,21 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>dat</th>
-      <td><p>description</p></td>
+      <td><p>A data file created by <code><a href='vcal_reprod.html'>vcal_reprod()</a></code> (may be passed to
+any other function starting with "vcal" first).</p></td>
     </tr>
     </table>
+
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The following variables will be created using case logic provided
+to the function <code><a href='https://dplyr.tidyverse.org/reference/case_when.html'>dplyr::case_when()</a></code>. Please note that
+<code>case_when()</code> returns NA through implicit logic: <em>if a "case"
+exists and is not explicitly handled here, the value NA will be returned!</em></p><ul>
+<li><p><strong>empl</strong> Integer: records the numeric value in <code>vcal_work</code>.
+    Not available if <code>vcal_work</code> is missing (" "), not available (NA),
+    or any non-numeric value.</p></li>
+</ul>
 
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 

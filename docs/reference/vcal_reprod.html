@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>vcal_reprod — vcal_reprod • DHScalendars</title>
+<title>Reproductive Events Calendar — vcal_reprod • DHScalendars</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,11 @@
 
 
 
-<meta property="og:title" content="vcal_reprod — vcal_reprod" />
-<meta property="og:description" content="description" />
+<meta property="og:title" content="Reproductive Events Calendar — vcal_reprod" />
+<meta property="og:description" content="Create all variables related to the Reproductive Events
+calendar (see details). If this calendar was not included in the sample (or
+if some of the required information is not available), all
+variables will still be created, but all values will be NA." />
 
 
 
@@ -118,25 +121,112 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>vcal_reprod</h1>
+    <h1>Reproductive Events Calendar</h1>
     
     <div class="hidden name"><code>vcal_reprod.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>description</p>
+    <p>Create all variables related to the Reproductive Events
+calendar (see details). If this calendar was not included in the sample (or
+if some of the required information is not available), all
+variables will <em>still be created</em>, but all values will be NA.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>vcal_reprod</span><span class='op'>(</span><span class='va'>dat</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>vcal_reprod</span><span class='op'>(</span><span class='va'>dat</span>, vcal_reprod_recodes <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>dat</th>
-      <td><p>description</p></td>
+      <td><p>A data file created by <code><a href='reshape_vcal_input_data.html'>reshape_vcal_input_data()</a></code></p></td>
+    </tr>
+    <tr>
+      <th>vcal_reprod_recodes</th>
+      <td><p>Optional Character: the full path to a file
+called vcal_reprod_recodes.csv (contains all common and sample-specific
+recodes for the Reproductive Events calendar).</p></td>
     </tr>
     </table>
+
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The following variables will be created using case logic provided
+to the function <code><a href='https://dplyr.tidyverse.org/reference/case_when.html'>dplyr::case_when()</a></code>. Please note that
+<code>case_when()</code> returns NA through implicit logic: <em>if a "case"
+exists and is not explicitly handled here, the value NA will be returned!</em></p>
+<ul>
+<li><p><strong>reprod_event</strong> Numeric: a recoded version of
+    <code>vcal_reprod</code> (usually <code>vcal_1</code> in the IR file).
+    All values are a number, and
+    sample-specific codes are harmonized using vcal_reprod_recodes.csv</p></li>
+<li><p><strong>caseid_cmc</strong> concatenates <code>caseid</code> and <code>cmc_month</code>
+    (separated by <code>_</code>)</p></li>
+<li><p><strong>seq</strong> month index, where the earliest month gets 1 and the
+    final month usually gets 80 (length of the original calendar string)</p></li>
+<li><p><strong>birth</strong> Logical: TRUE if <code>vcal_reprod</code> is recoded 100,
+    FALSE if it is any other non-missing value.</p></li>
+<li><p><strong>preg</strong> Logical: TRUE if <code>vcal_reprod</code> is recoded 200,
+    FALSE if it is any other non-missing value.</p></li>
+<li><p><strong>term</strong> Logical: TRUE if <code>vcal_reprod</code> is recoded 300,
+    FALSE if it is any other non-missing value.</p></li>
+<li><p><strong>contr</strong> Logical: TRUE if <code>vcal_reprod</code> is recoded to
+    a value between 1 and 90, FALSE if it is any other non-missing value.</p></li>
+<li><p><strong>eventpbt</strong> Logical: TRUE if <code>birth</code>, <code>preg</code>, or
+    <code>term</code> is TRUE, FALSE if they are all FALSE and non-missing.</p></li>
+<li><p><strong>eventwfp</strong> Logical: TRUE if <code>eventpbt</code> or <code>contr</code>
+    is TRUE, FALSE if both are FALSE and non-missing.</p></li>
+<li><p><strong>switch</strong> Logical: TRUE if <code>vcal_reprod</code> is recoded 1:90 and
+    the previous month's value for <code>vcal_reprod</code> is recoded 0:90
+    <em>but</em>
+    not the same value as the current month. FALSE in all other cases where
+    <em>both</em> the current and previous month are available (e.g. excludes
+    the first month and any missing value) and <em>either</em> falls beyond
+    the required range.</p></li>
+<li><p><strong>switch_new</strong> Logical: TRUE if <code>switch</code> is TRUE
+    <em>and</em> <code>vcal_reprod</code> in the previous month <strong>not</strong>
+    recoded 0.
+    FALSE if <code>switch</code> is TRUE  <em>and</em> <code>vcal_reprod</code> in the
+    previous month <strong>is</strong> recoded 0.</p></li>
+<li><p><strong>disc_event</strong> see <code><a href='vcal_discont.html'>vcal_discont()</a></code></p></li>
+<li><p><strong>total_preg</strong> Integer: the total number of months per person
+    where <code>preg</code> is TRUE (NA if <code>preg</code> is not available). All
+    months for the person reflect the same total (this is not a cumulative
+    sum).</p></li>
+<li><p><strong>count_birth</strong> Integer: the total number of months per person
+    where <code>birth</code> is TRUE (NA if <code>birth</code> is not available). All
+    months for the person reflect the same total (this is not a cumulative
+    sum).</p></li>
+<li><p><strong>count_term</strong> Integer: the total number of months per person
+    where <code>term</code> is TRUE (NA if <code>term</code> is not available). All
+    months for the person reflect the same total (this is not a cumulative
+    sum).</p></li>
+<li><p><strong>contr_duration</strong> Integer: the total number of months per person
+    where <code>contr</code> is TRUE (NA if <code>contr</code> is not available). All
+    months for the person reflect the same total (this is not a cumulative
+    sum).</p></li>
+<li><p><strong>trunc</strong> Logical: TRUE for all months in a continuous
+    pregnancy if the outcome of the pregnancy (birth or termination)
+    happened
+    after the date of the interview. FALSE for all months in a continuous
+    pregnancy otherwise. Not available (NA) for all months that were not
+    part
+    of a continuous pregnancy.</p></li>
+<li><p><strong>prfirst</strong> Logical: TRUE for all months in a continuous
+    pregnancy that overlaps with the first month in the recall timeline.
+    FALSE
+    for all months in a continuous pregnancy otherwise. Not available (NA)
+    for months that were not part of a continuous pregnancy.</p></li>
+<li><p><strong>preg_length</strong> Integer: the total number of months included
+    in a single continuous pregnancy where <em>both</em> <code>trunc</code> and
+    <code>prfirst</code> are FALSE. All months in the pregnancy reflect the
+    same total (this is not a cumulative sum). Not available (NA) for
+    months that were not part of a continuous pregnancy.</p></li>
+<li><p><strong>preg_flag</strong> Logical: TRUE if <code>preg_length</code> is longer
+    than 9 months. Not available (NA) for months where <code>preg_length</code>
+    is not available.</p></li>
+</ul>
 
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 

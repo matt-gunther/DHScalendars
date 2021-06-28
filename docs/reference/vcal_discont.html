@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>vcal_discont — vcal_discont • DHScalendars</title>
+<title>Reasons for Discontinuation of Contraceptive Use — vcal_discont • DHScalendars</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,11 @@
 
 
 
-<meta property="og:title" content="vcal_discont — vcal_discont" />
-<meta property="og:description" content="description" />
+<meta property="og:title" content="Reasons for Discontinuation of Contraceptive Use — vcal_discont" />
+<meta property="og:description" content="Create all variables related to the Discontinuation
+calendar (see details). If this calendar was not included in the sample (or
+if some of the required information is not available), all
+variables will still be created, but all values will be NA." />
 
 
 
@@ -118,25 +121,66 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>vcal_discont</h1>
+    <h1>Reasons for Discontinuation of Contraceptive Use</h1>
     
     <div class="hidden name"><code>vcal_discont.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>description</p>
+    <p>Create all variables related to the Discontinuation
+calendar (see details). If this calendar was not included in the sample (or
+if some of the required information is not available), all
+variables will <em>still be created</em>, but all values will be NA.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>vcal_discont</span><span class='op'>(</span><span class='va'>dat</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>vcal_discont</span><span class='op'>(</span><span class='va'>dat</span>, vcal_discont_recodes <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>dat</th>
-      <td><p>description</p></td>
+      <td><p>A data file created by <code><a href='vcal_reprod.html'>vcal_reprod()</a></code></p></td>
+    </tr>
+    <tr>
+      <th>vcal_discont_recodes</th>
+      <td><p>Optional Character: the full path to a file
+called vcal_discont_recodes.csv (contains all common and sample-specific
+recodes for the Discontinuation calendar).</p></td>
     </tr>
     </table>
+
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The following variables will be created using case logic provided
+to the function <code><a href='https://dplyr.tidyverse.org/reference/case_when.html'>dplyr::case_when()</a></code>. Please note that
+<code>case_when()</code> returns NA through implicit logic: <em>if a "case"
+exists and is not explicitly handled here, the value NA will be returned!</em></p><ul>
+<li><p><strong>reason</strong> Numeric: a recoded version of
+    <code>vcal_discont</code> (usually <code>vcal_2</code> in the IR file).
+    All values are a number, and
+    sample-specific codes are harmonized using vcal_discont_recodes.csv</p></li>
+<li><p><strong>disc_event</strong> Logical: TRUE if either of these conditions
+    are met:
+      <ul>
+<li><p><code>vcal_reprod</code> is recoded 1:90 <em>and</em> the next future
+          month's value for <code>vcal_reprod</code> is any other non-missing
+          value (i.e. the method used in the current month was not used
+          in the next future month). Not available if <code>vcal_reprod</code>
+          is not available for either month (e.g. excludes the month of
+          the interview).</p></li>
+<li><p><code>vcal_disccont</code> is any non-missing value (i.e. a reason
+          was given for discontinuation). Not available if <code>
+          vcal_discont</code> is not available.</p></li>
+</ul>
+    <code>disc_event</code> is only not available (NA) if both criteria are
+    not available. In the rare case that the criteria lead to opposite
+    conclusions, the first criterion takes precedent.</p></li>
+<li><p><strong>disc_total</strong> Integer: total number of months per person where
+    <code>disc_event</code> is TRUE (NA if <code>disc_event</code> is not available).
+    All months for the person reflect the same total (this is not a
+    cumulative sum).</p></li>
+</ul>
 
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
