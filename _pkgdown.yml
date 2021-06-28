@@ -4,7 +4,7 @@ reference:
 - title: "Probably the only function you'll ever need"
   desc: >
     Runs all of the other functions in the correct order to produce a
-    compressed CSV file at "general/calendar/unlinked_lr_data folder" in the
+    compressed CSV file at "general/calendar/unlinked_lr_data" in the
     IPUMS DHS folder.
 - contents:
   - "make_lr"

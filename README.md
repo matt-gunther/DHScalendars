@@ -1,9 +1,12 @@
 DHScalendars - How to process DHS reproductive calendar data
 ================
 Matt Gunther <mgunther@umn.edu>
-24 June, 2021
+28 June, 2021
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
+**Check out the “Quick Start” article to get going as quickly as
+possible.**
 
 # What is DHS reproductive calendar data?
 

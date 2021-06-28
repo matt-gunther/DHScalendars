@@ -3,5 +3,6 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   Quick-Start: Quick-Start.html
-last_built: 2021-06-28T22:29Z
+  Variables-in-LR-File: Variables-in-LR-File.html
+last_built: 2021-06-28T23:52Z
 

@@ -7,6 +7,8 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+**Check out the "Quick Start" article to get going as quickly as possible.**
+
 # What is DHS reproductive calendar data?
 
 Many Individual Recode (IR) datasets contain one or more calendar strings representing monthly recall data related to women's reproductive behavior. Each string consists of approximately 80 single-character codes, where each character represents a woman's response to a recall question repeated for up to approximately 80 months. You'll find a robust tutorial on DHS Contraceptive Calendar Data [on the DHS website](https://www.dhsprogram.com/data/calendar-tutorial/).
