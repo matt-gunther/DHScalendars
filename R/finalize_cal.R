@@ -54,7 +54,7 @@ finalize_cal <- function(
   } else {
     if(is.null(path)){
       path <- attr(dat, "dhs_path") %>%
-        file.path("general/calendar/unlinked_lr_data")
+        file.path("general/calendar/programming/rscripts/unlinked_lr_data")
     }
     if(dir.exists(path)){
       dat %>%
