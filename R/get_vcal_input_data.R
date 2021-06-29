@@ -75,6 +75,9 @@ get_vcal_input_data <- function(
 
   # Find data dictionary path
   samp <- sample
+  if(!grepl("ir", samp)){
+    stop(samp, " is not an IR file!")
+  }
   data_dict <- dhs_path %>%
     file.path("metadata/control_files/samples.csv") %>%
     readr::read_csv(
@@ -83,7 +86,6 @@ get_vcal_input_data <- function(
     filter(sample == samp) %>%
     pull(datadict) %>%
     file.path(dhs_path, "country", .)
-
   if(!file.exists(data_dict)){
     stop(
       "I looked for a data dictionary at ", data_dict,
@@ -95,6 +97,12 @@ get_vcal_input_data <- function(
   data_file <- data_dict %>%
     str_replace("/data_dict_", "/") %>%
     str_replace("\\.xls(x)?$", "\\.dat")
+  if(!file.exists(data_dict)){
+    stop(
+      "I looked for a data file at ", data_file,
+      " but could not find one."
+    )
+  }
 
   # Read data dictionary as a data frame
   data_dict <- suppressMessages(

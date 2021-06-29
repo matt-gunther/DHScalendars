@@ -19,9 +19,7 @@ finalize_cal <- function(
 
   # test for all of the expected variables
   names <- c(
-    "caseid", "id", "cmc_month", "vcal_reprod", "reason", "sample",
-    "v006", "v007", "v008", "v017", "v019", "vcal_3", "vcal_4",
-    "vcal_5", "vcal_6", "vcal_7", "vcal_8", "vcal_9", "vcal_0",
+    "caseid", "id", "cmc_month", "vcal_reprod", "reason",
     "vcal_marstat","vcal_mig","vcal_fpsource", "vcal_term",
     "vcal_ppa", "vcal_bfeed","vcal_ppabstain", "vcal_sep",
     "vcal_work", "vcal_ultra","vcal_aborplace", "caseid_cmc", "seq",
@@ -42,7 +40,7 @@ finalize_cal <- function(
   dat <- dat %>%
     filter(cmc_month <= v008) %>%  # remove months after interview
     select(-c(                  # remove source vars
-      starts_with("vcal"),
+      starts_with("vcal") & matches("[0-9$]"),
       starts_with("v0"),
       sample
     )) %>%
@@ -54,7 +52,7 @@ finalize_cal <- function(
   } else {
     if(is.null(path)){
       path <- attr(dat, "dhs_path") %>%
-        file.path("general/calendar/programming/rscripts/unlinked_lr_data")
+        file.path("general/calendar/programming/unlinked_lr_data")
     }
     if(dir.exists(path)){
       dat %>%
@@ -62,6 +60,8 @@ finalize_cal <- function(
         write_csv(
           file.path(path, gsub("ir", "_lr.csv.gz", attr(dat, "sample"))),
         )
+    } else {
+      stop("Attempted to write file to non-existing path: \n", path)
     }
   }
 
