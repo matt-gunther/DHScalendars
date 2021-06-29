@@ -11,10 +11,17 @@
 #'
 #' \itemize{
 #'   \item{
-#'     \strong{reprod_event} Numeric: a recoded version of
-#'     \code{vcal_reprod} (usually \code{vcal_1} in the IR file).
-#'     All values are a number, and
+#'     \strong{vcal_reprod} Numeric: a recoded version of
+#'     the Reproductive Events calendar (usually \code{vcal_1} in the IR file).
+#'     All values are a number; both common and
 #'     sample-specific codes are harmonized using vcal_reprod_recodes.csv
+#'   }
+#'
+#'   \item{
+#'     \strong{vcal_reprod_dhs} Character: The alphanumeric DHS codes used in
+#'     the Reproductive Events calendar (usually \code{vcal_1} in the IR file).
+#'     These are not likely to be published by IPUMS DHS, but they may be
+#'     useful for quality checking.
 #'   }
 #'
 #'   \item{
@@ -169,6 +176,9 @@ vcal_reprod <- function(
     vcal_reprod_recodes <- suppressMessages(read_csv(vcal_reprod_recodes))
   }
 
+  # preserve the original DHS codes as `vcal_reprod_dhs`
+  dat <- dat %>% mutate(vcal_reprod_dhs = vcal_reprod)
+
   # recode vcal_reprod using the recode CSV file
   dat <- vcal_reprod_recodes %>%
     filter(
@@ -264,10 +274,6 @@ vcal_reprod <- function(
     ungroup() %>%
     select(id, cmc_month, trunc, prfirst, preg_length, preg_flag) %>%
     full_join(dat, ., by = c("id", "cmc_month"))
-
-  # Create a variable storing the recoded calendar: reprod_event
-  # This may be used for FP method duration totals later
-  dat <- dat %>% mutate(reprod_event = vcal_reprod)
 
   # Re-attach attributes
   attr(dat, "dhs_path") <- dhs_path

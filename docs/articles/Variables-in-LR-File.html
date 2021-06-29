@@ -112,6 +112,10 @@
 <p>See documentation for <code><a href="../reference/vcal_reprod.html">vcal_reprod()</a></code> for technical details on the calculation of each of the following variables. (Note: the Reproductive Events Calendar is almost always located in <code>vcal_1</code> in the IR file.)</p>
 <ul>
 <li>
+<code>vcal_reprod</code> - Numeric recode of the Reproductive Events Calendar. See the CSV file vcal_reprod_recodes.csv for recoding details. (Not available for months where no code was reported.)</li>
+<li>
+<code>vcal_reprod_dhs</code> - DHS codes used in the Reproductive Events Calendar. (You may compare these codes to <code>vcal_reprod</code> to ensure that recoding was completed correctly.)</li>
+<li>
 <code>calpreg</code> - Was the woman pregnant that month?</li>
 <li>
 <code>calbirth</code> - Did the woman give birth that month?</li>
@@ -143,8 +147,6 @@
 <code>calpreg_length</code> - For all months in a continuous pregnancy <strong>where the pregnancy was neither left- nor right-censored</strong>, reports the length of the pregnancy including the month of birth / termination. (Not available for months that are not part of a pregnancy, birth, or termination. Not available for months of a pregnancy that is either left- or right-censored).</li>
 <li>
 <code>calpreg_flag</code> - For all months in a continuous pregnancy <strong>where the pregnancy was neither left- nor right-censored</strong>, was the reported pregnancy length longer than 9 months, including the birth / termination month? (Not available for months outside of a continuous, non-censored pregnancy).</li>
-<li>
-<code>calreprod_event</code> - Numeric recode of the Reproductive Events Calendar. See the CSV file vcal_reprod_recodes.csv for details. (Not available for months where no code was reported.)</li>
 </ul>
 </div>
 <div id="discontinuation-calendar" class="section level1">
@@ -153,11 +155,18 @@
 <p>See documentation for <code><a href="../reference/vcal_discont.html">vcal_discont()</a></code> for technical details on the calculation of each of the following variables. (Note: the Reproductive Events Calendar is usually - but not always - located in <code>vcal_2</code> in the IR file.)</p>
 <ul>
 <li>
+<code>vcal_discont</code> - Numeric recode of the Discontinuation Calendar. See the CSV file vcal_discont_recodes.csv for details. (Not available for months where no code was reported.)</li>
+<li>
+<code>vcal_discont_dhs</code> - DHS codes used in the Discontinuation Calendar. (You may compare these codes to <code>vcal_discont</code> to ensure that recoding was completed correctly.)
+<ul>
+<li>
+<code>calreason</code> - A numeric code representing the reason the woman stopped using a contraceptive method that month. Currently, this variable is an exact copy of <code>vcal_discont</code>; this copy exists as a placeholder in case future versions of <code>vcal_discont</code> contain “reasons” that are logically invalid / should be excluded. (Not available for months where no code was reported.)</li>
+</ul>
+</li>
+<li>
 <code>caldisc_event</code> - Was this month the final month of continuous use of a contraceptive method? (See <code><a href="../reference/vcal_discont.html">vcal_discont()</a></code> notes on availability.)</li>
 <li>
 <code>caldisc_total</code> - Total number of months where the woman discontinued use of any contraceptive method.</li>
-<li>
-<code>calreason</code> - Numeric recode of the Discontinuation Calendar. See the CSV file vcal_discont_recodes.csv for details. (Not available for months where no code was reported.)</li>
 </ul>
 </div>
 <div id="marital-status-calendar" class="section level1">
@@ -165,6 +174,8 @@
 <a href="#marital-status-calendar" class="anchor"></a>Marital Status Calendar</h1>
 <p>See documentation for <code><a href="../reference/vcal_marstat.html">vcal_marstat()</a></code> for technical details on the calculation of each of the following variables. (Note: this calendar may be located in almost any calendar numbered <code>vcal_3</code> through <code>vcal_9</code> if it is available for a given sample; availability is highly limited.)</p>
 <ul>
+<li>
+<code>vcal_marstat</code> - DHS codes used for the Marital Status Calendar (not recoded by IPUMS).</li>
 <li>
 <code>calmarried</code> - Was the woman married that month? (Not available for months where no code was reported.)</li>
 </ul>
@@ -174,6 +185,8 @@
 <a href="#place-of-residence-calendar" class="anchor"></a>Place of Residence Calendar</h1>
 <p>See documentation for <code><a href="../reference/vcal_mig.html">vcal_mig()</a></code> for technical details on the calculation of each of the following variables. (Note: this calendar may be located in almost any calendar numbered <code>vcal_3</code> through <code>vcal_9</code> if it is available for a given sample; availability is highly limited.)</p>
 <ul>
+<li>
+<code>vcal_mig</code> - DHS codes used for the Place of Residence Calendar (not recoded by IPUMS).</li>
 <li>
 <code>calmove</code> - Did the woman move to a new residence that month? (Not available for months where no code was reported.)</li>
 <li>
@@ -185,6 +198,8 @@
 <a href="#pregnancy-termination-calendar" class="anchor"></a>Pregnancy Termination Calendar</h1>
 <p>See documentation for <code><a href="../reference/vcal_term.html">vcal_term()</a></code> for technical details on the calculation of each of the following variables. (Note: this calendar may be located in almost any calendar numbered <code>vcal_3</code> through <code>vcal_9</code> if it is available for a given sample; availability is highly limited.)</p>
 <ul>
+<li>
+<code>vcal_term</code> - DHS codes used for the Pregnancy Termination Calendar (not recoded by IPUMS).</li>
 <li>
 <code>calabort</code> - Was the woman’s pregnancy terminated via abortion that month? (Not available for months where no code was reported.)</li>
 <li>
@@ -205,6 +220,8 @@
 <p>See documentation for <code><a href="../reference/vcal_ppa.html">vcal_ppa()</a></code> for technical details on the calculation of each of the following variables. (Note: this calendar may be located in almost any calendar numbered <code>vcal_3</code> through <code>vcal_9</code> if it is available for a given sample; availability is highly limited.)</p>
 <ul>
 <li>
+<code>vcal_ppa</code> - DHS codes used for the Post-partum Amenorrhea Calendar (not recoded by IPUMS).</li>
+<li>
 <code>calppam</code> - Did the woman experience PPA that month? (Not available for months where no code was reported.)</li>
 </ul>
 </div>
@@ -213,6 +230,8 @@
 <a href="#breastfeeding-calendar" class="anchor"></a>Breastfeeding Calendar</h1>
 <p>See documentation for <code><a href="../reference/vcal_bfeed.html">vcal_bfeed()</a></code> for technical details on the calculation of each of the following variables. (Note: this calendar may be located in almost any calendar numbered <code>vcal_3</code> through <code>vcal_9</code> if it is available for a given sample; availability is highly limited.)</p>
 <ul>
+<li>
+<code>vcal_bfeed</code> - DHS codes used for the Breastfeeding Calendar (not recoded by IPUMS).</li>
 <li>
 <code>calbreastf</code> - Did the woman breastfeed her child that month? (Not available for months where no code was reported.)</li>
 </ul>
@@ -223,6 +242,8 @@
 <p>See documentation for <code><a href="../reference/vcal_ppabstain.html">vcal_ppabstain()</a></code> for technical details on the calculation of each of the following variables. (Note: this calendar may be located in almost any calendar numbered <code>vcal_3</code> through <code>vcal_9</code> if it is available for a given sample; availability is highly limited.)</p>
 <ul>
 <li>
+<code>vcal_ppabstain</code> - DHS codes used for the Post-partum Abstinence Calendar (not recoded by IPUMS).</li>
+<li>
 <code>calppabs</code> - Was the woman continuously abstinent following a pregnancy that month? (Not available for months where no code was reported.)</li>
 </ul>
 </div>
@@ -232,6 +253,8 @@
 <p>See documentation for <code><a href="../reference/vcal_work.html">vcal_work()</a></code> for technical details on the calculation of each of the following variables. (Note: this calendar may be located in almost any calendar numbered <code>vcal_3</code> through <code>vcal_9</code> if it is available for a given sample; availability is highly limited.)</p>
 <ul>
 <li>
+<code>vcal_work</code> - DHS codes used for the Employment Calendar (not recoded by IPUMS).</li>
+<li>
 <code>calempl</code> - How was the woman employed during that month, if at all? (Not available for months where no code was reported.)</li>
 </ul>
 </div>
@@ -240,6 +263,8 @@
 <a href="#ultrasound-calendar" class="anchor"></a>Ultrasound Calendar</h1>
 <p>See documentation for <code><a href="../reference/vcal_ultra.html">vcal_ultra()</a></code> for technical details on the calculation of each of the following variables. (Note: this calendar may be located in almost any calendar numbered <code>vcal_3</code> through <code>vcal_9</code> if it is available for a given sample; availability is highly limited.)</p>
 <ul>
+<li>
+<code>vcal_ultra</code> - DHS codes used for the Ultrasound Calendar (not recoded by IPUMS).</li>
 <li>
 <code>calultrasound</code> - Did the woman get an ultrasound that month? (Not available for months where no code was reported.)</li>
 </ul>

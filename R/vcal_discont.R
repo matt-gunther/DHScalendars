@@ -10,11 +10,19 @@
 #' exists and is not explicitly handled here, the value NA will be returned!}
 #' \itemize{
 #'   \item{
-#'     \strong{reason} Numeric: a recoded version of
-#'     \code{vcal_discont} (usually \code{vcal_2} in the IR file).
-#'     All values are a number, and
+#'     \strong{vcal_discont} Numeric: a recoded version of the Discontinuation
+#'     calendar (usually \code{vcal_2} in the IR file).
+#'     All values are a number, both common and
 #'     sample-specific codes are harmonized using vcal_discont_recodes.csv
 #'   }
+#'
+#'   \item{
+#'     \strong{vcal_discont_dhs} Character: The alphanumeric DHS codes used in
+#'     the Discontinuation calendar (usually \code{vcal_2} in the IR file).
+#'     These are not likely to be published by IPUMS DHS, but they may be
+#'     useful for quality checking.
+#'   }
+#'
 #'   \item{
 #'     \strong{disc_event} Logical: TRUE if either of these conditions
 #'     are met:
@@ -37,6 +45,7 @@
 #'     not available. In the rare case that the criteria lead to opposite
 #'     conclusions, the first criterion takes precedent.
 #'   }
+#'
 #'   \item{
 #'     \strong{disc_total} Integer: total number of months per person where
 #'     \code{disc_event} is TRUE (NA if \code{disc_event} is not available).
@@ -57,6 +66,9 @@ vcal_discont <- function(
   # preserve attributes
   dhs_path <- attr(dat, "dhs_path")
   samp <- attr(dat, "sample")
+
+  # preserve the original DHS codes as `vcal_reprod_dhs`
+  dat <- dat %>% mutate(vcal_discont_dhs = vcal_discont)
 
   # get vcal_discont_recodes.csv
   if(is.null(vcal_discont_recodes)){
