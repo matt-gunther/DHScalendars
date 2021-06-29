@@ -13,12 +13,12 @@ all,all,F,11,Fatalistic
 all,all,A,12,Difficult to get pregnant/menopause
 all,all,D,13,Marital dissolution
 all,all,W,14,Other reasons
-all,all,K,15,Don’t know
+all,all,K,15,Do not know
 EG2,all,E,16,IUD fell out
 EG4,2005,P,16,IUD fell out
 EG4,2003,N,16,IUD fell out
-EG4,all,O,17,Doctor’s opinion 
-EG5,all,O,17,Doctor’s opinion 
+EG4,all,O,17,Doctor opinion 
+EG5,all,O,17,Doctor opinion 
 JO5,all,R,18,Ramadan
 JO6,all,R,18,Ramadan
 JO7,all,R,18,Ramadan
@@ -26,7 +26,7 @@ ET4,all,M,19,Method not available
 EG4,2003,P,20,Husband travelling/ill 
 JO5,all,T,20,Husband travelling/ill 
 NP6,all,H,20,Husband travelling/ill 
-EG4,all,Q,21,Can’t get pregnant 
+EG4,all,Q,21,Cannot get pregnant 
 EG4,all,J,22,Changed method
 EG4,all,K,23,Husband wants her pregnant 
 EG4,all,L,24,Afraid of forgetting method 
@@ -35,9 +35,9 @@ EG4,all,R,26,Thinks she is pregnant
 IA5,all,G,27,Gained weight
 IA5,all,L,28,Lack of sexual satisfaction
 IA5,all,M,29,Created a menstrual problem
-IA5,all,N,30,Didn’t like method 
+IA5,all,N,30,Did not like method 
 IA5,all,P,31,Lack of privacy
-JO6,all,E,32,The absence of one condition of breastfeeding ???  
+JO6,all,E,32,The absence of one condition of breastfeeding
 JO3,all,R,33,Rest
 JO6,all,G,33,Rest
 JO6,all,H,34,Expiration/lack of method
