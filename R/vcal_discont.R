@@ -24,7 +24,11 @@
 #'   }
 #'
 #'   \item{
-#'     \strong{disc_event} Logical: TRUE if either of these conditions
+#'     \strong{reason} Numeric: an exact copy of \code{vcal_discont}
+#'   }
+#'
+#'   \item{
+#'     \strong{contr_stop} Logical: TRUE if either of these conditions
 #'     are met:
 #'       \itemize{
 #'         \item{
@@ -41,14 +45,14 @@
 #'           vcal_discont} is not available.
 #'         }
 #'       }
-#'     \code{disc_event} is only not available (NA) if both criteria are
+#'     \code{contr_stop} is only not available (NA) if both criteria are
 #'     not available. In the rare case that the criteria lead to opposite
 #'     conclusions, the first criterion takes precedent.
 #'   }
 #'
 #'   \item{
-#'     \strong{disc_total} Integer: total number of months per person where
-#'     \code{disc_event} is TRUE (NA if \code{disc_event} is not available).
+#'     \strong{contr_stop_total} Integer: total number of months per person where
+#'     \code{contr_stop} is TRUE (NA if \code{contr_stop} is not available).
 #'     All months for the person reflect the same total (this is not a
 #'     cumulative sum).
 #'   }
@@ -86,16 +90,16 @@ vcal_discont <- function(
     vcal_discont_recodes <- suppressMessages(read_csv(vcal_discont_recodes))
   }
 
-  # Update disc_event with information from this calendar
-  # disc_total shows the total number of disc_event per person, if available
+  # Update contr_stop with information from this calendar
+  # contr_stop_total shows the total number of contr_stop per person, if available
   dat <- dat %>%
-    mutate(disc_event = case_when(
-      !all(is.na(vcal_discont)) & is.na(disc_event) ~ vcal_discont != " ",
-      T ~ disc_event # vcal_discont not available | disc_event already defined
+    mutate(contr_stop = case_when(
+      !all(is.na(vcal_discont)) & is.na(contr_stop) ~ vcal_discont != " ",
+      T ~ contr_stop # contr_stop not available | contr_stop already defined
     )) %>%
     group_by(caseid) %>%
-    mutate(disc_total = case_when(
-      !all(is.na(vcal_discont)) ~ sum(disc_event, na.rm = T)
+    mutate(contr_stop_total = case_when(
+      !all(is.na(vcal_discont)) ~ sum(contr_stop, na.rm = T)
     )) %>%
     ungroup
 
@@ -118,7 +122,7 @@ vcal_discont <- function(
     select(-output) %>%
     relocate(vcal_discont, .after = vcal_reprod) %>%
     arrange(id, desc(cmc_month)) %>%
-    rename(reason = vcal_discont)
+    mutate(reason = vcal_discont)
 
   # Re-attach attributes
   attr(dat, "dhs_path") <- dhs_path

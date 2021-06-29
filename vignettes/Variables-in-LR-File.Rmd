@@ -2,7 +2,7 @@
 title: "Variables in LR File"
 ---
 
-This page contains a list of all the variables produced by `make_lr()` (39 in total). Each is accompanied by a brief description, but you'll need to consult the documentation of the listed function for a detailed explanation of how each variable was constructed with R code. 
+This page contains a list of all the variables produced by `make_lr()` (53 in total). Each is accompanied by a brief description, but you'll need to consult the documentation of the listed function for a detailed explanation of how each variable was constructed with R code. 
 
 These are the final variable names (with "cal" prepended to each name shown in the function documentation). 
 
@@ -22,20 +22,20 @@ See documentation for `vcal_reprod()` for technical details on the calculation o
   * `calpreg` - Was the woman pregnant that month?
   * `calbirth` - Did the woman give birth that month?
   * `calterm` - Was the woman's pregnancy terminated that month (non-birth)?
-  * `caltotal_preg` - Total number of months the woman was pregnant during the recall timeline. (Not available for months where no code was reported). 
-  * `calcount_birth` - Total number of months the woman gave birth during the recall timeline. (Not available for months where no code was reported). 
-  * `calcount_term` - Total number of months the woman experienced pregnancy termination during the recall timeline. (Not available for months where no code was reported). 
-  * `calcontr` - Was the woman using a method of contraception that month? (Not available for some samples where only months of pregnancy, birth, or termination were recorded). 
-  * `calcontr_duration` - Total number of months the woman used a method of contraception during the recall timeline. (See `calcontr` for availability note).
-  * `calswitch` - Did the woman begin using a method of contraception that she was not using during the previous month? (Not available if the woman was pregnant, gave birth, or experienced pregnancy termination in either the current month *or* the previous month. Not available for the first month of the recall timeline.)
-  * `calswitch_new` - Did the woman begin using a method of contraception that was different from the one she was using during the previous month. (Not available if the woman was pregnant, gave birth, or experienced pregnancy termination in either the current month *or* the previous month. Not available for the first month of the recall timeline. **Not available if the woman was using no contraception during the previous month.**)
+    * `calcontr` - Was the woman using a method of contraception that month? (Not available for some samples where only months of pregnancy, birth, or termination were recorded). 
+  * `calpreg_total` - Total number of months the woman was pregnant during the recall timeline. (Not available for months where no code was reported). 
+  * `calbirth_total` - Total number of months the woman gave birth during the recall timeline. (Not available for months where no code was reported). 
+  * `calterm_total` - Total number of months the woman experienced pregnancy termination during the recall timeline. (Not available for months where no code was reported). 
+  * `calcontr_total` - Total number of months the woman used a method of contraception during the recall timeline. (See `calcontr` for availability note).
+  * `calcontr_start` - Did the woman begin using a method of contraception that she was not using during the previous month? (Not available if the woman was pregnant, gave birth, or experienced pregnancy termination in either the current month *or* the previous month. Not available for the first month of the recall timeline.)
+  * `calcontr_change` - Did the woman begin using a method of contraception that was different from the one she was using during the previous month. (Not available if the woman was pregnant, gave birth, or experienced pregnancy termination in either the current month *or* the previous month. Not available for the first month of the recall timeline. **Not available if the woman was using no contraception during the previous month.**)
   * `caleventpbt` - Did the woman report any of the following that month: pregnancy, birth, or termination? (Not available for months where no code was reported). 
   * `caleventwfp` - Did the woman report any of the following that month: pregnancy, birth, termination, **or contraceptive use**? (Not available for months where no code was reported). 
-  * `caltrunc` - For all months in a continuous pregnancy: did the outcome of that pregnancy (birth or termination) happen after the interview date? (Not available for months that are not part of a pregnancy, birth, or termination).
-  * `calprfirst` - For all months in a continuous pregnancy: did the pregnancy
+  * `calpreg_rc` - For all months in a continuous pregnancy: did the outcome of that pregnancy (birth or termination) happen after the interview date? (Not available for months that are not part of a pregnancy, birth, or termination).
+  * `calpreg_lc` - For all months in a continuous pregnancy: did the pregnancy
   overlap with the first month of the recall timeline? (Not available for months that are not part of a pregnancy, birth, or termination).
   * `calpreg_length` - For all months in a continuous pregnancy **where the pregnancy was neither left- nor right-censored**, reports the length of the pregnancy including the month of birth / termination. (Not available for months that are not part of a pregnancy, birth, or termination. Not available for months of a pregnancy that is either left- or right-censored).
-  * `calpreg_flag` - For all months in a continuous pregnancy **where the pregnancy was neither left- nor right-censored**, was the reported pregnancy length longer than 9 months, including the birth / termination month? (Not available for months outside of a continuous, non-censored pregnancy). 
+  * `calpreg_long` - For all months in a continuous pregnancy **where the pregnancy was neither left- nor right-censored**, was the reported pregnancy length longer than 9 months, including the birth / termination month? (Not available for months outside of a continuous, non-censored pregnancy). 
   
 # Discontinuation Calendar 
 
@@ -44,8 +44,8 @@ See documentation for `vcal_discont()` for technical details on the calculation 
   * `vcal_discont` - Numeric recode of the Discontinuation Calendar. See the CSV file vcal_discont_recodes.csv for details. (Not available for months where no code was reported.)
   * `vcal_discont_dhs` - DHS codes used in the Discontinuation Calendar. (You may compare these codes to `vcal_discont` to ensure that recoding was completed correctly.)
     * `calreason` - A numeric code representing the reason the woman stopped using a contraceptive method that month. Currently, this variable is an exact copy of `vcal_discont`; this copy exists as a placeholder in case future versions of `vcal_discont` contain "reasons" that are logically invalid / should be excluded. (Not available for months where no code was reported.)
-  * `caldisc_event` - Was this month the final month of continuous use of a contraceptive method? (See `vcal_discont()` notes on availability.)
-  * `caldisc_total` - Total number of months where the woman discontinued use of any contraceptive method.
+  * `calcontr_stop` - Was this month the final month of continuous use of a contraceptive method? (See `vcal_discont()` notes on availability.)
+  * `calcontr_stop_total` - Total number of months where the woman discontinued use of any contraceptive method.
 
 # Marital Status Calendar 
 

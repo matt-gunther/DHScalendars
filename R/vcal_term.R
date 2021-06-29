@@ -16,9 +16,13 @@
 #'     \code{vcal_term} is blank (e.g. " ") or not available (NA).
 #'   }
 #'   \item{
-#'     \strong{count_abort} Integer: total number of months per person where
+#'     \strong{abort_total} Integer: total number of months per person where
 #'     \code{abort} is TRUE. Not available if \code{vcal_term} is not available
 #'     (NA).
+#'
+#'     All
+#'     months for the person reflect the same total (this is not a cumulative
+#'     sum).
 #'   }
 #'   \item{
 #'     \strong{miscar} Logical: TRUE if \code{vcal_term} is "M" or "C". FALSE
@@ -26,9 +30,13 @@
 #'     \code{vcal_term} is blank (e.g. " ") or not available (NA).
 #'   }
 #'   \item{
-#'     \strong{count_miscar} Integer: total number of months per person where
+#'     \strong{miscar_total} Integer: total number of months per person where
 #'     \code{miscar} is TRUE. Not available if \code{vcal_term} is not
 #'     available (NA).
+#'
+#'     All
+#'     months for the person reflect the same total (this is not a cumulative
+#'     sum).
 #'   }
 #'   \item{
 #'     \strong{sbirth} Logical: TRUE if \code{vcal_term} is "S". FALSE if
@@ -36,9 +44,13 @@
 #'     \code{vcal_term} is blank (e.g. " ") or not available (NA).
 #'   }
 #'   \item{
-#'     \strong{count_sbirth} Integer: total number of months per person where
+#'     \strong{sbirth_total} Integer: total number of months per person where
 #'     \code{sbirth} is TRUE. Not available if \code{vcal_term} is not
 #'     available (NA).
+#'
+#'     All
+#'     months for the person reflect the same total (this is not a cumulative
+#'     sum).
 #'   }
 #' }
 #' @param dat A data file created by \code{vcal_reprod()} (may be passed to
@@ -69,9 +81,9 @@ vcal_term <- function(dat){
     ) %>%
     group_by(caseid) %>%
     mutate(
-      count_abort = case_when(is_avail ~ sum(abort, na.rm = T)),
-      count_miscar = case_when(is_avail ~ sum(miscar, na.rm = T)),
-      count_sbirth = case_when(is_avail ~ sum(sbirth, na.rm = T))
+      abort_total = case_when(is_avail ~ sum(abort, na.rm = T)),
+      miscar_total = case_when(is_avail ~ sum(miscar, na.rm = T)),
+      sbirth_total = case_when(is_avail ~ sum(sbirth, na.rm = T))
     ) %>%
     ungroup()
 
