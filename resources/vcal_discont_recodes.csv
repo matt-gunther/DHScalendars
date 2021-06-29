@@ -1,41 +1,50 @@
-sample,year,input,output
-all,all,C,10
-all,all,F,11
-all,all,A,12
-all,all,D,13
-all,all,W,14
-all,all,K,15
-IA5,all,G,27
-IA5,all,L,28
-IA5,all,M,29
-IA5,all,N,30
-IA5,all,P,31
-EG4,2005,P,16
-EG4,2003,N,16
-EG4,all,O,17
-EG4,all,P,20
-EG4,all,Q,21
-EG4,all,J,22
-EG4,all,K,23
-EG4,all,L,24
-EG4,all,M,25
-EG4,all,R,26
-EG5,all,O,17
-EG2,all,X,16
-EG2,all,E,16
-EG2,all,M,36
-EG2,all,S,37
-EG2,all,B,38
-JO3,all,R,33
-JO3,all,P,36
-JO5,all,R,18
-JO5,all,T,20
-JO5,all,B,40
-JO6,all,R,18
-JO6,all,E,32
-JO6,all,G,33
-JO6,all,H,34
-JO6,all,I,35
-JO7,all,R,18
-ET4,all,M,19
-NP6,all,H,20
+sample,year,input,output,output_label
+all,all,1,1,Became pregnant while using
+all,all,2,2,Wanted to become pregnant
+all,all,3,3,Husband disapproved
+all,all,4,4,Side effects
+all,all,5,5,Health concerns
+all,all,6,6,Access/availability
+all,all,7,7,Wanted more effective method
+all,all,8,8,Inconvenient to use
+all,all,9,9,Infrequent sex/husband away
+all,all,C,10,Cost
+all,all,F,11,Fatalistic
+all,all,A,12,Difficult to get pregnant/menopause
+all,all,D,13,Marital dissolution
+all,all,W,14,Other reasons
+all,all,K,15,Don’t know
+EG2,all,E,16,IUD fell out
+EG4,2005,P,16,IUD fell out
+EG4,2003,N,16,IUD fell out
+EG4,all,O,17,Doctor’s opinion 
+EG5,all,O,17,Doctor’s opinion 
+JO5,all,R,18,Ramadan
+JO6,all,R,18,Ramadan
+JO7,all,R,18,Ramadan
+ET4,all,M,19,Method not available
+EG4,2003,P,20,Husband travelling/ill 
+JO5,all,T,20,Husband travelling/ill 
+NP6,all,H,20,Husband travelling/ill 
+EG4,all,Q,21,Can’t get pregnant 
+EG4,all,J,22,Changed method
+EG4,all,K,23,Husband wants her pregnant 
+EG4,all,L,24,Afraid of forgetting method 
+EG4,all,M,25,Afraid of using method 
+EG4,all,R,26,Thinks she is pregnant
+IA5,all,G,27,Gained weight
+IA5,all,L,28,Lack of sexual satisfaction
+IA5,all,M,29,Created a menstrual problem
+IA5,all,N,30,Didn’t like method 
+IA5,all,P,31,Lack of privacy
+JO6,all,E,32,The absence of one condition of breastfeeding ???  
+JO3,all,R,33,Rest
+JO6,all,G,33,Rest
+JO6,all,H,34,Expiration/lack of method
+JO6,all,I,35,Erectile dysfunction in husband  
+EG2,all,M,36,Medical advice 
+JO3,all,P,36,Period returned 
+EG2,all,S,37,Switch to another brand or method  
+EG2,all,B,38,Death of spouse
+JO5,all,B,40,End of breastfeeding  
+EG2,all,X,41,IUD expired  
