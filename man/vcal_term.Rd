@@ -29,9 +29,13 @@ exists and is not explicitly handled here, the value NA will be returned!}
     \code{vcal_term} is blank (e.g. " ") or not available (NA).
   }
   \item{
-    \strong{count_abort} Integer: total number of months per person where
+    \strong{abort_total} Integer: total number of months per person where
     \code{abort} is TRUE. Not available if \code{vcal_term} is not available
     (NA).
+
+    All
+    months for the person reflect the same total (this is not a cumulative
+    sum).
   }
   \item{
     \strong{miscar} Logical: TRUE if \code{vcal_term} is "M" or "C". FALSE
@@ -39,9 +43,13 @@ exists and is not explicitly handled here, the value NA will be returned!}
     \code{vcal_term} is blank (e.g. " ") or not available (NA).
   }
   \item{
-    \strong{count_miscar} Integer: total number of months per person where
+    \strong{miscar_total} Integer: total number of months per person where
     \code{miscar} is TRUE. Not available if \code{vcal_term} is not
     available (NA).
+
+    All
+    months for the person reflect the same total (this is not a cumulative
+    sum).
   }
   \item{
     \strong{sbirth} Logical: TRUE if \code{vcal_term} is "S". FALSE if
@@ -49,9 +57,13 @@ exists and is not explicitly handled here, the value NA will be returned!}
     \code{vcal_term} is blank (e.g. " ") or not available (NA).
   }
   \item{
-    \strong{count_sbirth} Integer: total number of months per person where
+    \strong{sbirth_total} Integer: total number of months per person where
     \code{sbirth} is TRUE. Not available if \code{vcal_term} is not
     available (NA).
+
+    All
+    months for the person reflect the same total (this is not a cumulative
+    sum).
   }
 }
 }

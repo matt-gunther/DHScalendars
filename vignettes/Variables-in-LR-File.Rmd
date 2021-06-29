@@ -43,7 +43,7 @@ See documentation for `vcal_discont()` for technical details on the calculation 
 
   * `vcal_discont` - Numeric recode of the Discontinuation Calendar. See the CSV file vcal_discont_recodes.csv for details. (Not available for months where no code was reported.)
   * `vcal_discont_dhs` - DHS codes used in the Discontinuation Calendar. (You may compare these codes to `vcal_discont` to ensure that recoding was completed correctly.)
-    * `calreason` - A numeric code representing the reason the woman stopped using a contraceptive method that month. Currently, this variable is an exact copy of `vcal_discont`; this copy exists as a placeholder in case future versions of `vcal_discont` contain "reasons" that are logically invalid / should be excluded. (Not available for months where no code was reported.)
+  * `calreason` - A numeric code representing the reason the woman stopped using a contraceptive method that month. Currently, this variable is an exact copy of `vcal_discont`; this copy exists as a placeholder in case future versions of `vcal_discont` contain "reasons" that are logically invalid / should be excluded. (Not available for months where no code was reported.)
   * `calcontr_stop` - Was this month the final month of continuous use of a contraceptive method? (See `vcal_discont()` notes on availability.)
   * `calcontr_stop_total` - Total number of months where the woman discontinued use of any contraceptive method.
 
