@@ -135,9 +135,11 @@ get_vcal_input_data <- function(
 
   # IMPORTANT: col_spec specifies vars where white space should NOT be trimmed
   # White space is NOT trimmed for any variable name beginning with "vcal"
+  # ... or for caseid
   col_spec <- ipumsr:::ddi_to_colspec(ddi, "long", verbose) %>%
     mutate(trim_ws = case_when(
       grepl("vcal", col_names) ~ FALSE,
+      grepl("caseid", col_names) ~ FALSE,
       T ~ trim_ws
     ))
 
