@@ -22,7 +22,7 @@ See documentation for `vcal_reprod()` for technical details on the calculation o
   * `calpreg` - Was the woman pregnant that month?
   * `calbirth` - Did the woman give birth that month?
   * `calterm` - Was the woman's pregnancy terminated that month (non-birth)?
-    * `calcontr` - Was the woman using a method of contraception that month? (Not available for some samples where only months of pregnancy, birth, or termination were recorded). 
+  * `calcontr` - Was the woman using a method of contraception that month? (Not available for some samples where only months of pregnancy, birth, or termination were recorded). 
   * `calpreg_total` - Total number of months the woman was pregnant during the recall timeline. (Not available for months where no code was reported). 
   * `calbirth_total` - Total number of months the woman gave birth during the recall timeline. (Not available for months where no code was reported). 
   * `calterm_total` - Total number of months the woman experienced pregnancy termination during the recall timeline. (Not available for months where no code was reported). 
