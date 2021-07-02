@@ -159,11 +159,16 @@ recodes for the Discontinuation calendar).</p></td>
 to the function <code><a href='https://dplyr.tidyverse.org/reference/case_when.html'>dplyr::case_when()</a></code>. Please note that
 <code>case_when()</code> returns NA through implicit logic: <em>if a "case"
 exists and is not explicitly handled here, the value NA will be returned!</em></p><ul>
-<li><p><strong>reason</strong> Numeric: a recoded version of
-    <code>vcal_discont</code> (usually <code>vcal_2</code> in the IR file).
-    All values are a number, and
+<li><p><strong>vcal_discont</strong> Numeric: a recoded version of the Discontinuation
+    calendar (usually <code>vcal_2</code> in the IR file).
+    All values are a number, both common and
     sample-specific codes are harmonized using vcal_discont_recodes.csv</p></li>
-<li><p><strong>disc_event</strong> Logical: TRUE if either of these conditions
+<li><p><strong>vcal_discont_dhs</strong> Character: The alphanumeric DHS codes used in
+    the Discontinuation calendar (usually <code>vcal_2</code> in the IR file).
+    These are not likely to be published by IPUMS DHS, but they may be
+    useful for quality checking.</p></li>
+<li><p><strong>reason</strong> Numeric: an exact copy of <code>vcal_discont</code></p></li>
+<li><p><strong>contr_stop</strong> Logical: TRUE if either of these conditions
     are met:
       <ul>
 <li><p><code>vcal_reprod</code> is recoded 1:90 <em>and</em> the next future
@@ -176,11 +181,11 @@ exists and is not explicitly handled here, the value NA will be returned!</em></
           was given for discontinuation). Not available if <code>
           vcal_discont</code> is not available.</p></li>
 </ul>
-    <code>disc_event</code> is only not available (NA) if both criteria are
+    <code>contr_stop</code> is only not available (NA) if both criteria are
     not available. In the rare case that the criteria lead to opposite
     conclusions, the first criterion takes precedent.</p></li>
-<li><p><strong>disc_total</strong> Integer: total number of months per person where
-    <code>disc_event</code> is TRUE (NA if <code>disc_event</code> is not available).
+<li><p><strong>contr_stop_total</strong> Integer: total number of months per person where
+    <code>contr_stop</code> is TRUE (NA if <code>contr_stop</code> is not available).
     All months for the person reflect the same total (this is not a
     cumulative sum).</p></li>
 </ul>

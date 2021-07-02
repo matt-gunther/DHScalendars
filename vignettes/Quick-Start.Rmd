@@ -68,9 +68,9 @@ You'll then enter recoding information into this CSV file.
 *Preview as of this writing:*
 
 ```{r, message=FALSE}
-read_csv("../resources/vcal_reprod_recodes.csv") %>% 
-  kable() %>% 
-  kable_styling() %>% 
+read_csv("../resources/vcal_reprod_recodes.csv") %>%
+  kable() %>%
+  kable_styling() %>%
   scroll_box(height = "500px")
 ```
 
@@ -93,9 +93,9 @@ You'll then enter recoding information into this CSV file.
 *Preview as of this writing:*
 
 ```{r, message=FALSE}
-read_csv("../resources/vcal_discont_recodes.csv") %>% 
-  kable() %>% 
-  kable_styling() %>% 
+read_csv("../resources/vcal_discont_recodes.csv") %>%
+  kable() %>%
+  kable_styling() %>%
   scroll_box(height = "500px")
 ```
 

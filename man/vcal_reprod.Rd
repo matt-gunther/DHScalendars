@@ -27,10 +27,17 @@ exists and is not explicitly handled here, the value NA will be returned!}
 
 \itemize{
   \item{
-    \strong{reprod_event} Numeric: a recoded version of
-    \code{vcal_reprod} (usually \code{vcal_1} in the IR file).
-    All values are a number, and
+    \strong{vcal_reprod} Numeric: a recoded version of
+    the Reproductive Events calendar (usually \code{vcal_1} in the IR file).
+    All values are a number; both common and
     sample-specific codes are harmonized using vcal_reprod_recodes.csv
+  }
+
+  \item{
+    \strong{vcal_reprod_dhs} Character: The alphanumeric DHS codes used in
+    the Reproductive Events calendar (usually \code{vcal_1} in the IR file).
+    These are not likely to be published by IPUMS DHS, but they may be
+    useful for quality checking.
   }
 
   \item{
@@ -44,22 +51,22 @@ exists and is not explicitly handled here, the value NA will be returned!}
   }
 
   \item{
-    \strong{birth} Logical: TRUE if \code{vcal_reprod} is recoded 100,
+    \strong{birth} Logical: TRUE if \code{vcal_reprod} is 100,
     FALSE if it is any other non-missing value.
   }
 
   \item{
-    \strong{preg} Logical: TRUE if \code{vcal_reprod} is recoded 200,
+    \strong{preg} Logical: TRUE if \code{vcal_reprod} is 200,
     FALSE if it is any other non-missing value.
   }
 
   \item{
-    \strong{term} Logical: TRUE if \code{vcal_reprod} is recoded 300,
+    \strong{term} Logical: TRUE if \code{vcal_reprod} is 300,
     FALSE if it is any other non-missing value.
   }
 
   \item{
-    \strong{contr} Logical: TRUE if \code{vcal_reprod} is recoded to
+    \strong{contr} Logical: TRUE if \code{vcal_reprod} is
     a value between 1 and 90, FALSE if it is any other non-missing value.
   }
 
@@ -74,57 +81,60 @@ exists and is not explicitly handled here, the value NA will be returned!}
   }
 
   \item{
-    \strong{switch} Logical: TRUE if \code{vcal_reprod} is recoded 1:90 and
-    the previous month's value for \code{vcal_reprod} is recoded 0:90
-    \emph{but}
-    not the same value as the current month. FALSE in all other cases where
-    \emph{both} the current and previous month are available (e.g. excludes
-    the first month and any missing value) and \emph{either} falls beyond
-    the required range.
+    \strong{contr_start} Logical: TRUE if \code{vcal_reprod} is between 1:90
+    and the previous month's value for \code{vcal_reprod} is between 0:90
+    \emph{and} different from the current month. FALSE if \code{vcal_reprod}
+    is between 1:90 and the previous month's value for \code{vcal_reprod}
+    is the \emph{same} as the current month. Not available in any other
+    case (e.g. excludes the first month of the recall timeline; excludes
+    months where \code{vcal_reprod} is beyond 1:90;
+    excludes months where the previous month \code{vcal_reprod} is beyond
+    1:90).
   }
 
   \item{
-    \strong{switch_new} Logical: TRUE if \code{switch} is TRUE
-    \emph{and} \code{vcal_reprod} in the previous month \strong{not}
-    recoded 0.
-    FALSE if \code{switch} is TRUE  \emph{and} \code{vcal_reprod} in the
-    previous month \strong{is} recoded 0.
+    \strong{contr_change} Logical: TRUE if \code{contr_start} is TRUE
+    \emph{and} \code{vcal_reprod} in the previous month \strong{is not}
+    0 (i.e. the method was started following a month of non-use of any
+    method). FALSE if \code{contr_start} is TRUE  \emph{and}
+    \code{vcal_reprod} in the previous month \strong{is} 0. Not available if
+    \code{contr_start} is not available (NA).
   }
 
   \item{
-    \strong{disc_event} see \code{vcal_discont()}
+    \strong{contr_stop} see \code{vcal_discont()}
   }
 
   \item{
-    \strong{total_preg} Integer: the total number of months per person
+    \strong{preg_total} Integer: the total number of months per person
     where \code{preg} is TRUE (NA if \code{preg} is not available). All
     months for the person reflect the same total (this is not a cumulative
     sum).
   }
 
   \item{
-    \strong{count_birth} Integer: the total number of months per person
+    \strong{birth_total} Integer: the total number of months per person
     where \code{birth} is TRUE (NA if \code{birth} is not available). All
     months for the person reflect the same total (this is not a cumulative
     sum).
   }
 
   \item{
-    \strong{count_term} Integer: the total number of months per person
+    \strong{term_total} Integer: the total number of months per person
     where \code{term} is TRUE (NA if \code{term} is not available). All
     months for the person reflect the same total (this is not a cumulative
     sum).
   }
 
   \item{
-    \strong{contr_duration} Integer: the total number of months per person
+    \strong{contr_total} Integer: the total number of months per person
     where \code{contr} is TRUE (NA if \code{contr} is not available). All
     months for the person reflect the same total (this is not a cumulative
     sum).
   }
 
   \item{
-  \strong{trunc} Logical: TRUE for all months in a continuous
+  \strong{preg_rc} Logical: TRUE for all months in a continuous
     pregnancy if the outcome of the pregnancy (birth or termination)
     happened
     after the date of the interview. FALSE for all months in a continuous
@@ -134,23 +144,24 @@ exists and is not explicitly handled here, the value NA will be returned!}
   }
 
   \item{
-    \strong{prfirst} Logical: TRUE for all months in a continuous
-    pregnancy that overlaps with the first month in the recall timeline.
-    FALSE
-    for all months in a continuous pregnancy otherwise. Not available (NA)
-    for months that were not part of a continuous pregnancy.
+    \strong{preg_lc} Logical: TRUE for all months in a continuous
+    pregnancy (including months of birth or termination) that overlaps
+    with the first month in the recall timeline. FALSE for all months in a
+    continuous pregnancy otherwise. Not
+    available (NA) for months that were not part of a continuous pregnancy.
   }
 
   \item{
     \strong{preg_length} Integer: the total number of months included
-    in a single continuous pregnancy where \emph{both} \code{trunc} and
-    \code{prfirst} are FALSE. All months in the pregnancy reflect the
+    in a single continuous pregnancy (including months of birth or
+    termination) where \emph{both} \code{preg_rc} and
+    \code{preg_lc} are FALSE. All months in the pregnancy reflect the
     same total (this is not a cumulative sum). Not available (NA) for
     months that were not part of a continuous pregnancy.
   }
 
   \item{
-    \strong{preg_flag} Logical: TRUE if \code{preg_length} is longer
+    \strong{preg_long} Logical: TRUE if \code{preg_length} is longer
     than 9 months. Not available (NA) for months where \code{preg_length}
     is not available.
   }

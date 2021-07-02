@@ -26,13 +26,25 @@ to the function \code{dplyr::case_when()}. Please note that
 exists and is not explicitly handled here, the value NA will be returned!}
 \itemize{
   \item{
-    \strong{reason} Numeric: a recoded version of
-    \code{vcal_discont} (usually \code{vcal_2} in the IR file).
-    All values are a number, and
+    \strong{vcal_discont} Numeric: a recoded version of the Discontinuation
+    calendar (usually \code{vcal_2} in the IR file).
+    All values are a number, both common and
     sample-specific codes are harmonized using vcal_discont_recodes.csv
   }
+
   \item{
-    \strong{disc_event} Logical: TRUE if either of these conditions
+    \strong{vcal_discont_dhs} Character: The alphanumeric DHS codes used in
+    the Discontinuation calendar (usually \code{vcal_2} in the IR file).
+    These are not likely to be published by IPUMS DHS, but they may be
+    useful for quality checking.
+  }
+
+  \item{
+    \strong{reason} Numeric: an exact copy of \code{vcal_discont}
+  }
+
+  \item{
+    \strong{contr_stop} Logical: TRUE if either of these conditions
     are met:
       \itemize{
         \item{
@@ -49,13 +61,14 @@ exists and is not explicitly handled here, the value NA will be returned!}
           vcal_discont} is not available.
         }
       }
-    \code{disc_event} is only not available (NA) if both criteria are
+    \code{contr_stop} is only not available (NA) if both criteria are
     not available. In the rare case that the criteria lead to opposite
     conclusions, the first criterion takes precedent.
   }
+
   \item{
-    \strong{disc_total} Integer: total number of months per person where
-    \code{disc_event} is TRUE (NA if \code{disc_event} is not available).
+    \strong{contr_stop_total} Integer: total number of months per person where
+    \code{contr_stop} is TRUE (NA if \code{contr_stop} is not available).
     All months for the person reflect the same total (this is not a
     cumulative sum).
   }

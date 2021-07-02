@@ -19,16 +19,14 @@ finalize_cal <- function(
 
   # test for all of the expected variables
   names <- c(
-    "caseid", "id", "cmc_month", "vcal_reprod", "reason", "sample",
-    "v006", "v007", "v008", "v017", "v019", "vcal_3", "vcal_4",
-    "vcal_5", "vcal_6", "vcal_7", "vcal_8", "vcal_9", "vcal_0",
+    "caseid", "id", "cmc_month", "vcal_reprod", "reason",
     "vcal_marstat","vcal_mig","vcal_fpsource", "vcal_term",
     "vcal_ppa", "vcal_bfeed","vcal_ppabstain", "vcal_sep",
     "vcal_work", "vcal_ultra","vcal_aborplace", "caseid_cmc", "seq",
-    "birth","preg", "term", "contr", "eventpbt","eventwfp","switch",
-    "switch_new","disc_event","total_preg","count_birth", "count_term",
-    "contr_duration", "trunc","prfirst", "preg_length", "preg_flag",
-    "reprod_event","disc_total"
+    "birth","preg", "term", "contr", "eventpbt","eventwfp","contr_start",
+    "contr_change","contr_stop","contr_stop_total","preg_total","birth_total",
+    "term_total","contr_total", "preg_rc","preg_lc", "preg_length",
+    "preg_long"
   )
   if(!all(names %in% names(dat))){
     cal_setdiff <- setdiff(names, names(dat))
@@ -41,12 +39,15 @@ finalize_cal <- function(
   # cleanup
   dat <- dat %>%
     filter(cmc_month <= v008) %>%  # remove months after interview
-    select(-c(                  # remove source vars
-      starts_with("vcal"),
+    select(-c(                     # remove source vars
+      starts_with("vcal") & matches("[0-9$]"),
       starts_with("v0"),
       sample
     )) %>%
-    rename_with(~paste0("cal", .x), !caseid)  # prepend names with "cal"
+    rename_with(                   # prepend names with "cal"
+      ~paste0("cal", .x),
+      -c(starts_with("vcal"), caseid)
+    )
 
   # write output
   if(write == F){
@@ -54,7 +55,7 @@ finalize_cal <- function(
   } else {
     if(is.null(path)){
       path <- attr(dat, "dhs_path") %>%
-        file.path("general/calendar/programming/rscripts/unlinked_lr_data")
+        file.path("general/calendar/programming/unlinked_lr_data")
     }
     if(dir.exists(path)){
       dat %>%
@@ -62,6 +63,8 @@ finalize_cal <- function(
         write_csv(
           file.path(path, gsub("ir", "_lr.csv.gz", attr(dat, "sample"))),
         )
+    } else {
+      stop("Attempted to write file to non-existing path: \n", path)
     }
   }
 
