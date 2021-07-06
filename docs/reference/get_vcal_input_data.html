@@ -42,9 +42,9 @@
 <meta property="og:title" content="Get calendar data from an IR file — get_vcal_input_data" />
 <meta property="og:description" content="Returns a modified version of the IR file for a sample,
 including only the handful of variables that are relevant for calendar
-processing. As a helpful side-effect, the path to the IPUMS DHS folder on
-the user's system will be attached as an attribute of the returned data
-frame." />
+processing. As a helpful side-effect, the sample name and the path to the
+IPUMS DHS folder on the user's system will be attached as an attribute of the
+returned data frame." />
 
 
 
@@ -99,6 +99,9 @@ frame." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/Installation.html">Install this R Package</a>
+    </li>
+    <li>
       <a href="../articles/Quick-Start.html">Quick Start</a>
     </li>
     <li>
@@ -133,9 +136,9 @@ frame." />
     <div class="ref-description">
     <p>Returns a modified version of the IR file for a sample,
 including <em>only the handful of variables that are relevant for calendar
-processing</em>. As a helpful side-effect, the path to the IPUMS DHS folder on
-the user's system will be attached as an attribute of the returned data
-frame.</p>
+processing</em>. As a helpful side-effect, the sample name and the path to the
+IPUMS DHS folder on the user's system will be attached as an attribute of the
+returned data frame.</p>
     </div>
 
     <pre class="usage"><span class='fu'>get_vcal_input_data</span><span class='op'>(</span><span class='va'>sample</span>, dhs_path <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
@@ -154,7 +157,7 @@ frame.</p>
 version of RStudio, this function may have trouble finding the data
 dictionary on its own. If so, you can just tell it where to look: specify
 the file path here.
-(e.g. "Z://dhs//country/afghanistan/2015/data/data_dict_af2015ir.xlsx")</p></td>
+(e.g. "~/Z/dhs/country/afghanistan/2015/data/data_dict_af2015ir.xlsx")</p></td>
     </tr>
     </table>
 

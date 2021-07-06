@@ -1,14 +1,23 @@
-DHScalendars - How to process DHS reproductive calendar data
+DHScalendars - Processing IPUMS DHS reproductive calendar data
 ================
 Matt Gunther <mgunther@umn.edu>
-29 June, 2021
+06 July, 2021
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Quick Start
+Looking to get started as quickly as possible? Check out these articles
+as necessary:
 
-Visit the [Quick Start](articles/Quick-Start.html) article to start
-processing a new sample right away.
+-   [Installation](./articles/Installation.html) - How to install this R
+    package
+-   [Quick start](./articles/Quick-Start.html) - How to process a new
+    sample in minutes
+-   [Variables in the LR file](./articles/Variables-in-LR-File.html) -
+    Understanding the output
+
+You’ll also find documentation for all package functions (including
+information on the calculation of derived variables) on the
+[Reference](./reference/index.html) page.
 
 # What is DHS reproductive calendar data?
 
@@ -83,28 +92,31 @@ the left-side, so that that full string length always exceeds the number
 of months in the recall timeline - in this case, women were asked to
 recall 72 months).
 
-# How do I use this R package?
+# How does IPUMS harmonize DHS reproductive calendar data?
 
-The purpose of this R package is to provide a simple workflow
-accomplishing these tasks for each sample:
+Our first task is to separate the single-character codes in each string,
+then pivot the data into a **long format** where each row represents one
+month in each woman’s recall timeline.
 
-1.  Identify the calendars that are included in the IR file
-2.  Parse each calendar string
-3.  Reshape the calendar data so that each row represents *one month* of
-    recall data for each woman (multiply the number of rows in the IR
-    file by \~80)
-4.  Remove any placeholder rows for months outside of the recall
-    timeline
-5.  Derive several harmonized variables from each available calendar
-6.  Attach placeholder columns for calendar variables that are not
-    available for the sample (all values will be `NA`)
-7.  Merge derived variables to the original IR file, creating a new LR
-    file with a Data Dictionary (new files will be compressed, as they
-    will contain duplicated data for all non-calendar variables - one
-    duplication for each month in the sample’s calendar)
+Second, we create a number of derived variables from each of the
+calendars that were available for a given sample. We also create empty
+placeholder variables for calendars that were not available, such that
+*all samples have the same number of derived variables* even if some are
+entirely `NA`. At this point, we create a temporary **unlinked** data
+file (a compressed CSV) that lives in the folder
+`ipums/dhs/general/calendar/programming/unlinked_lr_data`.
 
-The documentation you will find here includes:
+Lastly, we create a **linked** data file containing all of the derived
+calendar data *and* the original IR file (the non-calendar data will
+repeated in each row of a given woman’s recall timeline, for up to 80
+rows).
 
--   Instructions for processing new samples
--   An explanation and source code for the calculation of each derived
-    variable
+# What does this package do?
+
+The purpose of this R package is to process the calendar data in the IR
+file, producing the **unlinked** data file discussed above. A separate
+Python script will find the unlinked data file and create a **linked**
+data file and Data Dictionary.
+
+See the [Quick Start](./articles/Quick-Start.html) guide for
+instructions.
