@@ -17,7 +17,7 @@ library(kableExtra)
 In most cases, you should be able to process a new sample in just a few minutes if you follow these steps:
 
   1. Identify the available calendars and mark them in `vcal_availability.csv`
-  2. Identify any sample-specific codes for the **Reproductive Events** calendar, which we'll call `vcal_reprod` (this is usually stored in `vcal_1` in the IR file). Enter sample-specific recoding in `vcal_repord_recodes.csv`.
+  2. Identify any sample-specific codes for the **Reproductive Events** calendar, which we'll call `vcal_reprod` (this is almost always stored in `vcal_1` in the IR file). Enter sample-specific recoding in `vcal_repord_recodes.csv`.
   3. Identify any sample-specific codes for the **Discontinuation** calendar, which we'll call `vcal_discont` (if available, this is *usually* stored in `vcal_2` in the IR file). Enter sample-specific recoding in `vcal_discont_recodes.csv`. 
   4. Use the R function `make_lr()` to create an unlinked LR file for your sample in the folder at `dhs/general/calendar/programming/unlinked_lr_data`.
   5. Use the Python function `dhs_calendar_linking` to create a linked LR data file and a data dictionary in the `dhs/country` folder for your sample.
@@ -106,7 +106,7 @@ read_csv("../resources/vcal_discont_recodes.csv") %>%
   scroll_box(height = "500px")
 ```
 
-Notice that the first few rows of this CSV show recodes that are **common to all samples** (both `sample` and `year` are marked "all"). You do not need to enter any recodes that are common to all samples. Likewise **any numeric input value will be recycled as output automatically** unless you specify otherwise.
+Notice that the first few rows of this CSV show recodes that are **common to all samples** (both `sample` and `year` are marked "all"). You do not need to enter any recodes that are common to all samples. 
 
 Because `sample` codes are sometimes repeated for multiple years, you may specify a year in `year` or use "all" to apply recoding to all years for that sample code.
 
@@ -164,13 +164,13 @@ for(s in samples){
 }
 ```
 
-# dhs_calendar_linking
+# Python
  
 Use a Terminal on a general purpose server (e.g. `gp2`) and run the `dhs_calendar_linking` **Python script**. This will create *both* a linked data file *and* and new data dictionary for your new `lr` sample. 
 
 If you provide only one sample, the function will run on the general purpose server (e.g. `gp2`). For example:
 
-`dhs_calendar_linking -s af2015lr`
+`dhs_lr_data -s af2015lr`
 
 You can also run multiple samples as a job on the cluster. For example:
 

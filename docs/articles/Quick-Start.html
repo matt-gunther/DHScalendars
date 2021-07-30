@@ -96,7 +96,7 @@
 <ol style="list-style-type: decimal">
 <li>Identify the available calendars and mark them in <code>vcal_availability.csv</code>
 </li>
-<li>Identify any sample-specific codes for the <strong>Reproductive Events</strong> calendar, which we’ll call <code>vcal_reprod</code> (this is usually stored in <code>vcal_1</code> in the IR file). Enter sample-specific recoding in <code>vcal_repord_recodes.csv</code>.</li>
+<li>Identify any sample-specific codes for the <strong>Reproductive Events</strong> calendar, which we’ll call <code>vcal_reprod</code> (this is almost always stored in <code>vcal_1</code> in the IR file). Enter sample-specific recoding in <code>vcal_repord_recodes.csv</code>.</li>
 <li>Identify any sample-specific codes for the <strong>Discontinuation</strong> calendar, which we’ll call <code>vcal_discont</code> (if available, this is <em>usually</em> stored in <code>vcal_2</code> in the IR file). Enter sample-specific recoding in <code>vcal_discont_recodes.csv</code>.</li>
 <li>Use the R function <code><a href="../reference/make_lr.html">make_lr()</a></code> to create an unlinked LR file for your sample in the folder at <code>dhs/general/calendar/programming/unlinked_lr_data</code>.</li>
 <li>Use the Python function <code>dhs_calendar_linking</code> to create a linked LR data file and a data dictionary in the <code>dhs/country</code> folder for your sample.</li>
@@ -5711,7 +5711,7 @@ IUD expired
 </tbody>
 </table>
 </div>
-<p>Notice that the first few rows of this CSV show recodes that are <strong>common to all samples</strong> (both <code>sample</code> and <code>year</code> are marked “all”). You do not need to enter any recodes that are common to all samples. Likewise <strong>any numeric input value will be recycled as output automatically</strong> unless you specify otherwise.</p>
+<p>Notice that the first few rows of this CSV show recodes that are <strong>common to all samples</strong> (both <code>sample</code> and <code>year</code> are marked “all”). You do not need to enter any recodes that are common to all samples.</p>
 <p>Because <code>sample</code> codes are sometimes repeated for multiple years, you may specify a year in <code>year</code> or use “all” to apply recoding to all years for that sample code.</p>
 <p><strong>If your sample contains an input value that you do not specify here, it will be recoded NA in the output</strong>. For example, many samples contain the value “?” representing non-response; these are automatically recoded <code>NA</code>. Likewise, if you <em>forget</em> to insert any recodes here, sample-specific codes will be recoded <code>NA</code>.</p>
 <p><strong>If you need to overwrite a recode that is otherwise common to all samples, you may do so</strong> (e.g. see EG4 2005, input <code>K</code>). The function that reads this CSV file will default to the recoding specified for your sample if there is a conflict will “all” samples.</p>
@@ -5755,12 +5755,12 @@ IUD expired
   <span class="fu"><a href="../reference/make_lr.html">make_lr</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 </div>
-<div id="dhs_calendar_linking" class="section level1">
+<div id="python" class="section level1">
 <h1 class="hasAnchor">
-<a href="#dhs_calendar_linking" class="anchor"></a>dhs_calendar_linking</h1>
+<a href="#python" class="anchor"></a>Python</h1>
 <p>Use a Terminal on a general purpose server (e.g. <code>gp2</code>) and run the <code>dhs_calendar_linking</code> <strong>Python script</strong>. This will create <em>both</em> a linked data file <em>and</em> and new data dictionary for your new <code>lr</code> sample.</p>
 <p>If you provide only one sample, the function will run on the general purpose server (e.g. <code>gp2</code>). For example:</p>
-<p><code>dhs_calendar_linking -s af2015lr</code></p>
+<p><code>dhs_lr_data -s af2015lr</code></p>
 <p>You can also run multiple samples as a job on the cluster. For example:</p>
 <p><code>dhs_lr_data -s lr2019lr gm2019lr sl2019lr</code></p>
 <p>You will see a message with a link to a URL where you can monitor progress.</p>
