@@ -107,30 +107,30 @@ exists and is not explicitly handled here, the value NA will be returned!}
 
   \item{
     \strong{preg_total} Integer: the total number of months per person
-    where \code{preg} is TRUE (NA if \code{preg} is not available). All
+    where \code{preg} is TRUE (NA if all values for \code{preg} are NA). All
     months for the person reflect the same total (this is not a cumulative
     sum).
   }
 
   \item{
     \strong{birth_total} Integer: the total number of months per person
-    where \code{birth} is TRUE (NA if \code{birth} is not available). All
+    where \code{birth} is TRUE (NA if all values for \code{birth} are NA). All
     months for the person reflect the same total (this is not a cumulative
     sum).
   }
 
   \item{
     \strong{term_total} Integer: the total number of months per person
-    where \code{term} is TRUE (NA if \code{term} is not available). All
+    where \code{term} is TRUE (NA if all values for \code{term} are NA). All
     months for the person reflect the same total (this is not a cumulative
     sum).
   }
 
   \item{
     \strong{contr_total} Integer: the total number of months per person
-    where \code{contr} is TRUE (NA if \code{contr} is not available). All
-    months for the person reflect the same total (this is not a cumulative
-    sum).
+    where \code{contr} is TRUE (NA if all values for \code{contr} are NA).
+    All months for the person reflect the same total (this is not a
+    cumulative sum).
   }
 
   \item{

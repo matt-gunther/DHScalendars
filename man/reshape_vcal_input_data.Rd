@@ -28,7 +28,7 @@ data frame usually grows by a factor of 80). Several different tests are
 conducted to ensure that all available calendars are identified and
 reshaped correctly. If the user is aware that one or more calendar columns
 contains the wrong number of months (e.g. 79, while all others have 80),
-the user may pad the offending calendar with spaces via the \code{
+the user may pad the offending calendar(s) with spaces via the \code{
 pad_months} argument.
 }
 \details{

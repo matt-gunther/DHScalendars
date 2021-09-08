@@ -91,30 +91,30 @@
 #'
 #'   \item{
 #'     \strong{preg_total} Integer: the total number of months per person
-#'     where \code{preg} is TRUE (NA if \code{preg} is not available). All
+#'     where \code{preg} is TRUE (NA if all values for \code{preg} are NA). All
 #'     months for the person reflect the same total (this is not a cumulative
 #'     sum).
 #'   }
 #'
 #'   \item{
 #'     \strong{birth_total} Integer: the total number of months per person
-#'     where \code{birth} is TRUE (NA if \code{birth} is not available). All
+#'     where \code{birth} is TRUE (NA if all values for \code{birth} are NA). All
 #'     months for the person reflect the same total (this is not a cumulative
 #'     sum).
 #'   }
 #'
 #'   \item{
 #'     \strong{term_total} Integer: the total number of months per person
-#'     where \code{term} is TRUE (NA if \code{term} is not available). All
+#'     where \code{term} is TRUE (NA if all values for \code{term} are NA). All
 #'     months for the person reflect the same total (this is not a cumulative
 #'     sum).
 #'   }
 #'
 #'   \item{
 #'     \strong{contr_total} Integer: the total number of months per person
-#'     where \code{contr} is TRUE (NA if \code{contr} is not available). All
-#'     months for the person reflect the same total (this is not a cumulative
-#'     sum).
+#'     where \code{contr} is TRUE (NA if all values for \code{contr} are NA).
+#'     All months for the person reflect the same total (this is not a
+#'     cumulative sum).
 #'   }
 #'
 #'   \item{
@@ -239,10 +239,19 @@ vcal_reprod <- function(
         vcal_reprod %in% 1:90 & lag(vcal_reprod) != vcal_reprod ~ T,
         vcal_reprod %in% 1:90 & lag(vcal_reprod) == vcal_reprod ~ F
       ),
+
+      # count totals, treating NA as 0
       preg_total = case_when(eventpbt_avail ~ sum(eventpbt, na.rm = T)),
       birth_total = case_when(eventpbt_avail ~ sum(birth, na.rm = T)),
       term_total = case_when(eventpbt_avail ~ sum(term, na.rm = T)),
-      contr_total = case_when(contr_avail ~ sum(contr, na.rm = T))
+      contr_total = case_when(contr_avail ~ sum(contr, na.rm = T)),
+
+      # revise totals: if all values were NA for the woman, change
+      #   her total from 0 to NA (reflecting NIU)
+      preg_total = case_when(!all(is.na(eventpbt)) ~ preg_total),
+      birth_total = case_when(!all(is.na(birth)) ~ birth_total),
+      term_total = case_when(!all(is.na(term)) ~ term_total),
+      contr_total = case_when(!all(is.na(contr)) ~ contr_total)
     ) %>%
     ungroup()
 

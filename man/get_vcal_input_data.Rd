@@ -14,14 +14,14 @@ get_vcal_input_data(sample, dhs_path = NULL)
 version of RStudio, this function may have trouble finding the data
 dictionary on its own. If so, you can just tell it where to look: specify
 the file path here.
-(e.g. "Z://dhs//country/afghanistan/2015/data/data_dict_af2015ir.xlsx")}
+(e.g. "~/Z/dhs/country/afghanistan/2015/data/data_dict_af2015ir.xlsx")}
 }
 \description{
 Returns a modified version of the IR file for a sample,
 including \emph{only the handful of variables that are relevant for calendar
-processing}. As a helpful side-effect, the path to the IPUMS DHS folder on
-the user's system will be attached as an attribute of the returned data
-frame.
+processing}. As a helpful side-effect, the sample name and the path to the
+IPUMS DHS folder on the user's system will be attached as an attribute of the
+returned data frame.
 }
 \details{
 This function is basically a combination of
