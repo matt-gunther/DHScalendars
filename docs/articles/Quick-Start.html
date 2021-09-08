@@ -54,6 +54,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/Installation.html">Install this R Package</a>
+    </li>
+    <li>
       <a href="../articles/Quick-Start.html">Quick Start</a>
     </li>
     <li>
@@ -75,7 +78,7 @@
 
       
 
-      </header><script src="Quick-Start_files/header-attrs-2.7/header-attrs.js"></script><script src="Quick-Start_files/kePrint-0.0.1/kePrint.js"></script><link href="Quick-Start_files/lightable-0.0.1/lightable.css" rel="stylesheet">
+      </header><script src="Quick-Start_files/header-attrs-2.9/header-attrs.js"></script><script src="Quick-Start_files/kePrint-0.0.1/kePrint.js"></script><link href="Quick-Start_files/lightable-0.0.1/lightable.css" rel="stylesheet">
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
@@ -91,16 +94,19 @@
     
 <p>In most cases, you should be able to process a new sample in just a few minutes if you follow these steps:</p>
 <ol style="list-style-type: decimal">
-<li>Identify the available calendars and mark them in “resources/vcal_availability.csv”</li>
-<li>Identify any sample-specific codes for the <strong>Reproductive Events</strong> calendar, which we’ll call <code>vcal_reprod</code> (this is usually stored in <code>vcal_1</code> in the IR file). Enter sample-specific recoding in “resources/vcal_repord_recodes.csv”.</li>
-<li>Identify any sample-specific codes for the <strong>Discontinuation</strong> calendar, which we’ll call <code>vcal_discont</code> (if available, this is usually stored in <code>vcal_2</code> in the IR file). Enter sample-specific recoding in “resources/vcal_discont_recodes.csv”.</li>
-<li>Use the function <code><a href="../reference/make_lr.html">make_lr()</a></code> to process your sample.</li>
+<li>Identify the available calendars and mark them in <code>vcal_availability.csv</code>
+</li>
+<li>Identify any sample-specific codes for the <strong>Reproductive Events</strong> calendar, which we’ll call <code>vcal_reprod</code> (this is almost always stored in <code>vcal_1</code> in the IR file). Enter sample-specific recoding in <code>vcal_repord_recodes.csv</code>.</li>
+<li>Identify any sample-specific codes for the <strong>Discontinuation</strong> calendar, which we’ll call <code>vcal_discont</code> (if available, this is <em>usually</em> stored in <code>vcal_2</code> in the IR file). Enter sample-specific recoding in <code>vcal_discont_recodes.csv</code>.</li>
+<li>Use the R function <code><a href="../reference/make_lr.html">make_lr()</a></code> to create an unlinked LR file for your sample in the folder at <code>dhs/general/calendar/programming/unlinked_lr_data</code>.</li>
+<li>Use the Python function <code>dhs_calendar_linking</code> to create a linked LR data file and a data dictionary in the <code>dhs/country</code> folder for your sample.</li>
 </ol>
 <p>All <code>lr</code> files made this way will have the same number of calendar variables (all values will be <code>NA</code> if a particular source calendar was not available). They will contain one row per woman per month in the calendar recall timeline.</p>
 <div id="vcal_availability-csv" class="section level1">
 <h1 class="hasAnchor">
 <a href="#vcal_availability-csv" class="anchor"></a>vcal_availability.csv</h1>
-<p>The availability of calendars for each sample is recorded in this CSV file. <strong>Enter the availability of calendars for your sample in the next available row</strong>.</p>
+<p>Locate the file at <code>./ipums/dhs/general/calendar/sample_tracking/vcal_availability.csv</code> (substitute “.” for the location of the ipums folder on your system).</p>
+<p>The availability of calendars for each sample is recorded in this CSV file. <strong>Enter the availability of calendars for your sample in the next available row</strong>. You should not enter the number for any calendar where the only available values are “B” or otherwise missing. Consult the <a href="https://dhsprogram.com/publications/index.cfm">DHS Final Report</a> for your sample for help with this task.</p>
 <p><em>Preview as of this writing:</em></p>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:800px; ">
 <table class="table table">
@@ -3969,14 +3975,15 @@ zw2015ir
 #&gt; $ vcal_7 &lt;chr&gt; " "
 #&gt; $ vcal_8 &lt;chr&gt; " "
 #&gt; $ vcal_9 &lt;chr&gt; " "</code></pre>
-<p>In this example, it’s clear that <code>vcal_1</code> represents the reproductive events calendar, <code>vcal_reprod</code> (note that it contains the tell-tale “B” - or birth - followed by several months of “P” - or pregnancy). This follows the normal pattern for most samples (all that we’ve processed as of this writing). The second calendar <code>vcal_2</code> is probably the discontinuation calendar <code>vcal_discont</code> (note that it only contains a value for the last month in a string of months where the sample contraceptive method was used).</p>
+<p>In this example, it’s clear that <code>vcal_1</code> represents the reproductive events calendar, <code>vcal_reprod</code> (note that it contains the tell-tale “B” - or birth - preceded by several months of “P” - or pregnancy). This follows the normal pattern for most samples (all that we’ve processed as of this writing). The second calendar <code>vcal_2</code> is probably the discontinuation calendar <code>vcal_discont</code> (note that it only contains a value for the last month in a string of months where the sample contraceptive method was used).</p>
 <p>If you cannot easily determine what topic a particular calendar covers, you’ll need to consult the available sample documentation (especially Final Report documents) on the DHS website. You may also try comparing your sample to an earlier sample from the same country. As a last resort, make a guess and run the sample: if you get an error or a distribution of responses that doesn’t match other sample data, try again!</p>
-<p><strong>Warning: vcal columns can only store numbers. Please use the number associate with the vcal_ variable for your sample.</strong> In rare cases, you may find calendar data stored in the IR file under an unusual name (see eg2995ir <code>vcal_term</code>). In this case, please insert the number 0 in place of the unusual name; you’ll need to edit some of the functions in this package to make special accommodations for such a sample (<em>instructions coming soon</em>).</p>
+<p><strong>Warning: vcal columns can only store numbers. Please use the number associated with the vcal_ variable for your sample.</strong> In rare cases, you may find calendar data stored in the IR file under an unusual name (see eg2995ir <code>vcal_term</code>). In this case, please insert the number 0 in place of the unusual name; you’ll need to edit some of the functions in this package to make special accommodations for such a sample (<em>instructions coming soon</em>).</p>
 </div>
 <div id="vcal_reprod_recodes-csv" class="section level1">
 <h1 class="hasAnchor">
 <a href="#vcal_reprod_recodes-csv" class="anchor"></a>vcal_reprod_recodes.csv</h1>
-<p>Once you’ve identified the reproductive events calendar <code>vcal_reprod</code> , you’ll need to check to see if it contains any sample-specific codes. <strong>Check the sample documentation on the DHS website for hints.</strong></p>
+<p>Locate the file at <code>./ipums/dhs/general/calendar/sample_tracking/vcal_reprod_recodes.csv</code> (substitute “.” for the location of the ipums folder on your system).</p>
+<p>Once you’ve identified the reproductive events calendar <code>vcal_reprod</code> , you’ll need to check to see if it contains any sample-specific codes. Consult the <a href="https://dhsprogram.com/publications/index.cfm">DHS Final Report</a> for your sample for help with this task.</p>
 <p>You’ll then enter recoding information into this CSV file.</p>
 <p><em>Preview as of this writing:</em></p>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; ">
@@ -4835,7 +4842,7 @@ Termination of Pregnancy
 </tbody>
 </table>
 </div>
-<p>Notice that the first few rows of this CSV show recodes that are <strong>common to all samples</strong> (both <code>sample</code> and <code>year</code> are marked “all”). You do not need to enter any recodes that are common to all samples. Likewise <strong>any numeric input value will be recycled as output automatically</strong> unless you specify otherwise.</p>
+<p>Notice that the first few rows of this CSV show recodes that are <strong>common to all samples</strong> (both <code>sample</code> and <code>year</code> are marked “all”). You do not need to enter any recodes that are common to all samples.</p>
 <p>Because <code>sample</code> codes are sometimes repeated for multiple years, you may specify a year in <code>year</code> or use “all” to apply recoding to all years for that sample code.</p>
 <p><strong>If your sample contains an input value that you do not specify here, it will be recoded NA in the output</strong>. For example, many samples contain the value “?” representing non-response; these are automatically recoded <code>NA</code>. Likewise, if you <em>forget</em> to insert any recodes here, sample-specific codes will be recoded <code>NA</code>.</p>
 <p><strong>If you need to overwrite a recode that is otherwise common to all samples, you may do so</strong>. The function that reads this CSV file will default to the recoding specified for your sample if there is a conflict will “all” samples.</p>
@@ -4844,7 +4851,8 @@ Termination of Pregnancy
 <div id="vcal_discont_recodes-csv" class="section level1">
 <h1 class="hasAnchor">
 <a href="#vcal_discont_recodes-csv" class="anchor"></a>vcal_discont_recodes.csv</h1>
-<p>Once you’ve identified the discontinuation calendar <code>vcal_discont</code> , you’ll need to check to see if it contains any sample-specific codes. <strong>Check the sample documentation on the DHS website for hints.</strong></p>
+<p>Locate the file at <code>./ipums/dhs/general/calendar/sample_tracking/vcal_discont_recodes.csv</code> (substitute “.” for the location of the ipums folder on your system).</p>
+<p>Once you’ve identified the discontinuation calendar <code>vcal_discont</code> , you’ll need to check to see if it contains any sample-specific codes. Consult the <a href="https://dhsprogram.com/publications/index.cfm">DHS Final Report</a> for your sample for help with this task.</p>
 <p>You’ll then enter recoding information into this CSV file.</p>
 <p><em>Preview as of this writing:</em></p>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; ">
@@ -5703,7 +5711,7 @@ IUD expired
 </tbody>
 </table>
 </div>
-<p>Notice that the first few rows of this CSV show recodes that are <strong>common to all samples</strong> (both <code>sample</code> and <code>year</code> are marked “all”). You do not need to enter any recodes that are common to all samples. Likewise <strong>any numeric input value will be recycled as output automatically</strong> unless you specify otherwise.</p>
+<p>Notice that the first few rows of this CSV show recodes that are <strong>common to all samples</strong> (both <code>sample</code> and <code>year</code> are marked “all”). You do not need to enter any recodes that are common to all samples.</p>
 <p>Because <code>sample</code> codes are sometimes repeated for multiple years, you may specify a year in <code>year</code> or use “all” to apply recoding to all years for that sample code.</p>
 <p><strong>If your sample contains an input value that you do not specify here, it will be recoded NA in the output</strong>. For example, many samples contain the value “?” representing non-response; these are automatically recoded <code>NA</code>. Likewise, if you <em>forget</em> to insert any recodes here, sample-specific codes will be recoded <code>NA</code>.</p>
 <p><strong>If you need to overwrite a recode that is otherwise common to all samples, you may do so</strong> (e.g. see EG4 2005, input <code>K</code>). The function that reads this CSV file will default to the recoding specified for your sample if there is a conflict will “all” samples.</p>
@@ -5711,13 +5719,19 @@ IUD expired
 </div>
 <div id="make_lr" class="section level1">
 <h1 class="hasAnchor">
-<a href="#make_lr" class="anchor"></a>make_lr()</h1>
+<a href="#make_lr" class="anchor"></a>make_lr</h1>
+<p>This <strong>R function</strong> creates an unlinked LR file containing all of the derived calendar variables (including placeholders for those that were not available for your sample). All files created by this function will be written to the folder at <code>./dhs/general/calendar/programming/unlinked_lr_data</code> (substitute “.” for the location of the ipums folder on your system).</p>
+<p><strong>I highly recommend that you install this package and run this function on <a href="https://rstudio.pop.umn.edu/">the RStudio server</a></strong> rather than your local installation of RStudio.</p>
+<p>The <strong>first time</strong> you use this package, you’ll need to install it. <a href="./articles/Installation.html">Follow the installation instructions shown here</a>.</p>
 <p>If you have installed this package and completed the three pre-processing tasks above, you should be able to use <code><a href="../reference/make_lr.html">make_lr()</a></code> with your sample like this:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/make_lr.html">make_lr</a></span><span class="op">(</span><span class="st">"af2015ir"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">DHScalendars</span><span class="op">)</span>
+<span class="fu"><a href="../reference/make_lr.html">make_lr</a></span><span class="op">(</span><span class="st">"af2015ir"</span><span class="op">)</span></code></pre></div>
 <p>Or, if you have a bunch of samples, you can pass them to <code><a href="../reference/make_lr.html">make_lr()</a></code> in a loop like this:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># here is my to-do list:</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">DHScalendars</span><span class="op">)</span>
+
+<span class="co"># here is my to-do list:</span>
 <span class="va">samples</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"af2015ir"</span>, <span class="st">"ao2015ir"</span><span class="op">)</span>
 
 <span class="co"># here is my loop:</span>
@@ -5725,10 +5739,14 @@ IUD expired
   <span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span> <span class="co"># optional: prints a message each time a sample is finished</span>
   <span class="fu"><a href="../reference/make_lr.html">make_lr</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
-<p>If you’re crafty, you can even read a vector of samples from a CSV file. Here’s how you might process all of the samples in <code>vcal_availability.csv</code> (this would probably take around 2 hours on the RStudio server):</p>
+<p>If you’re feeling crafty, you can even read a vector of samples from a CSV file. Here’s how you might process all of the samples in <code>vcal_availability.csv</code> (this would probably take around 2 hours on the RStudio server):</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># I make my to-do list from the CSV file:</span>
-<span class="va">samples</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"resources/vcal_availability.csv"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">DHScalendars</span><span class="op">)</span>
+
+<span class="co"># I make my to-do list from the CSV file:</span>
+<span class="va">samples</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span>
+  <span class="st">"/pkg/ipums/dhs/general/calendar/sample_tracking/vcal_availability.csv"</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">pull</span><span class="op">(</span><span class="va">SAMPLE</span><span class="op">)</span>
 
 <span class="co"># This loop processes ALL samples:</span>
@@ -5736,7 +5754,16 @@ IUD expired
   <span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span> <span class="co"># optional: prints a message each time a sample is finished</span>
   <span class="fu"><a href="../reference/make_lr.html">make_lr</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
-<p>{when finished, insert details about the output destination and format here}</p>
+</div>
+<div id="python" class="section level1">
+<h1 class="hasAnchor">
+<a href="#python" class="anchor"></a>Python</h1>
+<p>Use a Terminal on a general purpose server (e.g. <code>gp2</code>) and run the <code>dhs_calendar_linking</code> <strong>Python script</strong>. This will create <em>both</em> a linked data file <em>and</em> and new data dictionary for your new <code>lr</code> sample.</p>
+<p>If you provide only one sample, the function will run on the general purpose server (e.g. <code>gp2</code>). For example:</p>
+<p><code>dhs_lr_data -s af2015lr</code></p>
+<p>You can also run multiple samples as a job on the cluster. For example:</p>
+<p><code>dhs_lr_data -s lr2019lr gm2019lr sl2019lr</code></p>
+<p>You will see a message with a link to a URL where you can monitor progress.</p>
 </div>
   </div>
 

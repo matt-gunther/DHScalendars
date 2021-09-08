@@ -54,6 +54,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="articles/Installation.html">Install this R Package</a>
+    </li>
+    <li>
       <a href="articles/Quick-Start.html">Quick Start</a>
     </li>
     <li>
@@ -78,16 +81,21 @@
       </header><div class="row">
   <div class="contents col-md-9">
 
-<div id="dhscalendars---how-to-process-dhs-reproductive-calendar-data" class="section level1">
+<div id="dhscalendars---processing-ipums-dhs-reproductive-calendar-data" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#dhscalendars---how-to-process-dhs-reproductive-calendar-data" class="anchor"></a>DHScalendars - How to process DHS reproductive calendar data</h1></div>
-<p>Matt Gunther <a href="mailto:mgunther@umn.edu" class="email">mgunther@umn.edu</a> 29 June, 2021</p>
+<a href="#dhscalendars---processing-ipums-dhs-reproductive-calendar-data" class="anchor"></a>DHScalendars - Processing IPUMS DHS reproductive calendar data</h1></div>
+<p>Matt Gunther <a href="mailto:mgunther@umn.edu" class="email">mgunther@umn.edu</a> 06 July, 2021</p>
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-</div>
-<div id="quick-start" class="section level1">
-<h1 class="hasAnchor">
-<a href="#quick-start" class="anchor"></a>Quick Start</h1>
-<p>Visit the <a href="articles/Quick-Start.html">Quick Start</a> article to start processing a new sample right away.</p>
+<p>Looking to get started as quickly as possible? Check out these articles as necessary:</p>
+<ul>
+<li>
+<a href="./articles/Installation.html">Installation</a> - How to install this R package</li>
+<li>
+<a href="./articles/Quick-Start.html">Quick start</a> - How to process a new sample in minutes</li>
+<li>
+<a href="./articles/Variables-in-LR-File.html">Variables in the LR file</a> - Understanding the output</li>
+</ul>
+<p>You’ll also find documentation for all package functions (including information on the calculation of derived variables) on the <a href="./reference/index.html">Reference</a> page.</p>
 </div>
 <div id="what-is-dhs-reproductive-calendar-data" class="section level1">
 <h1 class="hasAnchor">
@@ -134,24 +142,18 @@
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="do">## $ vcal_6 &lt;chr&gt; "B"</span></span></code></pre></div>
 <p>Notice that this sample only contains 6 of the possible 9 calendar variables, and only 3 of these contains responses (you’ll typically see a single string “B” if the variable was merely included as a placeholder; it contains no responses). It’s not clear what topics are represented by <code>vcal_1</code>, <code>vcal_2</code>, and <code>vcal_3</code>, but notice that each of these strings contains 80 characters including at least 8 empty spaces on the left; the left-most response character represents the month of the interview, and the right-most response character represents the first month in the recall timeline (calendars are padded with spaces on the left-side, so that that full string length always exceeds the number of months in the recall timeline - in this case, women were asked to recall 72 months).</p>
 </div>
-<div id="how-do-i-use-this-r-package" class="section level1">
+<div id="how-does-ipums-harmonize-dhs-reproductive-calendar-data" class="section level1">
 <h1 class="hasAnchor">
-<a href="#how-do-i-use-this-r-package" class="anchor"></a>How do I use this R package?</h1>
-<p>The purpose of this R package is to provide a simple workflow accomplishing these tasks for each sample:</p>
-<ol>
-<li>Identify the calendars that are included in the IR file</li>
-<li>Parse each calendar string</li>
-<li>Reshape the calendar data so that each row represents <em>one month</em> of recall data for each woman (multiply the number of rows in the IR file by ~80)</li>
-<li>Remove any placeholder rows for months outside of the recall timeline</li>
-<li>Derive several harmonized variables from each available calendar</li>
-<li>Attach placeholder columns for calendar variables that are not available for the sample (all values will be <code>NA</code>)</li>
-<li>Merge derived variables to the original IR file, creating a new LR file with a Data Dictionary (new files will be compressed, as they will contain duplicated data for all non-calendar variables - one duplication for each month in the sample’s calendar)</li>
-</ol>
-<p>The documentation you will find here includes:</p>
-<ul>
-<li>Instructions for processing new samples</li>
-<li>An explanation and source code for the calculation of each derived variable</li>
-</ul>
+<a href="#how-does-ipums-harmonize-dhs-reproductive-calendar-data" class="anchor"></a>How does IPUMS harmonize DHS reproductive calendar data?</h1>
+<p>Our first task is to separate the single-character codes in each string, then pivot the data into a <strong>long format</strong> where each row represents one month in each woman’s recall timeline.</p>
+<p>Second, we create a number of derived variables from each of the calendars that were available for a given sample. We also create empty placeholder variables for calendars that were not available, such that <em>all samples have the same number of derived variables</em> even if some are entirely <code>NA</code>. At this point, we create a temporary <strong>unlinked</strong> data file (a compressed CSV) that lives in the folder <code>ipums/dhs/general/calendar/programming/unlinked_lr_data</code>.</p>
+<p>Lastly, we create a <strong>linked</strong> data file containing all of the derived calendar data <em>and</em> the original IR file (the non-calendar data will repeated in each row of a given woman’s recall timeline, for up to 80 rows).</p>
+</div>
+<div id="what-does-this-package-do" class="section level1">
+<h1 class="hasAnchor">
+<a href="#what-does-this-package-do" class="anchor"></a>What does this package do?</h1>
+<p>The purpose of this R package is to process the calendar data in the IR file, producing the <strong>unlinked</strong> data file discussed above. A separate Python script will find the unlinked data file and create a <strong>linked</strong> data file and Data Dictionary.</p>
+<p>See the <a href="./articles/Quick-Start.html">Quick Start</a> guide for instructions.</p>
 </div>
 
   </div>
