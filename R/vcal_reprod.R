@@ -216,7 +216,9 @@ vcal_reprod <- function(
       birth = vcal_reprod == 100,
       preg = vcal_reprod == 200,
       term = vcal_reprod == 300,
-      contr = case_when(contr_avail ~ vcal_reprod %in% 1:90),
+      contr = case_when(
+        contr_avail & !is.na(vcal_reprod) ~ vcal_reprod %in% 1:90
+      ),
       eventpbt = case_when(eventpbt_avail ~ birth | preg | term),
       eventwfp = eventpbt | contr,
     )
