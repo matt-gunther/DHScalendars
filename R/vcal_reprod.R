@@ -227,6 +227,17 @@ vcal_reprod <- function(
   dat <- dat %>%
     group_by(caseid) %>%
     mutate(
+      # revise birth, preg, term, and eventpbt:
+      # if all months are NA and !contr_avail, set to 0
+      across(
+        c(birth, preg, term, eventpbt),
+        ~case_when(
+          all(is.na(vcal_reprod)) & !contr_avail ~ FALSE,
+          T ~ .x
+        )
+      ),
+
+      # contraceptive use episodes
       contr_start = case_when(
         vcal_reprod %in% 1:90 &
           lead(vcal_reprod) != vcal_reprod & lead(vcal_reprod) < 90 ~ T,
