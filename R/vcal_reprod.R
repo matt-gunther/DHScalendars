@@ -239,9 +239,11 @@ vcal_reprod <- function(
 
       # contraceptive use episodes
       contr_start = case_when(
-        vcal_reprod %in% 1:90 &
-          lead(vcal_reprod) != vcal_reprod & lead(vcal_reprod) < 90 ~ T,
-        vcal_reprod %in% 1:90 & {lead(vcal_reprod) == vcal_reprod} ~ F
+        contr &
+          {lead(vcal_reprod) != vcal_reprod} &
+          {lead(vcal_reprod) < 90} ~ T,
+        contr &
+          {lead(vcal_reprod) == vcal_reprod} ~ F
       ),
       contr_change = case_when(
         contr_start == T & lead(vcal_reprod) > 0 ~ T,
@@ -249,8 +251,8 @@ vcal_reprod <- function(
         T ~ contr_start
       ),
       contr_stop = case_when(
-        vcal_reprod %in% 1:90 & lag(vcal_reprod) != vcal_reprod ~ T,
-        vcal_reprod %in% 1:90 & lag(vcal_reprod) == vcal_reprod ~ F
+        contr & lag(vcal_reprod) != vcal_reprod ~ T,
+        contr & lag(vcal_reprod) == vcal_reprod ~ F
       ),
 
       # count totals, treating NA as 0

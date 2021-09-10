@@ -90,16 +90,19 @@ vcal_discont <- function(
     vcal_discont_recodes <- suppressMessages(read_csv(vcal_discont_recodes))
   }
 
-  # Update contr_stop with information from this calendar
-  # contr_stop_total shows the total number of contr_stop per person, if available
   dat <- dat %>%
+    # revise contr_stop (defined with vcal_reprod):
+    # if this calendar is available, use it instead of our calculated version.
+    # however, if the woman's response to vcal_reprod is missing, this should
+    # be missing, too.
     mutate(contr_stop = case_when(
-      !all(is.na(vcal_discont)) & is.na(contr_stop) ~ vcal_discont != " ",
+      contr & !all(is.na(vcal_discont)) ~ vcal_discont != " ",
       T ~ contr_stop # contr_stop not available | contr_stop already defined
     )) %>%
     group_by(caseid) %>%
+    # contr_stop_total is total number of contr_stop per person, if available
     mutate(contr_stop_total = case_when(
-      !all(is.na(vcal_discont)) ~ sum(contr_stop, na.rm = T)
+      any(contr) & !all(is.na(vcal_discont)) ~ sum(contr_stop, na.rm = T)
     )) %>%
     ungroup
 
