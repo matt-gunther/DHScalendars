@@ -1,7 +1,7 @@
 Package: DHScalendars
 Type: Package
 Title: Process DHS Reproductive Calendar Data
-Version: 0.1.2
+Version: 0.1.3
 Author: Matt Gunther <mgunther@umn.edu>
 Maintainer: Matt Gunther <mgunther@umn.edu>
 Description: Strings are parsed and analyzed, creating new variables.

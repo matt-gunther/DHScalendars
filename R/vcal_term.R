@@ -67,16 +67,16 @@ vcal_term <- function(dat){
   dat <- dat %>%
     mutate(
       abort = case_when(
-        vcal_term == "A" ~ T,
-        vcal_term %in% c("M", "C", "S") ~ F
+        vcal_term == "A" & vcal_reprod == 300 ~ T,
+        vcal_term %in% c("M", "C", "S") & vcal_reprod == 300 ~ F
       ),
       miscar = case_when(
-        vcal_term %in% c("M", "C") ~ T,
-        vcal_term %in% c("A", "S") ~ F
+        vcal_term %in% c("M", "C") & vcal_reprod == 300 ~ T,
+        vcal_term %in% c("A", "S") & vcal_reprod == 300 ~ F
       ),
       sbirth = case_when(
-        vcal_term == "S" ~ T,
-        vcal_term %in% c("M", "C", "A") ~ F
+        vcal_term == "S" & vcal_reprod == 300 ~ T,
+        vcal_term %in% c("M", "C", "A") & vcal_reprod == 300 ~ F
       )
     ) %>%
     group_by(caseid) %>%
