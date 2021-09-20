@@ -68,8 +68,10 @@ exists and is not explicitly handled here, the value NA will be returned!}
   }
 
   \item{
-    \strong{contr_stop_total} Integer: total number of months per person where
-    \code{contr_stop} is TRUE (NA if \code{contr_stop} is not available).
+    \strong{contr_stop_total} Integer: total number of months per person
+    where \code{contr_stop} is TRUE. NA if all months of \code{contr_stop}
+    are NA (e.g. never used contraception, or contraception not included
+    in the sample questionnaire).
     All months for the person reflect the same total (this is not a
     cumulative sum).
   }
@@ -99,7 +101,8 @@ Because NA values may represent both "NIU" and "missing" depending on the
 sample, \emph{the recommended value label for NA is for
 this variable is "No response or NIU"}. The interpretation for
 NA values in the total number of "stop" months can be treated
-as "NIU" where the universe includes months where contraception was used.
+as "NIU" where the universe includes women who reported using contraception
+in at least one month.
 }
 \author{
 Matt Gunther

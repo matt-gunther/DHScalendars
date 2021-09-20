@@ -30,7 +30,8 @@
 #' sample, \emph{the recommended value label for NA is for
 #' this variable is "No response or NIU"}. The interpretation for
 #' NA values in the total number of "stop" months can be treated
-#' as "NIU" where the universe includes months where contraception was used.
+#' as "NIU" where the universe includes women who reported using contraception
+#' in at least one month.
 #'
 #' @details The following variables will be created using case logic provided
 #' to the function \code{dplyr::case_when()}. Please note that
@@ -79,8 +80,10 @@
 #'   }
 #'
 #'   \item{
-#'     \strong{contr_stop_total} Integer: total number of months per person where
-#'     \code{contr_stop} is TRUE (NA if \code{contr_stop} is not available).
+#'     \strong{contr_stop_total} Integer: total number of months per person
+#'     where \code{contr_stop} is TRUE. NA if all months of \code{contr_stop}
+#'     are NA (e.g. never used contraception, or contraception not included
+#'     in the sample questionnaire).
 #'     All months for the person reflect the same total (this is not a
 #'     cumulative sum).
 #'   }
@@ -130,7 +133,7 @@ vcal_discont <- function(
     group_by(caseid) %>%
     # contr_stop_total is total number of contr_stop per person, if available
     mutate(contr_stop_total = case_when(
-      any(contr) & !all(is.na(vcal_discont)) ~ sum(contr_stop, na.rm = T)
+      any(contr) & !all(is.na(contr_stop)) ~ sum(contr_stop, na.rm = T)
     )) %>%
     ungroup
 
