@@ -24,46 +24,62 @@ to the function \code{dplyr::case_when()}. Please note that
 exists and is not explicitly handled here, the value NA will be returned!}
 \itemize{
   \item{
-    \strong{abort} Logical: TRUE if \code{vcal_term} is "A". FALSE if
-    \code{vcal_term} is any other non-missing character. Not available if
-    \code{vcal_term} is blank (e.g. " ") or not available (NA).
+    \strong{abort} Logical: TRUE if \code{vcal_term} is "A" and
+    \code{vcal_reprod} indicates that the woman experienced pregnancy
+    termination (value 300). FALSE if \code{vcal_term} is any other
+    non-missing character (months of termination only).
+    NA if \code{vcal_reprod} shows no termination, if \code{vcal_term} is
+    not included in the sample, or if the response in \code{vcal_term} is
+    missing.
   }
   \item{
     \strong{abort_total} Integer: total number of months per person where
-    \code{abort} is TRUE. Not available if \code{vcal_term} is not available
-    (NA).
+    \code{abort} is TRUE. Zero if the person was never pregnant or never
+    experienced termination.
 
-    All
-    months for the person reflect the same total (this is not a cumulative
-    sum).
+    NA only if \code{vcal_term} was not included in the sample.
+
+    All values for the person reflect the same total
+    (this is not a cumulative sum).
   }
   \item{
-    \strong{miscar} Logical: TRUE if \code{vcal_term} is "M" or "C". FALSE
-    if \code{vcal_term} is any other non-missing character. Not available if
-    \code{vcal_term} is blank (e.g. " ") or not available (NA).
+    \strong{miscar} Logical: TRUE if \code{vcal_term} is "M" or "C" and
+    \code{vcal_reprod} indicates that the woman experienced pregnancy
+    termination (value 300). FALSE if \code{vcal_term} is any other
+    non-missing character (months of termination only).
+    NA if \code{vcal_reprod} shows no termination, if \code{vcal_term} is
+    not included in the sample, or if the response in \code{vcal_term} is
+    missing.
   }
   \item{
     \strong{miscar_total} Integer: total number of months per person where
-    \code{miscar} is TRUE. Not available if \code{vcal_term} is not
-    available (NA).
+    \code{miscar} is TRUE. Zero if the person was never pregnant or never
+    experienced termination.
 
-    All
-    months for the person reflect the same total (this is not a cumulative
-    sum).
+    NA only if \code{vcal_term} was not included in the sample.
+
+    All values for the person reflect the same total
+    (this is not a cumulative sum).
   }
   \item{
-    \strong{sbirth} Logical: TRUE if \code{vcal_term} is "S". FALSE if
-    \code{vcal_term} is any other non-missing character. Not available if
-    \code{vcal_term} is blank (e.g. " ") or not available (NA).
+    \strong{sbirth} Logical: TRUE if \code{vcal_term} is "S" and
+    \code{vcal_reprod} indicates that the woman experienced pregnancy
+    termination (value 300). FALSE if
+    \code{vcal_term} is any other non-missing character
+    (months of termination only).
+    NA if \code{vcal_reprod} shows no termination, if \code{vcal_term} is
+    not included in the sample, or if the response in \code{vcal_term} is
+    missing.
   }
   \item{
     \strong{sbirth_total} Integer: total number of months per person where
-    \code{sbirth} is TRUE. Not available if \code{vcal_term} is not
-    available (NA).
+    \code{sbirth} is TRUE. Zero if the person was never pregnant or never
+    experienced termination.
 
-    All
-    months for the person reflect the same total (this is not a cumulative
-    sum).
+    NA only if \code{vcal_term} was not included in the sample.
+
+    All values for the person reflect the same total
+    (this is not a cumulative sum).
   }
 }
 }

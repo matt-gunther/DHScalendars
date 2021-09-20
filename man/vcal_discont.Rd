@@ -17,7 +17,8 @@ recodes for the Discontinuation calendar).}
 Create all variables related to the Discontinuation
 calendar (see details). If this calendar was not included in the sample (or
 if some of the required information is not available), all
-variables will \emph{still be created}, but all values will be NA.
+variables will \emph{still be created}, but all values will be NA. See note
+regarding interpretation guidelines for NA values.
 }
 \details{
 The following variables will be created using case logic provided
@@ -73,6 +74,32 @@ exists and is not explicitly handled here, the value NA will be returned!}
     cumulative sum).
   }
 }
+}
+\note{
+The Discontinuation calendar is used in conjunction with the
+Reproductive Event calendar to identify months where a woman stopped using
+a method of contraception (this appears on the last month of continuous
+use). If a woman gave a "reason for discontinuation" for a given month, she
+will be said to have "stopped" in that month. An NA value appears if the
+woman was not using contraception in a given month, or if she provided no
+contraceptive use information at all (either because she was NIU, provided
+no responses, or because certain samples did not ask about contraceptive
+use).
+
+Some samples do not include a Discontinuation calendar. In those cases,
+the month were a woman stopped using a method of contraception can still
+be determined for samples where monthly contraceptive use is recorded in the
+Reproductive Events calendar. If neither the current month nor the next
+future month is missing, a woman will be said to have "stopped" if in the
+next month she switched methods, became pregnant, or began using no method at
+all. For these cases, an NA value indicates that cessation could not be
+determined (e.g. one or both months has a missing response).
+
+Because NA values may represent both "NIU" and "missing" depending on the
+sample, \emph{the recommended value label for NA is for
+this variable is "No response or NIU"}. The interpretation for
+NA values in the total number of "stop" months can be treated
+as "NIU" where the universe includes months where contraception was used.
 }
 \author{
 Matt Gunther
