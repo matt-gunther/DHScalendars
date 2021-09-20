@@ -17,7 +17,8 @@ recodes for the Reproductive Events calendar).}
 Create all variables related to the Reproductive Events
 calendar (see details). If this calendar was not included in the sample (or
 if some of the required information is not available), all
-variables will \emph{still be created}, but all values will be NA.
+variables will \emph{still be created}, but all values will be NA. See
+note regarding NA values for contraceptive use.
 }
 \details{
 The following variables will be created using case logic provided
@@ -52,32 +53,34 @@ exists and is not explicitly handled here, the value NA will be returned!}
 
   \item{
     \strong{birth} Logical: TRUE if \code{vcal_reprod} is 100,
-    FALSE if it is any other non-missing value.
+    FALSE if it is any other non-missing value (NA otherwise).
   }
 
   \item{
     \strong{preg} Logical: TRUE if \code{vcal_reprod} is 200,
-    FALSE if it is any other non-missing value.
+    FALSE if it is any other non-missing value (NA otherwise).
   }
 
   \item{
     \strong{term} Logical: TRUE if \code{vcal_reprod} is 300,
-    FALSE if it is any other non-missing value.
+    FALSE if it is any other non-missing value (NA otherwise).
   }
 
   \item{
     \strong{contr} Logical: TRUE if \code{vcal_reprod} is
-    a value between 1 and 90, FALSE if it is any other non-missing value.
+    a value between 1 and 90, FALSE if it is any other non-missing value
+    (NA otherwise).
   }
 
   \item{
     \strong{eventpbt} Logical: TRUE if \code{birth}, \code{preg}, or
-    \code{term} is TRUE, FALSE if they are all FALSE and non-missing.
+    \code{term} is TRUE, FALSE if they are all FALSE and non-missing
+    (NA otherwise).
   }
 
   \item{
     \strong{eventwfp} Logical: TRUE if \code{eventpbt} or \code{contr}
-    is TRUE, FALSE if both are FALSE and non-missing.
+    is TRUE, FALSE if both are FALSE and non-missing (NA otherwise).
   }
 
   \item{
@@ -85,11 +88,11 @@ exists and is not explicitly handled here, the value NA will be returned!}
     and the previous month's value for \code{vcal_reprod} is between 0:90
     \emph{and} different from the current month. FALSE if \code{vcal_reprod}
     is between 1:90 and the previous month's value for \code{vcal_reprod}
-    is the \emph{same} as the current month. Not available in any other
-    case (e.g. excludes the first month of the recall timeline; excludes
-    months where \code{vcal_reprod} is beyond 1:90;
-    excludes months where the previous month \code{vcal_reprod} is beyond
-    1:90).
+    is the \emph{same} as the current month. NA in any other
+    case (e.g. the first month of the recall timeline is NA;
+    months where \code{vcal_reprod} is beyond 1:90 are NA;
+    months where the previous month \code{vcal_reprod} is beyond
+    0:90 are NA).
   }
 
   \item{
@@ -97,8 +100,8 @@ exists and is not explicitly handled here, the value NA will be returned!}
     \emph{and} \code{vcal_reprod} in the previous month \strong{is not}
     0 (i.e. the method was started following a month of non-use of any
     method). FALSE if \code{contr_start} is TRUE  \emph{and}
-    \code{vcal_reprod} in the previous month \strong{is} 0. Not available if
-    \code{contr_start} is not available (NA).
+    \code{vcal_reprod} in the previous month \strong{is} 0. NA if
+    \code{contr_start} is NA.
   }
 
   \item{
@@ -114,9 +117,9 @@ exists and is not explicitly handled here, the value NA will be returned!}
 
   \item{
     \strong{birth_total} Integer: the total number of months per person
-    where \code{birth} is TRUE (NA if all values for \code{birth} are NA). All
-    months for the person reflect the same total (this is not a cumulative
-    sum).
+    where \code{birth} is TRUE (NA if all values for \code{birth} are NA).
+    All months for the person reflect the same total (this is not a
+    cumulative sum).
   }
 
   \item{
@@ -136,19 +139,17 @@ exists and is not explicitly handled here, the value NA will be returned!}
   \item{
   \strong{preg_rc} Logical: TRUE for all months in a continuous
     pregnancy if the outcome of the pregnancy (birth or termination)
-    happened
-    after the date of the interview. FALSE for all months in a continuous
-    pregnancy otherwise. Not available (NA) for all months that were not
-    part
-    of a continuous pregnancy.
+    happened after the date of the interview. FALSE for all months in a
+    continuous pregnancy otherwise. NA for all months that
+    were not part of a continuous pregnancy.
   }
 
   \item{
     \strong{preg_lc} Logical: TRUE for all months in a continuous
     pregnancy (including months of birth or termination) that overlaps
     with the first month in the recall timeline. FALSE for all months in a
-    continuous pregnancy otherwise. Not
-    available (NA) for months that were not part of a continuous pregnancy.
+    continuous pregnancy otherwise. NA for months that were not part of a
+    continuous pregnancy.
   }
 
   \item{
@@ -156,16 +157,45 @@ exists and is not explicitly handled here, the value NA will be returned!}
     in a single continuous pregnancy (including months of birth or
     termination) where \emph{both} \code{preg_rc} and
     \code{preg_lc} are FALSE. All months in the pregnancy reflect the
-    same total (this is not a cumulative sum). Not available (NA) for
+    same total (this is not a cumulative sum). NA for
     months that were not part of a continuous pregnancy.
   }
 
   \item{
     \strong{preg_long} Logical: TRUE if \code{preg_length} is longer
-    than 9 months. Not available (NA) for months where \code{preg_length}
+    than 9 months. NA for months where \code{preg_length}
     is not available.
   }
 }
+}
+\note{
+All samples seem to include a Reproductive Events calendar, but
+\strong{some samples do no include responses for monthly contraceptive use}
+(you will find only "pregnancy", "birth", or "termination" events listed).
+In these samples, it is common to see blank values in the original DHS
+string; we interpret these \strong{blanks as months in which a reproductive
+event did not occur}. For example, if the Reproductive Events calendar for a
+woman in one of these samples contains \emph{only blanks}, we assume that
+she has zero "pregnant" months. These samples include \strong{no NA values
+for missing data} because missing data are indistinguishable from blank
+values (possibly except for blanks in the middle of a continuous pregnancy).
+
+The majority of samples \strong{do contain responses for monthly
+contraceptive use}, and these samples \strong{do contain NA values for
+missing data} (e.g. a woman could not recall what method she used in a
+particular month). For example, if the Reproductive Events calendar for a
+woman in one of these samples contains \emph{only missing values}, we
+assume that the woman was NIU (not in universe) for the Reproductive Events
+calendar section of the survey (or else declined to provide any responses);
+all months for such a woman will be marked NA (e.g. the calculated sum
+for her total number of "pregnant" months will be NA).
+
+Because NA values may represent both "NIU" and "missing" depending on the
+sample, \emph{the recommended value label for NA is for
+monthly indicators is "No response or NIU"}. The interpretation for
+personal totals or event summaries (e.g. length of pregnancy) can be treated
+as "NIU" where the universe includes relevant months (e.g. months that
+were part of a single, continuous pregnancy).
 }
 \author{
 Matt Gunther

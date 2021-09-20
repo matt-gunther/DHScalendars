@@ -43,7 +43,8 @@
 <meta property="og:description" content="Create all variables related to the Reproductive Events
 calendar (see details). If this calendar was not included in the sample (or
 if some of the required information is not available), all
-variables will still be created, but all values will be NA." />
+variables will still be created, but all values will be NA. See
+note regarding NA values for contraceptive use." />
 
 
 
@@ -75,7 +76,7 @@ variables will still be created, but all values will be NA." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DHScalendars</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5</span>
       </span>
     </div>
 
@@ -136,7 +137,8 @@ variables will still be created, but all values will be NA." />
     <p>Create all variables related to the Reproductive Events
 calendar (see details). If this calendar was not included in the sample (or
 if some of the required information is not available), all
-variables will <em>still be created</em>, but all values will be NA.</p>
+variables will <em>still be created</em>, but all values will be NA. See
+note regarding NA values for contraceptive use.</p>
     </div>
 
     <pre class="usage"><span class='fu'>vcal_reprod</span><span class='op'>(</span><span class='va'>dat</span>, vcal_reprod_recodes <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
@@ -176,72 +178,99 @@ exists and is not explicitly handled here, the value NA will be returned!</em></
 <li><p><strong>seq</strong> month index, where the earliest month gets 1 and the
     final month usually gets 80 (length of the original calendar string)</p></li>
 <li><p><strong>birth</strong> Logical: TRUE if <code>vcal_reprod</code> is 100,
-    FALSE if it is any other non-missing value.</p></li>
+    FALSE if it is any other non-missing value (NA otherwise).</p></li>
 <li><p><strong>preg</strong> Logical: TRUE if <code>vcal_reprod</code> is 200,
-    FALSE if it is any other non-missing value.</p></li>
+    FALSE if it is any other non-missing value (NA otherwise).</p></li>
 <li><p><strong>term</strong> Logical: TRUE if <code>vcal_reprod</code> is 300,
-    FALSE if it is any other non-missing value.</p></li>
+    FALSE if it is any other non-missing value (NA otherwise).</p></li>
 <li><p><strong>contr</strong> Logical: TRUE if <code>vcal_reprod</code> is
-    a value between 1 and 90, FALSE if it is any other non-missing value.</p></li>
+    a value between 1 and 90, FALSE if it is any other non-missing value
+    (NA otherwise).</p></li>
 <li><p><strong>eventpbt</strong> Logical: TRUE if <code>birth</code>, <code>preg</code>, or
-    <code>term</code> is TRUE, FALSE if they are all FALSE and non-missing.</p></li>
+    <code>term</code> is TRUE, FALSE if they are all FALSE and non-missing
+    (NA otherwise).</p></li>
 <li><p><strong>eventwfp</strong> Logical: TRUE if <code>eventpbt</code> or <code>contr</code>
-    is TRUE, FALSE if both are FALSE and non-missing.</p></li>
+    is TRUE, FALSE if both are FALSE and non-missing (NA otherwise).</p></li>
 <li><p><strong>contr_start</strong> Logical: TRUE if <code>vcal_reprod</code> is between 1:90
     and the previous month's value for <code>vcal_reprod</code> is between 0:90
     <em>and</em> different from the current month. FALSE if <code>vcal_reprod</code>
     is between 1:90 and the previous month's value for <code>vcal_reprod</code>
-    is the <em>same</em> as the current month. Not available in any other
-    case (e.g. excludes the first month of the recall timeline; excludes
-    months where <code>vcal_reprod</code> is beyond 1:90;
-    excludes months where the previous month <code>vcal_reprod</code> is beyond
-    1:90).</p></li>
+    is the <em>same</em> as the current month. NA in any other
+    case (e.g. the first month of the recall timeline is NA;
+    months where <code>vcal_reprod</code> is beyond 1:90 are NA;
+    months where the previous month <code>vcal_reprod</code> is beyond
+    0:90 are NA).</p></li>
 <li><p><strong>contr_change</strong> Logical: TRUE if <code>contr_start</code> is TRUE
     <em>and</em> <code>vcal_reprod</code> in the previous month <strong>is not</strong>
     0 (i.e. the method was started following a month of non-use of any
     method). FALSE if <code>contr_start</code> is TRUE  <em>and</em>
-    <code>vcal_reprod</code> in the previous month <strong>is</strong> 0. Not available if
-    <code>contr_start</code> is not available (NA).</p></li>
+    <code>vcal_reprod</code> in the previous month <strong>is</strong> 0. NA if
+    <code>contr_start</code> is NA.</p></li>
 <li><p><strong>contr_stop</strong> see <code><a href='vcal_discont.html'>vcal_discont()</a></code></p></li>
 <li><p><strong>preg_total</strong> Integer: the total number of months per person
-    where <code>preg</code> is TRUE (NA if <code>preg</code> is not available). All
+    where <code>preg</code> is TRUE (NA if all values for <code>preg</code> are NA). All
     months for the person reflect the same total (this is not a cumulative
     sum).</p></li>
 <li><p><strong>birth_total</strong> Integer: the total number of months per person
-    where <code>birth</code> is TRUE (NA if <code>birth</code> is not available). All
-    months for the person reflect the same total (this is not a cumulative
-    sum).</p></li>
+    where <code>birth</code> is TRUE (NA if all values for <code>birth</code> are NA).
+    All months for the person reflect the same total (this is not a
+    cumulative sum).</p></li>
 <li><p><strong>term_total</strong> Integer: the total number of months per person
-    where <code>term</code> is TRUE (NA if <code>term</code> is not available). All
+    where <code>term</code> is TRUE (NA if all values for <code>term</code> are NA). All
     months for the person reflect the same total (this is not a cumulative
     sum).</p></li>
 <li><p><strong>contr_total</strong> Integer: the total number of months per person
-    where <code>contr</code> is TRUE (NA if <code>contr</code> is not available). All
-    months for the person reflect the same total (this is not a cumulative
-    sum).</p></li>
+    where <code>contr</code> is TRUE (NA if all values for <code>contr</code> are NA).
+    All months for the person reflect the same total (this is not a
+    cumulative sum).</p></li>
 <li><p><strong>preg_rc</strong> Logical: TRUE for all months in a continuous
     pregnancy if the outcome of the pregnancy (birth or termination)
-    happened
-    after the date of the interview. FALSE for all months in a continuous
-    pregnancy otherwise. Not available (NA) for all months that were not
-    part
-    of a continuous pregnancy.</p></li>
+    happened after the date of the interview. FALSE for all months in a
+    continuous pregnancy otherwise. NA for all months that
+    were not part of a continuous pregnancy.</p></li>
 <li><p><strong>preg_lc</strong> Logical: TRUE for all months in a continuous
     pregnancy (including months of birth or termination) that overlaps
     with the first month in the recall timeline. FALSE for all months in a
-    continuous pregnancy otherwise. Not
-    available (NA) for months that were not part of a continuous pregnancy.</p></li>
+    continuous pregnancy otherwise. NA for months that were not part of a
+    continuous pregnancy.</p></li>
 <li><p><strong>preg_length</strong> Integer: the total number of months included
     in a single continuous pregnancy (including months of birth or
     termination) where <em>both</em> <code>preg_rc</code> and
     <code>preg_lc</code> are FALSE. All months in the pregnancy reflect the
-    same total (this is not a cumulative sum). Not available (NA) for
+    same total (this is not a cumulative sum). NA for
     months that were not part of a continuous pregnancy.</p></li>
 <li><p><strong>preg_long</strong> Logical: TRUE if <code>preg_length</code> is longer
-    than 9 months. Not available (NA) for months where <code>preg_length</code>
+    than 9 months. NA for months where <code>preg_length</code>
     is not available.</p></li>
 </ul>
 
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+
+    <p>All samples seem to include a Reproductive Events calendar, but
+<strong>some samples do no include responses for monthly contraceptive use</strong>
+(you will find only "pregnancy", "birth", or "termination" events listed).
+In these samples, it is common to see blank values in the original DHS
+string; we interpret these <strong>blanks as months in which a reproductive
+event did not occur</strong>. For example, if the Reproductive Events calendar for a
+woman in one of these samples contains <em>only blanks</em>, we assume that
+she has zero "pregnant" months. These samples include <strong>no NA values
+for missing data</strong> because missing data are indistinguishable from blank
+values (possibly except for blanks in the middle of a continuous pregnancy).</p>
+<p>The majority of samples <strong>do contain responses for monthly
+contraceptive use</strong>, and these samples <strong>do contain NA values for
+missing data</strong> (e.g. a woman could not recall what method she used in a
+particular month). For example, if the Reproductive Events calendar for a
+woman in one of these samples contains <em>only missing values</em>, we
+assume that the woman was NIU (not in universe) for the Reproductive Events
+calendar section of the survey (or else declined to provide any responses);
+all months for such a woman will be marked NA (e.g. the calculated sum
+for her total number of "pregnant" months will be NA).</p>
+<p>Because NA values may represent both "NIU" and "missing" depending on the
+sample, <em>the recommended value label for NA is for
+monthly indicators is "No response or NIU"</em>. The interpretation for
+personal totals or event summaries (e.g. length of pregnancy) can be treated
+as "NIU" where the universe includes relevant months (e.g. months that
+were part of a single, continuous pregnancy).</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Matt Gunther</p>
