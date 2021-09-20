@@ -34,12 +34,14 @@ exists and is not explicitly handled here, the value NA will be returned!}
   }
   \item{
     \strong{abort_total} Integer: total number of months per person where
-    \code{abort} is TRUE. Zero if the person was never pregnant or never
-    experienced termination.
+    \code{abort} is TRUE.
 
-    NA only if \code{vcal_term} was not included in the sample.
+    Zero if none of the woman's terminations were abortions.
 
-    All values for the person reflect the same total
+    NA if the woman never experienced pregnancy termination, or if
+    \code{vcal_term} was not included in the sample.
+
+    All months for a given woman reflect the same total
     (this is not a cumulative sum).
   }
   \item{
@@ -53,12 +55,14 @@ exists and is not explicitly handled here, the value NA will be returned!}
   }
   \item{
     \strong{miscar_total} Integer: total number of months per person where
-    \code{miscar} is TRUE. Zero if the person was never pregnant or never
-    experienced termination.
+    \code{miscar} is TRUE.
 
-    NA only if \code{vcal_term} was not included in the sample.
+    Zero if none of the woman's terminations were miscarriages
 
-    All values for the person reflect the same total
+    NA if the woman never experienced pregnancy termination, or if
+    \code{vcal_term} was not included in the sample.
+
+    All months for a given woman reflect the same total
     (this is not a cumulative sum).
   }
   \item{
@@ -73,12 +77,14 @@ exists and is not explicitly handled here, the value NA will be returned!}
   }
   \item{
     \strong{sbirth_total} Integer: total number of months per person where
-    \code{sbirth} is TRUE. Zero if the person was never pregnant or never
-    experienced termination.
+    \code{sbirth} is TRUE.
 
-    NA only if \code{vcal_term} was not included in the sample.
+    Zero if none of the woman's terminations were stillbirths.
 
-    All values for the person reflect the same total
+    NA if the woman never experienced pregnancy termination, or if
+    \code{vcal_term} was not included in the sample.
+
+    All months for a given woman reflect the same total
     (this is not a cumulative sum).
   }
 }

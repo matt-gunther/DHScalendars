@@ -1,5 +1,6 @@
 #' @title Pregnancy Termination Calendar
 #' @author Matt Gunther
+#'
 #' @description Create all variables related to the Pregnancy Termination
 #' calendar
 #' (see details). If this calendar was not included in the sample (or if some
@@ -21,12 +22,14 @@
 #'   }
 #'   \item{
 #'     \strong{abort_total} Integer: total number of months per person where
-#'     \code{abort} is TRUE. Zero if the person was never pregnant or never
-#'     experienced termination.
+#'     \code{abort} is TRUE.
 #'
-#'     NA only if \code{vcal_term} was not included in the sample.
+#'     Zero if none of the woman's terminations were abortions.
 #'
-#'     All values for the person reflect the same total
+#'     NA if the woman never experienced pregnancy termination, or if
+#'     \code{vcal_term} was not included in the sample.
+#'
+#'     All months for a given woman reflect the same total
 #'     (this is not a cumulative sum).
 #'   }
 #'   \item{
@@ -40,12 +43,14 @@
 #'   }
 #'   \item{
 #'     \strong{miscar_total} Integer: total number of months per person where
-#'     \code{miscar} is TRUE. Zero if the person was never pregnant or never
-#'     experienced termination.
+#'     \code{miscar} is TRUE.
 #'
-#'     NA only if \code{vcal_term} was not included in the sample.
+#'     Zero if none of the woman's terminations were miscarriages
 #'
-#'     All values for the person reflect the same total
+#'     NA if the woman never experienced pregnancy termination, or if
+#'     \code{vcal_term} was not included in the sample.
+#'
+#'     All months for a given woman reflect the same total
 #'     (this is not a cumulative sum).
 #'   }
 #'   \item{
@@ -60,12 +65,14 @@
 #'   }
 #'   \item{
 #'     \strong{sbirth_total} Integer: total number of months per person where
-#'     \code{sbirth} is TRUE. Zero if the person was never pregnant or never
-#'     experienced termination.
+#'     \code{sbirth} is TRUE.
 #'
-#'     NA only if \code{vcal_term} was not included in the sample.
+#'     Zero if none of the woman's terminations were stillbirths.
 #'
-#'     All values for the person reflect the same total
+#'     NA if the woman never experienced pregnancy termination, or if
+#'     \code{vcal_term} was not included in the sample.
+#'
+#'     All months for a given woman reflect the same total
 #'     (this is not a cumulative sum).
 #'   }
 #' }
@@ -97,9 +104,11 @@ vcal_term <- function(dat){
     ) %>%
     group_by(caseid) %>%
     mutate(
-      abort_total = case_when(is_avail ~ sum(abort, na.rm = T)),
-      miscar_total = case_when(is_avail ~ sum(miscar, na.rm = T)),
-      sbirth_total = case_when(is_avail ~ sum(sbirth, na.rm = T))
+      across(
+        c(abort, miscar, sbirth),
+        ~case_when(is_avail & !all(is.na(.x)) ~ sum(.x, na.rm = TRUE)),
+        .names = "{.col}_total"
+      )
     ) %>%
     ungroup()
 
