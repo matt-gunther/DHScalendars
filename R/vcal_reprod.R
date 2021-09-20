@@ -216,6 +216,18 @@ vcal_reprod <- function(
       birth = vcal_reprod == 100,
       preg = vcal_reprod == 200,
       term = vcal_reprod == 300,
+
+      # revise birth, preg, & term for special samples:
+      # if !contr_avail, NA values are assumed to be FALSE,
+      # if contr_avail, NA values are assumed to be missing / NIU (still NA)
+      across(
+        c(birth, preg, term),
+        ~case_when(
+          is.na(vcal_reprod) & !contr_avail ~ FALSE,
+          T ~ .x
+        )
+      ),
+
       contr = case_when(
         contr_avail & !is.na(vcal_reprod) ~ vcal_reprod %in% 1:90
       ),
@@ -227,16 +239,6 @@ vcal_reprod <- function(
   dat <- dat %>%
     group_by(caseid) %>%
     mutate(
-      # revise birth, preg, term, and eventpbt:
-      # if all months are NA and !contr_avail, set to 0
-      across(
-        c(birth, preg, term, eventpbt),
-        ~case_when(
-          all(is.na(vcal_reprod)) & !contr_avail ~ FALSE,
-          T ~ .x
-        )
-      ),
-
       # contraceptive use episodes
       contr_start = case_when(
         contr &
