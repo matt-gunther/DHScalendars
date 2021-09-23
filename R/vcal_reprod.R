@@ -12,11 +12,13 @@
 #' (you will find only "pregnancy", "birth", or "termination" events listed).
 #' In these samples, it is common to see blank values in the original DHS
 #' string; we interpret these \strong{blanks as months in which a reproductive
-#' event did not occur}. For example, if the Reproductive Events calendar for a
+#' event did not occur} and recode them as the value 0.
+#' For example, if the Reproductive Events calendar for a
 #' woman in one of these samples contains \emph{only blanks}, we assume that
 #' she has zero "pregnant" months. These samples include \strong{no NA values
-#' for missing data} because missing data are indistinguishable from blank
-#' values (possibly except for blanks in the middle of a continuous pregnancy).
+#' for missing data} because missing data are indistinguishable from the
+#' original blank DHS values
+#' (possibly except for blanks in the middle of a continuous pregnancy).
 #'
 #' The majority of samples \strong{do contain responses for monthly
 #' contraceptive use}, and these samples \strong{do contain NA values for
@@ -248,7 +250,7 @@ vcal_reprod <- function(
       preg = vcal_reprod == 200,
       term = vcal_reprod == 300,
 
-      # revise birth, preg, & term for special samples:
+      # revise birth, preg, & term for special samples (B,P,T only):
       # if !contr_avail, NA values are assumed to be FALSE,
       # if contr_avail, NA values are assumed to be missing / NIU (still NA)
       across(
@@ -327,6 +329,15 @@ vcal_reprod <- function(
     ungroup() %>%
     select(id, cmc_month, preg_rc, preg_lc, preg_length, preg_long) %>%
     full_join(dat, ., by = c("id", "cmc_month"))
+
+  # Revise vcal_reprod for special samples (B,P,T only)
+  # if !contr_avail, NA values are given code 0: non-missing, non-event
+  # if contr_avail, no action: code 0 is non-event & non-use of FP
+  dat <- dat %>%
+    mutate(vcal_reprod = case_when(
+      is.na(vcal_reprod) & !contr_avail ~ 0,
+      TRUE ~ vcal_reprod
+    ))
 
   # Re-attach attributes
   attr(dat, "dhs_path") <- dhs_path

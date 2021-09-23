@@ -76,7 +76,7 @@ regarding interpretation guidelines for NA values." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DHScalendars</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.9</span>
       </span>
     </div>
 
@@ -189,8 +189,10 @@ exists and is not explicitly handled here, the value NA will be returned!</em></
     <code>contr_stop</code> is only not available (NA) if both criteria are
     not available. In the rare case that the criteria lead to opposite
     conclusions, the first criterion takes precedent.</p></li>
-<li><p><strong>contr_stop_total</strong> Integer: total number of months per person where
-    <code>contr_stop</code> is TRUE (NA if <code>contr_stop</code> is not available).
+<li><p><strong>contr_stop_total</strong> Integer: total number of months per person
+    where <code>contr_stop</code> is TRUE. NA if all months of <code>contr_stop</code>
+    are NA (e.g. never used contraception, or contraception not included
+    in the sample questionnaire).
     All months for the person reflect the same total (this is not a
     cumulative sum).</p></li>
 </ul>
@@ -218,7 +220,8 @@ determined (e.g. one or both months has a missing response).</p>
 sample, <em>the recommended value label for NA is for
 this variable is "No response or NIU"</em>. The interpretation for
 NA values in the total number of "stop" months can be treated
-as "NIU" where the universe includes months where contraception was used.</p>
+as "NIU" where the universe includes women who reported using contraception
+in at least one month.</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Matt Gunther</p>

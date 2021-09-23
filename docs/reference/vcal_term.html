@@ -76,7 +76,7 @@ of the required information is not available), all variables will still be
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DHScalendars</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.9</span>
       </span>
     </div>
 
@@ -167,8 +167,8 @@ exists and is not explicitly handled here, the value NA will be returned!</em></
     not included in the sample, or if the response in <code>vcal_term</code> is
     missing.</p></li>
 <li><p><strong>abort_total</strong> Integer: total number of months per person where
-    <code>abort</code> is TRUE. Zero if the person was never pregnant or never
-    experienced termination.    NA only if <code>vcal_term</code> was not included in the sample.    All values for the person reflect the same total
+    <code>abort</code> is TRUE.    Zero if none of the woman's terminations were abortions.    NA if the woman never experienced pregnancy termination, or if
+    <code>vcal_term</code> was not included in the sample.    All months for a given woman reflect the same total
     (this is not a cumulative sum).</p></li>
 <li><p><strong>miscar</strong> Logical: TRUE if <code>vcal_term</code> is "M" or "C" and
     <code>vcal_reprod</code> indicates that the woman experienced pregnancy
@@ -178,8 +178,8 @@ exists and is not explicitly handled here, the value NA will be returned!</em></
     not included in the sample, or if the response in <code>vcal_term</code> is
     missing.</p></li>
 <li><p><strong>miscar_total</strong> Integer: total number of months per person where
-    <code>miscar</code> is TRUE. Zero if the person was never pregnant or never
-    experienced termination.    NA only if <code>vcal_term</code> was not included in the sample.    All values for the person reflect the same total
+    <code>miscar</code> is TRUE.    Zero if none of the woman's terminations were miscarriages    NA if the woman never experienced pregnancy termination, or if
+    <code>vcal_term</code> was not included in the sample.    All months for a given woman reflect the same total
     (this is not a cumulative sum).</p></li>
 <li><p><strong>sbirth</strong> Logical: TRUE if <code>vcal_term</code> is "S" and
     <code>vcal_reprod</code> indicates that the woman experienced pregnancy
@@ -190,8 +190,8 @@ exists and is not explicitly handled here, the value NA will be returned!</em></
     not included in the sample, or if the response in <code>vcal_term</code> is
     missing.</p></li>
 <li><p><strong>sbirth_total</strong> Integer: total number of months per person where
-    <code>sbirth</code> is TRUE. Zero if the person was never pregnant or never
-    experienced termination.    NA only if <code>vcal_term</code> was not included in the sample.    All values for the person reflect the same total
+    <code>sbirth</code> is TRUE.    Zero if none of the woman's terminations were stillbirths.    NA if the woman never experienced pregnancy termination, or if
+    <code>vcal_term</code> was not included in the sample.    All months for a given woman reflect the same total
     (this is not a cumulative sum).</p></li>
 </ul>
 

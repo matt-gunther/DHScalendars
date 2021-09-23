@@ -174,11 +174,13 @@ All samples seem to include a Reproductive Events calendar, but
 (you will find only "pregnancy", "birth", or "termination" events listed).
 In these samples, it is common to see blank values in the original DHS
 string; we interpret these \strong{blanks as months in which a reproductive
-event did not occur}. For example, if the Reproductive Events calendar for a
+event did not occur} and recode them as the value 0.
+For example, if the Reproductive Events calendar for a
 woman in one of these samples contains \emph{only blanks}, we assume that
 she has zero "pregnant" months. These samples include \strong{no NA values
-for missing data} because missing data are indistinguishable from blank
-values (possibly except for blanks in the middle of a continuous pregnancy).
+for missing data} because missing data are indistinguishable from the
+original blank DHS values
+(possibly except for blanks in the middle of a continuous pregnancy).
 
 The majority of samples \strong{do contain responses for monthly
 contraceptive use}, and these samples \strong{do contain NA values for
