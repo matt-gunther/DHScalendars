@@ -2,12 +2,12 @@
 title: "Install this R Package"
 ---
 
-This R package is available on github.umn.edu. 
+This R package is available on [UMN Enterprise GitHub](https://github.umn.edu/mpc/DHScalendars) to all MPC members. 
 
-Derek Burk maintains an R package called `umnstall` that makes it easy to install R packages from github.umn.edu. Follow his [instructions to install umnstall](https://github.umn.edu/burkx031/umnstall), then run this code in R:
+Derek Burk maintains an R package called `umnstall` that makes it easy to install R packages from UMN Enterprise GitHub. Follow his [instructions to install umnstall](https://github.umn.edu/burkx031/umnstall), then run this code in R:
 
 ```{r, eval = F}
-umnstall::umnstall("mgunther/DHScalendars")
+umnstall::umnstall("mpc/DHScalendars")
 ```
 
 # Alternative method
@@ -31,7 +31,7 @@ Finally, install the `DHScalendars` package using:
 ```{r eval=FALSE}
 if (!require(devtools)) install.packages("devtools")
 devtools::install_github(
-  "mgunther/DHScalendars", 
+  "mpc/DHScalendars", 
   host = "github.umn.edu/api/v3",
   dependencies = TRUE
 )

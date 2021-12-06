@@ -60,7 +60,7 @@ In this example, it's clear that `vcal_1` represents the reproductive events cal
 
 If you cannot easily determine what topic a particular calendar covers, you'll need to consult the available sample documentation (especially Final Report documents) on the DHS website. You may also try comparing your sample to an earlier sample from the same country. As a last resort, make a guess and run the sample: if you get an error or a distribution of responses that doesn't match other sample data, try again! 
 
-**Warning: vcal columns can only store numbers. Please use the number associated with the vcal_ variable for your sample.** In rare cases, you may find calendar data stored in the IR file under an unusual name (see eg2995ir `vcal_term`). In this case, please insert the number 0 in place of the unusual name; you'll need to edit some of the functions in this package to make special accommodations for such a sample (*instructions coming soon*).
+**Warning: vcal columns can only store numbers. Please use the number associated with the vcal_ variable for your sample.** In rare cases, you may find calendar data stored in the IR file under an unusual name (see eg2995ir `vcal_term`). In this case, please insert the number 0 in place of the unusual name; you will need to hard-code this information into the file `reshape_vcal_input_data.R`.
 
 # vcal_reprod_recodes.csv
 
@@ -164,9 +164,15 @@ for(s in samples){
 }
 ```
 
+## Using make_lr on the cluster
+
+When the first large batch of LR files was processed in 2021, the job included several samples (e.g. India 2015) that would overwhelm the memory available to  R. Moreover, processing for all samples would take many hours. 
+
+As an alternative to processing samples on the RStudio server, I used Derek's excellent [runoncluster](https://github.umn.edu/burkx031/runoncluster) package for R to send this job to the cluster. You'll need to follow his instructions for setting up package installation instructions with [renv](https://rstudio.github.io/renv/articles/renv.html) and `git`.
+
 # Python
  
-Use a Terminal on a general purpose server (e.g. `gp2`) and run the `dhs_calendar_linking` **Python script**. This will create *both* a linked data file *and* and new data dictionary for your new `lr` sample. 
+When you've finished processing LR samples with  `make_lr`, use a Terminal on a general purpose server (e.g. `gp2`) and run the `dhs_calendar_linking` **Python script**. This will create *both* a linked data file *and* and new data dictionary for your new `lr` sample. 
 
 If you provide only one sample, the function will run on the general purpose server (e.g. `gp2`). For example:
 

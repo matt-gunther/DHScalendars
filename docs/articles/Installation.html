@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DHScalendars</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
@@ -68,7 +64,14 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.umn.edu/mpc/dhscalendars/" class="external-link">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -78,37 +81,37 @@
 
       
 
-      </header><script src="Installation_files/header-attrs-2.9/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Install this R Package</h1>
             
       
-      
+      <small class="dont-index">Source: <a href="https://github.umn.edu/mpc/dhscalendars/blob/HEAD/vignettes/Installation.Rmd" class="external-link"><code>vignettes/Installation.Rmd</code></a></small>
       <div class="hidden name"><code>Installation.Rmd</code></div>
 
     </div>
 
     
     
-<p>This R package is available on github.umn.edu.</p>
-<p>Derek Burk maintains an R package called <code>umnstall</code> that makes it easy to install R packages from github.umn.edu. Follow his <a href="https://github.umn.edu/burkx031/umnstall">instructions to install umnstall</a>, then run this code in R:</p>
+<p>This R package is available on <a href="https://github.umn.edu/mpc/DHScalendars" class="external-link">UMN Enterprise GitHub</a> to all MPC members.</p>
+<p>Derek Burk maintains an R package called <code>umnstall</code> that makes it easy to install R packages from UMN Enterprise GitHub. Follow his <a href="https://github.umn.edu/burkx031/umnstall" class="external-link">instructions to install umnstall</a>, then run this code in R:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">umnstall</span><span class="fu">::</span><span class="fu">umnstall</span><span class="op">(</span><span class="st">"mgunther/DHScalendars"</span><span class="op">)</span></code></pre></div>
-<div id="alternative-method" class="section level1">
-<h1 class="hasAnchor">
-<a href="#alternative-method" class="anchor"></a>Alternative method</h1>
+<code class="sourceCode R"><span class="fu">umnstall</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/umnstall/man/umnstall.html" class="external-link">umnstall</a></span><span class="op">(</span><span class="st">"mpc/DHScalendars"</span><span class="op">)</span></code></pre></div>
+<div class="section level1">
+<h1 id="alternative-method">Alternative method<a class="anchor" aria-label="anchor" href="#alternative-method"></a>
+</h1>
 <p>If you are unable to install <code>DHScalendars</code> using the method above, you may also install it using <code>devtools</code>. This procedure will install dependencies, but it will take much longer than <code>umnstall</code> (and you may need to restart R multiple times).</p>
-<p>First <a href="https://github.umn.edu/settings/tokens">create a GitHub personal access token (PAT)</a> if you don’t have one already, being sure to check the box for “repo” scope on the generate token page.</p>
+<p>First <a href="https://github.umn.edu/settings/tokens" class="external-link">create a GitHub personal access token (PAT)</a> if you don’t have one already, being sure to check the box for “repo” scope on the generate token page.</p>
 <p>Next, add a line like this to the file “.Renviron” in your home directory (create the file if it doesn’t exist):</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">GITHUB_PAT</span> <span class="op">=</span> <span class="st">"&lt;copy your PAT here&gt;"</span></code></pre></div>
 <p>Next, restart your R session (Ctrl/Cmd + Shift + F10) so that the GITHUB_PAT environment variable gets created.</p>
 <p>Finally, install the <code>DHScalendars</code> package using:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/">devtools</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span>
-  <span class="st">"mgunther/DHScalendars"</span>, 
+<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/" class="external-link">devtools</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span>
+  <span class="st">"mpc/DHScalendars"</span>, 
   host <span class="op">=</span> <span class="st">"github.umn.edu/api/v3"</span>,
   dependencies <span class="op">=</span> <span class="cn">TRUE</span>
 <span class="op">)</span></code></pre></div>
@@ -127,11 +130,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Matt Gunther.</p>
+  <p></p>
+<p>Developed by Matt Gunther.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -139,6 +144,8 @@
 
   
 
+
+  
 
   </body>
 </html>

@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DHScalendars</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
@@ -68,7 +64,14 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.umn.edu/mpc/dhscalendars/" class="external-link">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -78,14 +81,14 @@
 
       
 
-      </header><script src="Quick-Start_files/header-attrs-2.9/header-attrs.js"></script><script src="Quick-Start_files/kePrint-0.0.1/kePrint.js"></script><link href="Quick-Start_files/lightable-0.0.1/lightable.css" rel="stylesheet">
+      </header><script src="Quick-Start_files/kePrint-0.0.1/kePrint.js"></script><link href="Quick-Start_files/lightable-0.0.1/lightable.css" rel="stylesheet">
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Quick Start</h1>
             
       
-      
+      <small class="dont-index">Source: <a href="https://github.umn.edu/mpc/dhscalendars/blob/HEAD/vignettes/Quick-Start.Rmd" class="external-link"><code>vignettes/Quick-Start.Rmd</code></a></small>
       <div class="hidden name"><code>Quick-Start.Rmd</code></div>
 
     </div>
@@ -102,14 +105,14 @@
 <li>Use the Python function <code>dhs_calendar_linking</code> to create a linked LR data file and a data dictionary in the <code>dhs/country</code> folder for your sample.</li>
 </ol>
 <p>All <code>lr</code> files made this way will have the same number of calendar variables (all values will be <code>NA</code> if a particular source calendar was not available). They will contain one row per woman per month in the calendar recall timeline.</p>
-<div id="vcal_availability-csv" class="section level1">
-<h1 class="hasAnchor">
-<a href="#vcal_availability-csv" class="anchor"></a>vcal_availability.csv</h1>
+<div class="section level1">
+<h1 id="vcal_availability-csv">vcal_availability.csv<a class="anchor" aria-label="anchor" href="#vcal_availability-csv"></a>
+</h1>
 <p>Locate the file at <code>./ipums/dhs/general/calendar/sample_tracking/vcal_availability.csv</code> (substitute “.” for the location of the ipums folder on your system).</p>
-<p>The availability of calendars for each sample is recorded in this CSV file. <strong>Enter the availability of calendars for your sample in the next available row</strong>. You should not enter the number for any calendar where the only available values are “B” or otherwise missing. Consult the <a href="https://dhsprogram.com/publications/index.cfm">DHS Final Report</a> for your sample for help with this task.</p>
+<p>The availability of calendars for each sample is recorded in this CSV file. <strong>Enter the availability of calendars for your sample in the next available row</strong>. You should not enter the number for any calendar where the only available values are “B” or otherwise missing. Consult the <a href="https://dhsprogram.com/publications/index.cfm" class="external-link">DHS Final Report</a> for your sample for help with this task.</p>
 <p><em>Preview as of this writing:</em></p>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:800px; ">
-<table class="table table">
+<table class="table table" style="margin-left: auto; margin-right: auto;">
 <thead><tr>
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 SAMPLE
@@ -3960,34 +3963,244 @@ zw2015ir
 <td style="text-align:right;">
 </td>
 </tr>
+<tr>
+<td style="text-align:left;">
+lr2019ir
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+gm2019ir
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sl2019ir
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sn2018ir
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sn2019ir
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+bd2018ir
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+<td style="text-align:right;">
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 <p>For example, see sample <code>af2015ir</code> in row 1. The IR file for this sample contains 9 numbered <code>vcal_</code> variables, but only the first two contain data, while the others contains a single empty character string (i.e. " ") for each woman. One woman’s record in the IR file would look something like this:</p>
-<pre><code>#&gt; Rows: 1
-#&gt; Columns: 9
-#&gt; $ vcal_1 &lt;chr&gt; "                 555555555555500BPPPPPPPP555555BPPPPPPPP000000…
-#&gt; $ vcal_2 &lt;chr&gt; "                                         1                    …
-#&gt; $ vcal_3 &lt;chr&gt; " "
-#&gt; $ vcal_4 &lt;chr&gt; " "
-#&gt; $ vcal_5 &lt;chr&gt; " "
-#&gt; $ vcal_6 &lt;chr&gt; " "
-#&gt; $ vcal_7 &lt;chr&gt; " "
-#&gt; $ vcal_8 &lt;chr&gt; " "
-#&gt; $ vcal_9 &lt;chr&gt; " "</code></pre>
+<pre><code><span class="co">#&gt; Rows: 1</span>
+<span class="co">#&gt; Columns: 9</span>
+<span class="co">#&gt; $ vcal_1 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "                 555555555555500BPPPPPPPP555555BPPPPPPPP000000…</span>
+<span class="co">#&gt; $ vcal_2 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "                                         1                    …</span>
+<span class="co">#&gt; $ vcal_3 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> " "</span>
+<span class="co">#&gt; $ vcal_4 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> " "</span>
+<span class="co">#&gt; $ vcal_5 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> " "</span>
+<span class="co">#&gt; $ vcal_6 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> " "</span>
+<span class="co">#&gt; $ vcal_7 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> " "</span>
+<span class="co">#&gt; $ vcal_8 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> " "</span>
+<span class="co">#&gt; $ vcal_9 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> " "</span></code></pre>
 <p>In this example, it’s clear that <code>vcal_1</code> represents the reproductive events calendar, <code>vcal_reprod</code> (note that it contains the tell-tale “B” - or birth - preceded by several months of “P” - or pregnancy). This follows the normal pattern for most samples (all that we’ve processed as of this writing). The second calendar <code>vcal_2</code> is probably the discontinuation calendar <code>vcal_discont</code> (note that it only contains a value for the last month in a string of months where the sample contraceptive method was used).</p>
 <p>If you cannot easily determine what topic a particular calendar covers, you’ll need to consult the available sample documentation (especially Final Report documents) on the DHS website. You may also try comparing your sample to an earlier sample from the same country. As a last resort, make a guess and run the sample: if you get an error or a distribution of responses that doesn’t match other sample data, try again!</p>
-<p><strong>Warning: vcal columns can only store numbers. Please use the number associated with the vcal_ variable for your sample.</strong> In rare cases, you may find calendar data stored in the IR file under an unusual name (see eg2995ir <code>vcal_term</code>). In this case, please insert the number 0 in place of the unusual name; you’ll need to edit some of the functions in this package to make special accommodations for such a sample (<em>instructions coming soon</em>).</p>
+<p><strong>Warning: vcal columns can only store numbers. Please use the number associated with the vcal_ variable for your sample.</strong> In rare cases, you may find calendar data stored in the IR file under an unusual name (see eg2995ir <code>vcal_term</code>). In this case, please insert the number 0 in place of the unusual name; you will need to hard-code this information into the file <code>reshape_vcal_input_data.R</code>.</p>
 </div>
-<div id="vcal_reprod_recodes-csv" class="section level1">
-<h1 class="hasAnchor">
-<a href="#vcal_reprod_recodes-csv" class="anchor"></a>vcal_reprod_recodes.csv</h1>
+<div class="section level1">
+<h1 id="vcal_reprod_recodes-csv">vcal_reprod_recodes.csv<a class="anchor" aria-label="anchor" href="#vcal_reprod_recodes-csv"></a>
+</h1>
 <p>Locate the file at <code>./ipums/dhs/general/calendar/sample_tracking/vcal_reprod_recodes.csv</code> (substitute “.” for the location of the ipums folder on your system).</p>
-<p>Once you’ve identified the reproductive events calendar <code>vcal_reprod</code> , you’ll need to check to see if it contains any sample-specific codes. Consult the <a href="https://dhsprogram.com/publications/index.cfm">DHS Final Report</a> for your sample for help with this task.</p>
+<p>Once you’ve identified the reproductive events calendar <code>vcal_reprod</code> , you’ll need to check to see if it contains any sample-specific codes. Consult the <a href="https://dhsprogram.com/publications/index.cfm" class="external-link">DHS Final Report</a> for your sample for help with this task.</p>
 <p>You’ll then enter recoding information into this CSV file.</p>
 <p><em>Preview as of this writing:</em></p>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; ">
-<table class="table table">
+<table class="table table" style="margin-left: auto; margin-right: auto;">
 <thead><tr>
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 sample
@@ -4314,6 +4527,380 @@ Standard days method
 </tr>
 <tr>
 <td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+W
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+Other traditional methods
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:left;">
+Birth
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:right;">
+200
+</td>
+<td style="text-align:left;">
+Pregnancy
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:right;">
+300
+</td>
+<td style="text-align:left;">
+Termination of Pregnancy
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BD3
+</td>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+H
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:left;">
+Prolonged breastfeeding
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BD3
+</td>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+a
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:left;">
+Country-specific method 1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BD4
+</td>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+H
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:left;">
+Hysterectomy
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EG2
+</td>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+G
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:left;">
+Prolonged breastfeeding
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EG3
+</td>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+G
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:left;">
+Prolonged breastfeeding
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EG4
+</td>
+<td style="text-align:left;">
+2005
+</td>
+<td style="text-align:left;">
+G
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+Monthly injections
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EG4
+</td>
+<td style="text-align:left;">
+2000
+</td>
+<td style="text-align:left;">
+G
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:left;">
+Prolonged breastfeeding
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EG4
+</td>
+<td style="text-align:left;">
+2003
+</td>
+<td style="text-align:left;">
+G
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:left;">
+Prolonged breastfeeding
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EG4
+</td>
+<td style="text-align:left;">
+2005
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:left;">
+Prolonged breastfeeding
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EG4
+</td>
+<td style="text-align:left;">
+2000
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:left;">
+Diaphragm/Foam/Jelly
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EG4
+</td>
+<td style="text-align:left;">
+2003
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:left;">
+Diaphragm/Foam/Jelly
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EG4
+</td>
+<td style="text-align:left;">
+2005
+</td>
+<td style="text-align:left;">
+K
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:left;">
+Diaphragm/Foam/Jelly
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EG4
+</td>
+<td style="text-align:left;">
+2005
+</td>
+<td style="text-align:left;">
+Z
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:left;">
+Method continued with new source
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EG5
+</td>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+G
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+Monthly injections
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EG5
+</td>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:left;">
+Prolonged breastfeeding
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EG5
+</td>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+K
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:left;">
+Diaphragm/Foam/Jelly
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EG6
+</td>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+G
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+Monthly injections
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EG6
+</td>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+H
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:left;">
+Prolonged breastfeeding
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
 ET6
 </td>
 <td style="text-align:left;">
@@ -4327,6 +4914,23 @@ O
 </td>
 <td style="text-align:left;">
 Standard days method
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JO5
+</td>
+<td style="text-align:left;">
+2007
+</td>
+<td style="text-align:left;">
+S
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:left;">
+Suppository
 </td>
 </tr>
 <tr>
@@ -4382,6 +4986,23 @@ Standard days method
 </tr>
 <tr>
 <td style="text-align:left;">
+NM6
+</td>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+K
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+Contraceptive patch
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
 RW6
 </td>
 <td style="text-align:left;">
@@ -4416,346 +5037,6 @@ Standard days method
 </tr>
 <tr>
 <td style="text-align:left;">
-all
-</td>
-<td style="text-align:left;">
-all
-</td>
-<td style="text-align:left;">
-W
-</td>
-<td style="text-align:right;">
-18
-</td>
-<td style="text-align:left;">
-Other traditional methods
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-EG4
-</td>
-<td style="text-align:left;">
-2005
-</td>
-<td style="text-align:left;">
-G
-</td>
-<td style="text-align:right;">
-20
-</td>
-<td style="text-align:left;">
-Monthly injections
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-EG5
-</td>
-<td style="text-align:left;">
-all
-</td>
-<td style="text-align:left;">
-G
-</td>
-<td style="text-align:right;">
-20
-</td>
-<td style="text-align:left;">
-Monthly injections
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-EG6
-</td>
-<td style="text-align:left;">
-all
-</td>
-<td style="text-align:left;">
-G
-</td>
-<td style="text-align:right;">
-20
-</td>
-<td style="text-align:left;">
-Monthly injections
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-BD3
-</td>
-<td style="text-align:left;">
-all
-</td>
-<td style="text-align:left;">
-H
-</td>
-<td style="text-align:right;">
-21
-</td>
-<td style="text-align:left;">
-Prolonged breastfeeding
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-EG2
-</td>
-<td style="text-align:left;">
-all
-</td>
-<td style="text-align:left;">
-G
-</td>
-<td style="text-align:right;">
-21
-</td>
-<td style="text-align:left;">
-Prolonged breastfeeding
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-EG3
-</td>
-<td style="text-align:left;">
-all
-</td>
-<td style="text-align:left;">
-G
-</td>
-<td style="text-align:right;">
-21
-</td>
-<td style="text-align:left;">
-Prolonged breastfeeding
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-EG4
-</td>
-<td style="text-align:left;">
-2000
-</td>
-<td style="text-align:left;">
-G
-</td>
-<td style="text-align:right;">
-21
-</td>
-<td style="text-align:left;">
-Prolonged breastfeeding
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-EG4
-</td>
-<td style="text-align:left;">
-2003
-</td>
-<td style="text-align:left;">
-G
-</td>
-<td style="text-align:right;">
-21
-</td>
-<td style="text-align:left;">
-Prolonged breastfeeding
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-EG4
-</td>
-<td style="text-align:left;">
-2005
-</td>
-<td style="text-align:left;">
-R
-</td>
-<td style="text-align:right;">
-21
-</td>
-<td style="text-align:left;">
-Prolonged breastfeeding
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-EG5
-</td>
-<td style="text-align:left;">
-all
-</td>
-<td style="text-align:left;">
-R
-</td>
-<td style="text-align:right;">
-21
-</td>
-<td style="text-align:left;">
-Prolonged breastfeeding
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-EG6
-</td>
-<td style="text-align:left;">
-all
-</td>
-<td style="text-align:left;">
-H
-</td>
-<td style="text-align:right;">
-21
-</td>
-<td style="text-align:left;">
-Prolonged breastfeeding
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-EG4
-</td>
-<td style="text-align:left;">
-2000
-</td>
-<td style="text-align:left;">
-D
-</td>
-<td style="text-align:right;">
-22
-</td>
-<td style="text-align:left;">
-Diaphragm/Foam/Jelly
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-EG4
-</td>
-<td style="text-align:left;">
-2003
-</td>
-<td style="text-align:left;">
-D
-</td>
-<td style="text-align:right;">
-22
-</td>
-<td style="text-align:left;">
-Diaphragm/Foam/Jelly
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-EG4
-</td>
-<td style="text-align:left;">
-2005
-</td>
-<td style="text-align:left;">
-K
-</td>
-<td style="text-align:right;">
-22
-</td>
-<td style="text-align:left;">
-Diaphragm/Foam/Jelly
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-EG5
-</td>
-<td style="text-align:left;">
-all
-</td>
-<td style="text-align:left;">
-K
-</td>
-<td style="text-align:right;">
-22
-</td>
-<td style="text-align:left;">
-Diaphragm/Foam/Jelly
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-BD3
-</td>
-<td style="text-align:left;">
-all
-</td>
-<td style="text-align:left;">
-a
-</td>
-<td style="text-align:right;">
-23
-</td>
-<td style="text-align:left;">
-Country-specific method 1
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-NM6
-</td>
-<td style="text-align:left;">
-all
-</td>
-<td style="text-align:left;">
-K
-</td>
-<td style="text-align:right;">
-24
-</td>
-<td style="text-align:left;">
-Contraceptive patch
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-EG4
-</td>
-<td style="text-align:left;">
-2005
-</td>
-<td style="text-align:left;">
-Z
-</td>
-<td style="text-align:right;">
-25
-</td>
-<td style="text-align:left;">
-Method continued with new source
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-BD4
-</td>
-<td style="text-align:left;">
-all
-</td>
-<td style="text-align:left;">
-H
-</td>
-<td style="text-align:right;">
-26
-</td>
-<td style="text-align:left;">
-Hysterectomy
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 ZA7
 </td>
 <td style="text-align:left;">
@@ -4771,74 +5052,6 @@ I
 Injectables 2M NUR-ISTEATE
 </td>
 </tr>
-<tr>
-<td style="text-align:left;">
-JO5
-</td>
-<td style="text-align:left;">
-2007
-</td>
-<td style="text-align:left;">
-S
-</td>
-<td style="text-align:right;">
-28
-</td>
-<td style="text-align:left;">
-Suppository
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-all
-</td>
-<td style="text-align:left;">
-all
-</td>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:right;">
-100
-</td>
-<td style="text-align:left;">
-Birth
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-all
-</td>
-<td style="text-align:left;">
-all
-</td>
-<td style="text-align:left;">
-P
-</td>
-<td style="text-align:right;">
-200
-</td>
-<td style="text-align:left;">
-Pregnancy
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-all
-</td>
-<td style="text-align:left;">
-all
-</td>
-<td style="text-align:left;">
-T
-</td>
-<td style="text-align:right;">
-300
-</td>
-<td style="text-align:left;">
-Termination of Pregnancy
-</td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -4848,15 +5061,15 @@ Termination of Pregnancy
 <p><strong>If you need to overwrite a recode that is otherwise common to all samples, you may do so</strong>. The function that reads this CSV file will default to the recoding specified for your sample if there is a conflict will “all” samples.</p>
 <p>The value in <code>output</code> must be a number.</p>
 </div>
-<div id="vcal_discont_recodes-csv" class="section level1">
-<h1 class="hasAnchor">
-<a href="#vcal_discont_recodes-csv" class="anchor"></a>vcal_discont_recodes.csv</h1>
+<div class="section level1">
+<h1 id="vcal_discont_recodes-csv">vcal_discont_recodes.csv<a class="anchor" aria-label="anchor" href="#vcal_discont_recodes-csv"></a>
+</h1>
 <p>Locate the file at <code>./ipums/dhs/general/calendar/sample_tracking/vcal_discont_recodes.csv</code> (substitute “.” for the location of the ipums folder on your system).</p>
-<p>Once you’ve identified the discontinuation calendar <code>vcal_discont</code> , you’ll need to check to see if it contains any sample-specific codes. Consult the <a href="https://dhsprogram.com/publications/index.cfm">DHS Final Report</a> for your sample for help with this task.</p>
+<p>Once you’ve identified the discontinuation calendar <code>vcal_discont</code> , you’ll need to check to see if it contains any sample-specific codes. Consult the <a href="https://dhsprogram.com/publications/index.cfm" class="external-link">DHS Final Report</a> for your sample for help with this task.</p>
 <p>You’ll then enter recoding information into this CSV file.</p>
 <p><em>Preview as of this writing:</em></p>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; ">
-<table class="table table">
+<table class="table table" style="margin-left: auto; margin-right: auto;">
 <thead><tr>
 <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
 sample
@@ -5132,6 +5345,57 @@ Do not know
 </tr>
 <tr>
 <td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+Q
+</td>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:left;">
+Reason not provided
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+q
+</td>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:left;">
+Reason not provided
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+?
+</td>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:left;">
+Reason not provided
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
 EG2
 </td>
 <td style="text-align:left;">
@@ -5145,6 +5409,74 @@ E
 </td>
 <td style="text-align:left;">
 IUD fell out
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EG2
+</td>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+M
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:left;">
+Medical advice
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EG2
+</td>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+S
+</td>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:left;">
+Switch to another brand or method
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EG2
+</td>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+38
+</td>
+<td style="text-align:left;">
+Death of spouse
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+EG2
+</td>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+X
+</td>
+<td style="text-align:right;">
+41
+</td>
+<td style="text-align:left;">
+IUD expired
 </td>
 </tr>
 <tr>
@@ -5200,91 +5532,6 @@ Doctor opinion
 </tr>
 <tr>
 <td style="text-align:left;">
-EG5
-</td>
-<td style="text-align:left;">
-all
-</td>
-<td style="text-align:left;">
-O
-</td>
-<td style="text-align:right;">
-17
-</td>
-<td style="text-align:left;">
-Doctor opinion
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-JO5
-</td>
-<td style="text-align:left;">
-all
-</td>
-<td style="text-align:left;">
-R
-</td>
-<td style="text-align:right;">
-18
-</td>
-<td style="text-align:left;">
-Ramadan
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-JO6
-</td>
-<td style="text-align:left;">
-all
-</td>
-<td style="text-align:left;">
-R
-</td>
-<td style="text-align:right;">
-18
-</td>
-<td style="text-align:left;">
-Ramadan
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-JO7
-</td>
-<td style="text-align:left;">
-all
-</td>
-<td style="text-align:left;">
-R
-</td>
-<td style="text-align:right;">
-18
-</td>
-<td style="text-align:left;">
-Ramadan
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-ET4
-</td>
-<td style="text-align:left;">
-all
-</td>
-<td style="text-align:left;">
-M
-</td>
-<td style="text-align:right;">
-19
-</td>
-<td style="text-align:left;">
-Method not available
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 EG4
 </td>
 <td style="text-align:left;">
@@ -5292,40 +5539,6 @@ EG4
 </td>
 <td style="text-align:left;">
 P
-</td>
-<td style="text-align:right;">
-20
-</td>
-<td style="text-align:left;">
-Husband travelling/ill
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-JO5
-</td>
-<td style="text-align:left;">
-all
-</td>
-<td style="text-align:left;">
-T
-</td>
-<td style="text-align:right;">
-20
-</td>
-<td style="text-align:left;">
-Husband travelling/ill
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-NP6
-</td>
-<td style="text-align:left;">
-all
-</td>
-<td style="text-align:left;">
-H
 </td>
 <td style="text-align:right;">
 20
@@ -5438,6 +5651,40 @@ Thinks she is pregnant
 </tr>
 <tr>
 <td style="text-align:left;">
+EG5
+</td>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+O
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+Doctor opinion
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ET4
+</td>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+M
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+Method not available
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
 IA5
 </td>
 <td style="text-align:left;">
@@ -5523,23 +5770,6 @@ Lack of privacy
 </tr>
 <tr>
 <td style="text-align:left;">
-JO6
-</td>
-<td style="text-align:left;">
-all
-</td>
-<td style="text-align:left;">
-E
-</td>
-<td style="text-align:right;">
-32
-</td>
-<td style="text-align:left;">
-The absence of one condition of breastfeeding
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 JO3
 </td>
 <td style="text-align:left;">
@@ -5553,6 +5783,108 @@ R
 </td>
 <td style="text-align:left;">
 Rest
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JO3
+</td>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+P
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:left;">
+Period returned
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JO5
+</td>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+Ramadan
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JO5
+</td>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+Husband travelling/ill
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JO5
+</td>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:left;">
+End of breastfeeding
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JO6
+</td>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+Ramadan
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+JO6
+</td>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+E
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:left;">
+The absence of one condition of breastfeeding
 </td>
 </tr>
 <tr>
@@ -5608,24 +5940,58 @@ Erectile dysfunction in husband
 </tr>
 <tr>
 <td style="text-align:left;">
-EG2
+JO7
 </td>
 <td style="text-align:left;">
 all
 </td>
 <td style="text-align:left;">
-M
+R
 </td>
 <td style="text-align:right;">
-36
+18
 </td>
 <td style="text-align:left;">
-Medical advice
+Ramadan
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-JO3
+NP6
+</td>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+H
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+Husband travelling/ill
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NP7
+</td>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+H
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+Husband travelling/ill
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+IA6
 </td>
 <td style="text-align:left;">
 all
@@ -5634,15 +6000,32 @@ all
 P
 </td>
 <td style="text-align:right;">
-36
+14
 </td>
 <td style="text-align:left;">
-Period returned
+Other reasons
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-EG2
+IA6
+</td>
+<td style="text-align:left;">
+all
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+Other reasons
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+IA6
 </td>
 <td style="text-align:left;">
 all
@@ -5651,61 +6034,27 @@ all
 S
 </td>
 <td style="text-align:right;">
-37
+14
 </td>
 <td style="text-align:left;">
-Switch to another brand or method
+Other reasons
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-EG2
+IA6
 </td>
 <td style="text-align:left;">
 all
 </td>
 <td style="text-align:left;">
-B
+T
 </td>
 <td style="text-align:right;">
-38
+14
 </td>
 <td style="text-align:left;">
-Death of spouse
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-JO5
-</td>
-<td style="text-align:left;">
-all
-</td>
-<td style="text-align:left;">
-B
-</td>
-<td style="text-align:right;">
-40
-</td>
-<td style="text-align:left;">
-End of breastfeeding
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-EG2
-</td>
-<td style="text-align:left;">
-all
-</td>
-<td style="text-align:left;">
-X
-</td>
-<td style="text-align:right;">
-41
-</td>
-<td style="text-align:left;">
-IUD expired
+Other reasons
 </td>
 </tr>
 </tbody>
@@ -5717,31 +6066,31 @@ IUD expired
 <p><strong>If you need to overwrite a recode that is otherwise common to all samples, you may do so</strong> (e.g. see EG4 2005, input <code>K</code>). The function that reads this CSV file will default to the recoding specified for your sample if there is a conflict will “all” samples.</p>
 <p>The value in <code>output</code> must be a number.</p>
 </div>
-<div id="make_lr" class="section level1">
-<h1 class="hasAnchor">
-<a href="#make_lr" class="anchor"></a>make_lr</h1>
+<div class="section level1">
+<h1 id="make_lr">make_lr<a class="anchor" aria-label="anchor" href="#make_lr"></a>
+</h1>
 <p>This <strong>R function</strong> creates an unlinked LR file containing all of the derived calendar variables (including placeholders for those that were not available for your sample). All files created by this function will be written to the folder at <code>./dhs/general/calendar/programming/unlinked_lr_data</code> (substitute “.” for the location of the ipums folder on your system).</p>
-<p><strong>I highly recommend that you install this package and run this function on <a href="https://rstudio.pop.umn.edu/">the RStudio server</a></strong> rather than your local installation of RStudio.</p>
+<p><strong>I highly recommend that you install this package and run this function on <a href="https://rstudio.pop.umn.edu/" class="external-link">the RStudio server</a></strong> rather than your local installation of RStudio.</p>
 <p>The <strong>first time</strong> you use this package, you’ll need to install it. <a href="./articles/Installation.html">Follow the installation instructions shown here</a>.</p>
 <p>If you have installed this package and completed the three pre-processing tasks above, you should be able to use <code><a href="../reference/make_lr.html">make_lr()</a></code> with your sample like this:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">DHScalendars</span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.umn.edu/mpc/dhscalendars/" class="external-link">DHScalendars</a></span><span class="op">)</span>
 <span class="fu"><a href="../reference/make_lr.html">make_lr</a></span><span class="op">(</span><span class="st">"af2015ir"</span><span class="op">)</span></code></pre></div>
 <p>Or, if you have a bunch of samples, you can pass them to <code><a href="../reference/make_lr.html">make_lr()</a></code> in a loop like this:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">DHScalendars</span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.umn.edu/mpc/dhscalendars/" class="external-link">DHScalendars</a></span><span class="op">)</span>
 
 <span class="co"># here is my to-do list:</span>
-<span class="va">samples</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"af2015ir"</span>, <span class="st">"ao2015ir"</span><span class="op">)</span>
+<span class="va">samples</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"af2015ir"</span>, <span class="st">"ao2015ir"</span><span class="op">)</span>
 
 <span class="co"># here is my loop:</span>
 <span class="kw">for</span><span class="op">(</span><span class="va">s</span> <span class="kw">in</span> <span class="va">samples</span><span class="op">)</span><span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span> <span class="co"># optional: prints a message each time a sample is finished</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">message</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span> <span class="co"># optional: prints a message each time a sample is finished</span>
   <span class="fu"><a href="../reference/make_lr.html">make_lr</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 <p>If you’re feeling crafty, you can even read a vector of samples from a CSV file. Here’s how you might process all of the samples in <code>vcal_availability.csv</code> (this would probably take around 2 hours on the RStudio server):</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">DHScalendars</span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.umn.edu/mpc/dhscalendars/" class="external-link">DHScalendars</a></span><span class="op">)</span>
 
 <span class="co"># I make my to-do list from the CSV file:</span>
 <span class="va">samples</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span>
@@ -5751,14 +6100,20 @@ IUD expired
 
 <span class="co"># This loop processes ALL samples:</span>
 <span class="kw">for</span><span class="op">(</span><span class="va">s</span> <span class="kw">in</span> <span class="va">samples</span><span class="op">)</span><span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span> <span class="co"># optional: prints a message each time a sample is finished</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">message</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span> <span class="co"># optional: prints a message each time a sample is finished</span>
   <span class="fu"><a href="../reference/make_lr.html">make_lr</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
+<div class="section level2">
+<h2 id="using-make_lr-on-the-cluster">Using make_lr on the cluster<a class="anchor" aria-label="anchor" href="#using-make_lr-on-the-cluster"></a>
+</h2>
+<p>When the first large batch of LR files was processed in 2021, the job included several samples (e.g. India 2015) that would overwhelm the memory available to R. Moreover, processing for all samples would take many hours.</p>
+<p>As an alternative to processing samples on the RStudio server, I used Derek’s excellent <a href="https://github.umn.edu/burkx031/runoncluster" class="external-link">runoncluster</a> package for R to send this job to the cluster. You’ll need to follow his instructions for setting up package installation instructions with <a href="https://rstudio.github.io/renv/articles/renv.html" class="external-link">renv</a> and <code>git</code>.</p>
 </div>
-<div id="python" class="section level1">
-<h1 class="hasAnchor">
-<a href="#python" class="anchor"></a>Python</h1>
-<p>Use a Terminal on a general purpose server (e.g. <code>gp2</code>) and run the <code>dhs_calendar_linking</code> <strong>Python script</strong>. This will create <em>both</em> a linked data file <em>and</em> and new data dictionary for your new <code>lr</code> sample.</p>
+</div>
+<div class="section level1">
+<h1 id="python">Python<a class="anchor" aria-label="anchor" href="#python"></a>
+</h1>
+<p>When you’ve finished processing LR samples with <code>make_lr</code>, use a Terminal on a general purpose server (e.g. <code>gp2</code>) and run the <code>dhs_calendar_linking</code> <strong>Python script</strong>. This will create <em>both</em> a linked data file <em>and</em> and new data dictionary for your new <code>lr</code> sample.</p>
 <p>If you provide only one sample, the function will run on the general purpose server (e.g. <code>gp2</code>). For example:</p>
 <p><code>dhs_lr_data -s af2015lr</code></p>
 <p>You can also run multiple samples as a job on the cluster. For example:</p>
@@ -5778,11 +6133,13 @@ IUD expired
 
 
       <footer><div class="copyright">
-  <p>Developed by Matt Gunther.</p>
+  <p></p>
+<p>Developed by Matt Gunther.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -5790,6 +6147,8 @@ IUD expired
 
   
 
+
+  
 
   </body>
 </html>
